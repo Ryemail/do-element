@@ -1,0 +1,51 @@
+{
+    "name": "do-design",
+    "version": "0.0.1",
+    "private": false,
+    "license": "MIT",
+    "author": "<1956045780@qq.com>",
+    "main": "lib/index.umd.js",
+    "module": "lib/index.esm.js",
+    "files": [
+        "lib",
+        "example",
+        "package.json",
+        "README.md"
+    ],
+    "keywords": [
+        "vue",
+        "do-design",
+        "roullup"
+    ],
+    "homepage": "https://github.com/Ryemail/do-tool#readme",
+    "devDependencies": {
+        "@babel/core": "^7.13.14",
+        "@babel/plugin-transform-runtime": "^7.14.3",
+        "@babel/preset-env": "^7.13.12",
+        "@rollup/plugin-alias": "^3.1.2",
+        "@rollup/plugin-commonjs": "^19.0.0",
+        "@rollup/plugin-node-resolve": "^13.0.0",
+        "@rollup/plugin-replace": "^2.4.2",
+        "@vue/compiler-sfc": "^3.0.11",
+        "cross-env": "^7.0.3",
+        "element-ui": "^2.15.2",
+        "less": "^4.1.1",
+        "rollup": "^2.44.0",
+        "rollup-plugin-babel": "^4.4.0",
+        "rollup-plugin-postcss": "^4.0.0",
+        "rollup-plugin-replace": "^2.2.0",
+        "rollup-plugin-terser": "^7.0.2",
+        "rollup-plugin-vue": "^6.0.0",
+        "typedoc": "^0.20.34",
+        "vue": "^2.6.12",
+        "vue-template-compiler": "^2.6.12"
+    },
+    "scripts": {
+        "example": "cd example && yarn serve",
+        "build": "rm -rf ./lib/ && rollup --config --environment NODE_ENV:production",
+        "doc": "typedoc --options typedoc.json"
+    },
+    "dependencies": {
+        "rollup-plugin-less": "^1.1.3"
+    }
+}
