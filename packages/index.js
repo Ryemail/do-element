@@ -1,29 +1,58 @@
-import Dialog from './dialog';
-import Form from './form';
 import Link from './link';
+import PageTabs from './page-tabs';
+import Dialog from './dialog';
+import Upload from './upload';
+import TreeSelect from './tree-select';
 import Table from './table';
-import Confirm from './confirm';
+import Form from './form';
+import Container from './container';
+import Header from './header';
+import Footer from './footer';
+import Content from './content';
+import Menu from './menu';
+import { modal, notice } from './modal';
 
-// 存储组件列表
-const components = [Dialog, Form, Link, Table];
+const components = [
+	Link,
+	PageTabs,
+	Dialog,
+	Upload,
+	TreeSelect,
+	Table,
+	Form,
+	Header,
+	Footer,
+	Container,
+	Content,
+	Menu,
+];
 
-// 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
-const install = function(Vue) {
-    // 遍历注册全局组件
-    components.forEach((component) => {
-        Vue.component(component.name, component);
-    });
+function install(Vue) {
+	components.forEach((component) => {
+		Vue.component(component.name, component);
+	});
 
-    Vue.prototype.$doConfirm = Confirm;
-};
-// 判断是否是直接引入文件
+	Vue.prototype.$modal = modal;
+
+	Vue.prototype.$notice = notice;
+}
+
 if (typeof window !== 'undefined' && window.Vue) {
-    install(window.Vue);
+	install(window.Vue);
 }
 
 export default {
-    // 导出的对象必须具有 install，才能被 Vue.use() 方法安装
-    install,
-    // 以下是具体的组件列表
-    ...components,
+	install,
+	Link,
+	PageTabs,
+	Dialog,
+	Upload,
+	TreeSelect,
+	Table,
+	Form,
+	Container,
+	Header,
+	Footer,
+	Content,
+	Menu,
 };

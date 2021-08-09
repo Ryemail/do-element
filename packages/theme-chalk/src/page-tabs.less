@@ -1,0 +1,29 @@
+// d-tabs
+.d-page-tabs {
+	height: 34px;
+	font-size: 14px;
+	box-shadow: 0 1px #e6e6e6;
+	.d-page-tabs-item {
+		display: inline-block;
+		font-family: PingFangSC-Regular, PingFang SC;
+		color: #666666;
+		padding: 0 15px;
+		text-decoration: none;
+		height: 33px;
+		line-height: 33px;
+		background: #f6f6f6;
+		border-radius: 4px 4px 0px 0px;
+		border: 1px solid #e8e8e8;
+		border-bottom: 0;
+		margin-right: 8px;
+		transition: color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+			padding 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+		&.router-link-active {
+			background-color: #ffffff;
+			color: #61c5c1;
+			height: 34px;
+			margin-bottom: -1px;
+		}
+	}
+}

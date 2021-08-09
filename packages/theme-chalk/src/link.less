@@ -1,0 +1,58 @@
+.d-link {
+	display: inline-flex;
+	align-items: center;
+	font-size: 14px;
+	font-family: PingFangSC-Regular, PingFang SC;
+	color: #3a3a3a;
+	text-decoration: none;
+	cursor: pointer;
+	user-select: none;
+	vertical-align: middle;
+	i {
+		font-size: 16px;
+		margin-right: 2px;
+	}
+	&.item-order {
+		i {
+			order: 1;
+			margin: 0 0 0 2px;
+		}
+	}
+
+	&--inner {
+		padding: 0 4px;
+	}
+	&--primary {
+		i {
+			color: #61c5c1;
+		}
+	}
+
+	&--success {
+		i {
+			color: #5793f3;
+		}
+	}
+
+	&--danger {
+		i {
+			color: #ff7e7e;
+		}
+	}
+
+	&--warning {
+		i {
+			color: #ffab58;
+		}
+	}
+	&.is-disabled {
+		cursor: not-allowed;
+		color: #c0c4cc;
+		i {
+			color: inherit;
+		}
+	}
+	&:not(:last-child) {
+		margin-right: 8px;
+	}
+}
