@@ -55,4 +55,6 @@ export default {
 	Footer,
 	Content,
 	Menu,
+	modal,
+	notice,
 };

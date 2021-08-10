@@ -12,6 +12,8 @@ import '../lib/theme-chalk/index.css';
 
 import GlDsign from '../lib';
 
+// import { DoForm } from '../lib';
+
 import './mock';
 
 Vue.use(ElementUI);
