@@ -12,7 +12,7 @@
 				<el-input style="width: 300px" v-model="width" />
 			</div>
 
-			<gl-form
+			<d-form
 				:form="form"
 				:inline="isInline"
 				:label-width="width"
@@ -24,7 +24,7 @@
 		<div class="module">
 			<h3 class="module-title">插槽使用</h3>
 		</div>
-		<gl-form
+		<d-form
 			:form="form2"
 			:label-width="width"
 			:columns="columns2"
@@ -36,27 +36,27 @@
 					placeholder="请输入地址"
 				></el-input>
 			</template>
-		</gl-form>
+		</d-form>
 
 		<div class="module">
 			<h3 class="module-title">弹窗表单</h3>
-			<gl-link icon="zengjia" type="sucDcess" @click="visible = true">
+			<d-link icon="zengjia" type="sucDcess" @click="visible = true">
 				弹窗表单
-			</gl-link>
+			</d-link>
 		</div>
-		<gl-dialog
+		<d-dialog
 			:visible.sync="visible"
 			title="弹窗表单"
 			@event="onDialogEvent"
 		>
-			<gl-form
+			<d-form
 				:form="form"
 				:inline="isInline"
 				:label-width="width"
 				:columns="columns"
 				:button="null"
 			/>
-		</gl-dialog>
+		</d-dialog>
 	</div>
 </template>
 

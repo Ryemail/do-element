@@ -21,12 +21,12 @@
 		</div>
 
 		<!-- 默认使用 -->
-		<gl-dialog :visible.sync="visible" title="默认使用">
+		<d-dialog :visible.sync="visible" title="默认使用">
 			<p v-for="item in 10" :key="item">内容区域{{ item }}</p>
-		</gl-dialog>
+		</d-dialog>
 
 		<!-- 插槽使用 -->
-		<gl-dialog :visible.sync="visible1">
+		<d-dialog :visible.sync="visible1">
 			<div slot="title">插槽使用</div>
 
 			<p v-for="item in 10" :key="item">{{ item }}</p>
@@ -34,7 +34,7 @@
 			<div slot="footer">
 				<el-button @click="visible1 = false">取消</el-button>
 			</div>
-		</gl-dialog>
+		</d-dialog>
 	</div>
 </template>
 

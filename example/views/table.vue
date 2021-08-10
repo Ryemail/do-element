@@ -2,21 +2,21 @@
 	<div>
 		<div class="module">
 			<h3 class="module-title">基础表格</h3>
-			<gl-table :data="table1" :columns="columns"></gl-table>
+			<d-table :data="table1" :columns="columns"></d-table>
 		</div>
 		<div class="module">
 			<h3 class="module-title">动态数据</h3>
-			<gl-table url="/api/tableList" :columns="columns2">
+			<d-table url="/api/tableList" :columns="columns2">
 				<!-- 使用插槽 -->
 				<template #zip="{ row }">
 					{{ row.status }}
 				</template>
-			</gl-table>
+			</d-table>
 		</div>
 		<div class="module">
 			<h3 class="module-title">Grid 列表</h3>
 
-			<gl-table
+			<d-table
 				type="grid"
 				:col="3"
 				url="/api/tableList"
@@ -25,7 +25,7 @@
 				<template #default="{ data }">
 					{{ data }}
 				</template>
-			</gl-table>
+			</d-table>
 		</div>
 	</div>
 </template>

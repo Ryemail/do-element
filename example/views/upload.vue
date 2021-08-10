@@ -3,32 +3,32 @@
 		<div class="module">
 			<h3 class="module-title">文件上传</h3>
 			<div class="uplaod-content">
-				<gl-upload :action="action" accept="pdf">
+				<d-upload :action="action" accept="pdf">
 					<el-button>只能上传pdf</el-button>
-				</gl-upload>
+				</d-upload>
 
-				<gl-upload :action="action" accept="word">
+				<d-upload :action="action" accept="word">
 					<el-button>只能上传word</el-button>
-				</gl-upload>
+				</d-upload>
 
-				<gl-upload :action="action" accept="video">
+				<d-upload :action="action" accept="video">
 					<el-button>只能上传Video</el-button>
-				</gl-upload>
+				</d-upload>
 
-				<gl-upload :action="action" accept="audio">
+				<d-upload :action="action" accept="audio">
 					<el-button>只能上传Audio</el-button>
-				</gl-upload>
+				</d-upload>
 
-				<gl-upload :action="action" accept="excel">
+				<d-upload :action="action" accept="excel">
 					<el-button>只能上传excel</el-button>
-				</gl-upload>
+				</d-upload>
 			</div>
 		</div>
 		<div class="module">
 			<h3 class="module-title">上传图片</h3>
 			<div class="module-content">
 				<div>
-					<gl-upload
+					<d-upload
 						:action="action"
 						accept="image"
 						v-model="image.value1"
@@ -36,12 +36,12 @@
 						<div slot="tip" style="font-size: 12px">
 							只能上传.png、.jpg格式
 						</div>
-					</gl-upload>
+					</d-upload>
 					<div>{{ image.value1 }}</div>
 				</div>
 
 				<div>
-					<gl-upload
+					<d-upload
 						:action="action"
 						accept="image"
 						v-model="image.value2"
@@ -49,7 +49,7 @@
 						<el-button icon="el-icon-plus" slot="image">
 							自定义图片上传样式
 						</el-button>
-					</gl-upload>
+					</d-upload>
 					<div>{{ image.value2 }}</div>
 				</div>
 			</div>
@@ -57,20 +57,20 @@
 
 		<div class="module">
 			<h3 class="module-title">照片墙</h3>
-			<gl-upload
+			<d-upload
 				:action="action"
 				accept="image"
 				list-type="picture-card"
 				v-model="image.value3"
 			>
-			</gl-upload>
+			</d-upload>
 			<div>{{ image.value3 }}</div>
 		</div>
 
 		<div class="module">
 			<h3 class="module-title">在表单中使用</h3>
 
-			<gl-form
+			<d-form
 				:form="form"
 				:label-width="140"
 				:columns="columns"
@@ -78,15 +78,15 @@
 				@event="onEvent"
 			>
 				<template #upload="{ data }">
-					<gl-upload
+					<d-upload
 						:action="action"
 						accept="image"
 						list-type="picture-card"
 						v-model="data.images"
 					>
-					</gl-upload>
+					</d-upload>
 				</template>
-			</gl-form>
+			</d-form>
 		</div>
 	</div>
 </template>

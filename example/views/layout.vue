@@ -1,17 +1,17 @@
 <template>
-	<gl-container>
-		<gl-header />
+	<d-container>
+		<d-header />
 
-		<main class="gl-main">
-			<gl-menu :default-active="$route.matched[0].name" :menus="menus" />
+		<main class="d-main">
+			<d-menu :default-active="$route.matched[0].name" :menus="menus" />
 
-			<gl-content title="测试">
-				<router-view class="gl-router-view" />
-			</gl-content>
+			<d-content title="测试">
+				<router-view class="d-router-view" />
+			</d-content>
 		</main>
 
-		<gl-footer />
-	</gl-container>
+		<d-footer />
+	</d-container>
 </template>
 
 <script>

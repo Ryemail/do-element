@@ -3,7 +3,7 @@
 		<div class="module">
 			<h3 class="module-title">默认使用</h3>
 			<div>
-				<gl-tree-select
+				<d-tree-select
 					v-model="value"
 					placeholder="请选择"
 					:data="options"
@@ -14,7 +14,7 @@
 
 		<div class="module">
 			<h3 class="module-title">数据懒加载</h3>
-			<gl-tree-select
+			<d-tree-select
 				ref="tree"
 				v-model="value2"
 				placeholder="请选择"
@@ -29,7 +29,7 @@
 
 		<div class="module">
 			<h3 class="module-title">在表单使用</h3>
-			<gl-form
+			<d-form
 				:form="form"
 				:label-width="140"
 				:columns="columns"
@@ -37,7 +37,7 @@
 				@event="onEvent"
 			>
 				<template #tree="{ data }">
-					<gl-tree-select
+					<d-tree-select
 						ref="tree"
 						v-model="data.address"
 						placeholder="请选择"
@@ -48,7 +48,7 @@
 					/>
 					{{ value2 }}
 				</template>
-			</gl-form>
+			</d-form>
 		</div>
 	</div>
 </template>

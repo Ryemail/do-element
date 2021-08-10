@@ -3,29 +3,29 @@
 		<div class="module">
 			<h3 class="module-title">主题色</h3>
 			<div>
-				<gl-link icon="zhu" type="danger">危险</gl-link>
-				<gl-link icon="kaimenjilu" type="primary">主色</gl-link>
-				<gl-link icon="warning" type="warning">警告</gl-link>
-				<gl-link icon="select" type="success">成功</gl-link>
+				<d-link icon="zhu" type="danger">危险</d-link>
+				<d-link icon="kaimenjilu" type="primary">主色</d-link>
+				<d-link icon="warning" type="warning">警告</d-link>
+				<d-link icon="select" type="success">成功</d-link>
 			</div>
 		</div>
 		<div class="module">
 			<h3 class="module-title">禁用</h3>
-			<gl-link icon="select" disabled type="success">禁用状态</gl-link>
+			<d-link icon="select" disabled type="success">禁用状态</d-link>
 		</div>
 
 		<div class="module">
 			<h3 class="module-title">点击事件</h3>
-			<gl-link icon="zengjia" @click="onClick" type="success">
+			<d-link icon="zengjia" @click="onClick" type="success">
 				点击事件
-			</gl-link>
+			</d-link>
 		</div>
 
 		<div class="module">
 			<h3 class="module-title">路由跳转</h3>
-			<gl-link icon="checked" to="/modal" type="success">
+			<d-link icon="checked" to="/modal" type="success">
 				路由跳转
-			</gl-link>
+			</d-link>
 
 			<div class="module-tips">
 				<h3 class="module-tips-title">温馨提示</h3>

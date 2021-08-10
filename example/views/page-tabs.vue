@@ -2,7 +2,7 @@
 	<div>
 		<div class="module">
 			<h3 class="module-title">pageTabs</h3>
-			<gl-page-tabs :tabs="tabs" />
+			<d-page-tabs :tabs="tabs" />
 
 			<div class="module-tips">
 				<h3 class="module-tips-title">温馨提示</h3>

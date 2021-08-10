@@ -2489,6 +2489,11 @@ dns-txt@^2.0.2:
   dependencies:
     buffer-indexof "^1.0.0"
 
+do-tool@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/do-tool/-/do-tool-0.0.5.tgz#1a5c926fe0f82c93b383a5a4d35aafee5a366cac"
+  integrity sha512-a4/ZJRpa7v+1oq0oNIwV1MZTNTWaott+W8VqNHu6GQkorpzqaw+MY3OzkELOuzXxp7tnMHX4kNP8ENVUUXsc5g==
+
 doctrine@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-3.0.0.tgz#addebead72a6574db783639dc87a121773973961"
