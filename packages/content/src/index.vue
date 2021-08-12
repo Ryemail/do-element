@@ -10,7 +10,7 @@
 import DPageTitle from './title.vue';
 
 export default {
-	name: 'dContent',
+	name: 'DContent',
 	components: { DPageTitle },
 	props: {
 		backs: {

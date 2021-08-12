@@ -8,6 +8,7 @@
         "docs:build": "vuepress build"
     },
     "devDependencies": {
+        "async-validator": "1.11.5",
         "do-element": "^1.0.0",
         "element-ui": "^2.15.5",
         "vuepress": "^1.8.2"
