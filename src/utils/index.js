@@ -6,6 +6,8 @@ import { formatNumber } from './number';
 
 import { getType, checkType } from './type';
 
+import { clone } from './clone';
+
 import { parseEqual, parseKeys, parseObject, parseQuery } from './object';
 
 export {
@@ -18,4 +20,5 @@ export {
 	parseKeys,
 	parseObject,
 	parseQuery,
+	clone,
 };

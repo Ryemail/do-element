@@ -39,7 +39,6 @@
 					<span v-if="item.append" slot="append">
 						<slot :name="item.append" :data="item"></slot>
 					</span>
-					<!-- 图标 -->
 					<span v-if="item.prefix" slot="prefix">
 						<slot :name="item.prefix" :data="item"></slot>
 					</span>
@@ -183,7 +182,7 @@
 			</el-form-item>
 		</div>
 		<div
-			v-if="buttons.length"
+			v-if="buttonArray.length"
 			:class="{
 				'd-form-footer': true,
 				'd-form-footer--top': !inline,
@@ -191,7 +190,7 @@
 			:style="{ textAlign: buttonAlign }"
 		>
 			<el-button
-				v-for="(item, key) in buttons"
+				v-for="(item, key) in buttonArray"
 				:key="key"
 				:type="item.type"
 				@click="onEvent(item)"
@@ -204,7 +203,7 @@
 </template>
 
 <script>
-import { parseEqual, formatNumber } from '@/utils';
+import { parseEqual, formatNumber, clone } from '@/utils';
 
 export default {
 	name: 'DForm',
@@ -223,13 +222,13 @@ export default {
 
 		inline: { type: Boolean, default: false },
 
-		button: { type: Array, default: () => [] },
+		buttons: { type: [Array, Object], default: () => [] },
 
 		buttonAlign: { type: String, default: 'center' },
 	},
 	data() {
 		return {
-			dataColumns: this.columns,
+			dataColumns: clone(this.columns),
 			isChange: false,
 		};
 	},
@@ -248,7 +247,7 @@ export default {
 		parent() {
 			let parent = this.$parent;
 			while (parent) {
-				if (parent.$options.name !== 'dDialog') {
+				if (parent.$options.name !== 'DDialog') {
 					parent = parent.$parent;
 				} else {
 					return parent;
@@ -256,23 +255,22 @@ export default {
 			}
 			return false;
 		},
-		buttons() {
-			if (this.button === null) return [];
+		buttonArray() {
+			if (this.buttons === null) return [];
 
-			if (!this.button.length) {
-				if (this.inline) {
-					return [
-						{ type: 'default', prop: 'reset', label: '重置' },
-						{ type: 'primary', prop: 'submit', label: '查询' },
-					];
-				}
+			if (this.buttons.length) return this.buttons;
 
+			if (this.inline) {
 				return [
-					{ type: 'primary', prop: 'submit', label: '确定' },
-					{ type: 'default', prop: 'reset', label: '取消' },
+					{ type: 'default', prop: 'reset', label: '重置' },
+					{ type: 'primary', prop: 'submit', label: '查询' },
 				];
 			}
-			return this.button;
+
+			return [
+				{ type: 'primary', prop: 'submit', label: '确定' },
+				{ type: 'default', prop: 'reset', label: '取消' },
+			];
 		},
 		parentVisible() {
 			return this.parent ? this.parent.$attrs.visible : false;
@@ -330,13 +328,13 @@ export default {
 		onLazyLoad() {
 			const type = ['select', 'checkbox', 'radio'];
 
-			this.dataColumns.map((item) => {
+			this.dataColumns.forEach((item, index) => {
 				if (type.includes(item.type) && item.lazyLoad) {
 					item.lazyLoad((options) => {
 						item.options = options;
+						this.$set(this.dataColumns, index, item);
 					}, this.dataForm);
 				}
-				return item;
 			});
 		},
 		onEvent(item) {

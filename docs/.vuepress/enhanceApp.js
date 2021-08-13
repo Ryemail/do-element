@@ -1,7 +1,7 @@
 import ElementUI from 'element-ui';
-import DoElement from 'do-element';
+import DoElement from '../../lib';
 import 'element-ui/lib/theme-chalk/index.css';
-import 'do-element/lib/theme-chalk/index.css';
+import '../../lib/theme-chalk/index.css';
 import './public/font/iconfont.css';
 
 export default ({ Vue }) => {

@@ -6,7 +6,10 @@
 			<d-menu :default-active="$route.matched[0].name" :menus="menus" />
 
 			<d-content title="测试">
-				<router-view class="d-router-view" />
+				<router-view class="" />
+				<div class="d-router-view">
+					<p v-for="item in 100" :key="item">{{ item }}</p>
+				</div>
 			</d-content>
 		</main>
 

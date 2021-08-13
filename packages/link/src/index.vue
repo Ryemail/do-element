@@ -37,6 +37,8 @@ export default {
 				return this.$router.push(this.to);
 			}
 
+			if (this.disabled) return false;
+
 			this.$emit('click');
 		},
 	},

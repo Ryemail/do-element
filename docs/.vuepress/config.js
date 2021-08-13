@@ -1,6 +1,10 @@
 module.exports = {
 	lang: 'zh-CN',
 	title: 'do-design',
+	plugins: ['demo-block'],
+	head: [
+		['script', { src: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js' }],
+	],
 	themeConfig: {
 		head: [['link', { rel: 'icon', href: '/image/log.png' }]],
 		nav: [
@@ -13,7 +17,6 @@ module.exports = {
 			{ title: 'Form 表单', path: '/form/' },
 			{ title: 'Table 表格', path: '/table/' },
 			{ title: 'Dialog 对话框', path: '/dialog/' },
-			{ title: 'Header 页面header', path: '/header/' },
 			{ title: 'Modal 操作弹窗', path: '/modal/' },
 			{ title: 'Notice 操作提示', path: '/notice/' },
 			{ title: 'PageTabs tab页', path: '/page-tabs/' },

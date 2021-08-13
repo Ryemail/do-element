@@ -31,10 +31,7 @@
 			@event="onEvent"
 		>
 			<template #address="{ data }">
-				<el-input
-					v-model="data.address"
-					placeholder="请输入地址"
-				></el-input>
+				<el-input v-model="data.address" placeholder="请输入地址" />
 			</template>
 		</d-form>
 
@@ -69,11 +66,12 @@ export default {
 			form: {
 				name: '',
 				sex: '',
-				date: '',
+
 				switch: 2,
 				mark: '',
 				radio: '3',
 				check: ['2'],
+				date: '',
 				daterange: '',
 				datetime: '',
 				datetimerange: '',
@@ -89,6 +87,9 @@ export default {
 					prop: 'name',
 					label: '姓名',
 					placeholder: '请输入姓名',
+					attrs: {
+						clearable: true,
+					},
 				},
 				{
 					type: 'select',
@@ -96,10 +97,12 @@ export default {
 					label: '性别',
 					placeholder: '请选择性别',
 					lazyLoad(resolve) {
-						resolve([
-							{ value: '1', label: '男' },
-							{ value: '2', label: '女' },
-						]);
+						setTimeout(() => {
+							resolve([
+								{ value: '1', label: '男' },
+								{ value: '2', label: '女' },
+							]);
+						}, 1000);
 					},
 				},
 				{
@@ -166,6 +169,7 @@ export default {
 					prop: 'name',
 					label: '姓名',
 					placeholder: '请输入姓名',
+					slot: 'default',
 				},
 				{
 					type: 'slot',

@@ -1,6 +1,6 @@
 <template>
 	<div class="d-page-title">
-		<template v-if="backs.includes($route.name)">
+		<template v-if="backs.includes($route && $route.name)">
 			<el-link
 				class="d-back"
 				@click="$routet.back()"

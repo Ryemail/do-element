@@ -8,9 +8,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 import './styles/fonts/iconfont.css';
 import './styles/reset.less';
 
-import '../lib/theme-chalk/index.css';
+import '../packages/theme-chalk/src/index.less';
 
-import GlDsign from '../lib';
+import GlDsign from '../packages/index.js';
 
 import './mock';
 

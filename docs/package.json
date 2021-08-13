@@ -11,7 +11,8 @@
         "async-validator": "1.11.5",
         "do-element": "^1.0.0",
         "element-ui": "^2.15.5",
-        "vuepress": "^1.8.2"
+        "vuepress": "^1.8.2",
+        "vuepress-plugin-demo-block": "^0.7.2"
     },
     "dependencies": {}
 }
