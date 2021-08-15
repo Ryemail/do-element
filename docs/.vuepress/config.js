@@ -18,6 +18,7 @@ module.exports = {
 			{ title: 'Form 表单', path: '/form/' },
 			{ title: 'Table 表格', path: '/table/' },
 			{ title: 'Dialog 对话框', path: '/dialog/' },
+			{ title: 'Menu 导航菜单', path: '/menu/' },
 			{ title: 'Modal 操作弹窗', path: '/modal/' },
 			{ title: 'PageTabs tab页', path: '/page-tabs/' },
 			{ title: 'Upload 文件上传', path: '/upload/' },

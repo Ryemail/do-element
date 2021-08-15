@@ -112,14 +112,7 @@ lang: zh-CN
 | backs | 需要添加返回按钮的 page 名称集合 | string[] | []     |
 | title | Content 标题                     | string   | \_     |
 
-### Content Attributes
-
-| 参数  | 说明                             | 类型     | 默认值 |
-| :---- | :------------------------------- | :------- | :----- |
-| backs | 需要添加返回按钮的 page 名称集合 | string[] | []     |
-| title | Content 标题                     | string   | \_     |
-
-### Content Attributes
+### Menu Attributes
 
 | 参数           | 说明               | 类型     | 默认值 |
 | :------------- | :----------------- | :------- | :----- |

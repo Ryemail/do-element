@@ -15,8 +15,8 @@
     ],
     "scripts": {
         "example": "webpack serve --config build/webpack.example.js ",
-        "build:lib": "webpack --config build/webpack.prod.js",
-        "build:component": "webpack --config build/webpack.component.js",
+        "build:lib": "webpack --mode=production --config build/webpack.prod.js",
+        "build:component": "webpack --mode=production --config build/webpack.component.js",
         "build:theme": "gulp --gulpfile packages/theme-chalk/gulpfile.js",
         "build:utils": " babel src --out-dir lib --ignore src/index.js",
         "docs:dev": "vuepress dev docs",
