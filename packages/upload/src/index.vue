@@ -18,8 +18,8 @@
 			</span>
 			<div v-else-if="accept === 'image'" class="d-upload-inner">
 				<i class="d-icon-addimage"></i>
-				<template v-if="imageUrl.url">
-					<img class="d-image-url" :src="imageUrl.url" />
+				<template v-if="imageUrl">
+					<img class="d-image-url" :src="imageUrl" />
 					<div class="d-new-upload">重新上传</div>
 				</template>
 			</div>
@@ -37,8 +37,7 @@ export default {
 	name: 'DUpload',
 	props: {
 		value: {
-			type: [Array, Object],
-			default: () => [],
+			type: [Array, String],
 		},
 		accept: {
 			type: String,
@@ -59,11 +58,11 @@ export default {
 				pdf: '.pdf',
 				image: 'image/*',
 			},
-			imageUrl: { name: '', url: '' },
 			dialog: {
 				visible: false,
 				image: '',
 			},
+			imageUrl: '',
 			imageList: [],
 		};
 	},
@@ -84,7 +83,10 @@ export default {
 		value: {
 			handler(value) {
 				if (value instanceof Array) {
-					this.imageList = value;
+					this.imageList = value.map((val, index) => ({
+						name: index,
+						url: val,
+					}));
 				} else {
 					this.imageUrl = value;
 				}
@@ -99,14 +101,17 @@ export default {
 
 			if (accept === 'image') {
 				const imageUrl = URL.createObjectURL(file.raw);
-				const imageItem = { name: file.name, url: imageUrl };
+				const imageItem = imageUrl;
 
 				if ($attrs['list-type'] !== 'picture-card') {
 					this.imageUrl = imageItem;
 
 					this.$emit('input', this.imageUrl);
 				} else {
-					this.$emit('input', [...this.imageList, imageItem]);
+					this.$emit('input', [
+						...this.imageList.map((val) => val.url),
+						imageItem,
+					]);
 				}
 
 				return;
@@ -130,7 +135,10 @@ export default {
 		},
 
 		onRemove(file, fileList) {
-			this.$emit('input', fileList);
+			this.$emit(
+				'input',
+				fileList.map((val) => val.url)
+			);
 		},
 	},
 };

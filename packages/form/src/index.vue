@@ -280,7 +280,6 @@ export default {
 		dataForm: {
 			handler(value, oldValue) {
 				this.isChange = parseEqual(value, oldValue || {});
-
 				this.onValidate();
 			},
 			deep: true,
@@ -317,6 +316,7 @@ export default {
 		// 验证插槽元素
 		onValidate() {
 			this.columns.forEach((val) => {
+				console.log(this.dataForm[val.prop]);
 				if (val.slot) {
 					if (this.dataForm[val.prop].length) {
 						this.clearValidate(val.prop);
@@ -352,6 +352,8 @@ export default {
 
 			const valider = (valid) => {
 				flag = valid;
+
+				console.log(this.dataForm);
 				if (valid && item) return this.$emit('event', item);
 			};
 

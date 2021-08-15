@@ -1,3 +1,8 @@
+---
+pageClass: page-content
+lang: zh-CN
+---
+
 ## Link 文字链接
 
 ### 基础用法
@@ -19,9 +24,9 @@
 		data() {
 			return {
 				//
-			}
+			};
 		},
-	}
+	};
 </script>
 ```
 
@@ -44,9 +49,9 @@
 		data() {
 			return {
 				disabled: true,
-			}
+			};
 		},
-	}
+	};
 </script>
 ```
 
@@ -68,12 +73,29 @@
 	export default {
 		methods: {
 			onClick() {
-				alert('点击事件')
+				alert('点击事件');
 			},
 		},
-	}
+	};
 </script>
 ```
 
 <= delete spaces here
 :::
+
+### Attributes
+
+| 参数     | 说明                | 类型          | 可选值                               | 默认值  |
+| :------- | :------------------ | :------------ | :----------------------------------- | :------ |
+| tpye     | 类型                | string        | primary / success / warning / danger | primary |
+| disabled | 是否禁用状态        | boolean       | \_                                   | false   |
+| icon     | 图标名称            | string        | \_                                   | \_      |
+| to       | Vue Router 路径参数 | Object/string | \_                                   | \_      |
+| order    | icon 位置           | boolean       | \_                                   | false   |
+| prefix   | icon 的前缀         | string        | \_                                   | d-icon- |
+
+### Events
+
+| 事件名 | 说明     | 参数 |
+| :----- | :------- | :--- |
+| click  | 点击事件 | \_   |

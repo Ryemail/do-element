@@ -2,7 +2,7 @@
 	<div>
 		<div class="module">
 			<h3 class="module-title">pageTabs</h3>
-			<d-page-tabs :tabs="tabs" />
+			<d-page-tabs :default-active="$route.name" router :tabs="tabs" />
 
 			<router-view />
 
@@ -24,6 +24,7 @@ export default {
 				{ title: 'Link', to: { name: 'tabs1' } },
 				{ title: 'Modal', to: { name: 'tabs2' } },
 			],
+			active: 0,
 		};
 	},
 	methods: {

@@ -4,8 +4,8 @@ const defaultOptions = {
 	confirmButtonText: '确定',
 	cancelButtonText: '取消',
 	dangerouslyUseHTMLString: true,
-	type: 'warning',
 	customClass: 'd-confirm-box',
+	icon: 'warning',
 	showClose: false,
 };
 
@@ -17,12 +17,14 @@ const noticeOptions = {
 	showClose: false,
 };
 
-export function modal({ message, type = 'warning', title = '', options = {} }) {
+export function modal({ message, title = '', options = {} }) {
 	const icon = 'd-icon-';
 
-	// defaultOptions.type = type;
+	options = { ...options, ...defaultOptions };
 
-	defaultOptions.iconClass = icon + type;
+	options.iconClass = icon + options.icon;
+
+	delete options.icon;
 
 	let html = '<div class="d-modal-title">' + title + '</div>';
 
@@ -33,9 +35,7 @@ export function modal({ message, type = 'warning', title = '', options = {} }) {
 	}
 
 	return new Promise((resolve, reject) => {
-		MessageBox.confirm(html, '', { ...options, ...defaultOptions })
-			.then(resolve)
-			.catch(reject);
+		MessageBox.confirm(html, '', options).then(resolve).catch(reject);
 	});
 }
 

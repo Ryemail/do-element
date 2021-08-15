@@ -3,17 +3,6 @@
     font-weight: 400
 }
 
-.docs-div-15{
-    padding: 15px 0
-}
-
-.code-block{
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-    padding: 20px;
-    margin-top: 15px
-    border-radius: 3px
-}
-
 .page .theme-default-content h2,
 .page .theme-default-content h3{
     font-weight: 400;
@@ -21,11 +10,17 @@
 }
 
 .page .theme-default-content h2{
-    font-size: 28px
+    font-size: 28px;
+}
+.theme-default-content:not(.custom) > h2:first-child{
+    margin-bottom: 0;
 }
 
 .page .theme-default-content h3{
-    font-size: 22px    
+    font-size: 22px;
+    margin: 55px 0 22px;
+    padding-top: 0;
+
 }
 
 h2{
@@ -46,4 +41,40 @@ tr:nth-child(2n) {
 th,
 td {
     border: none;
+}
+
+.page-content .content__default>table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #fff;
+    font-size: 14px;
+    margin-bottom: 45px;
+    line-height: 1.5em;
+}
+
+.page-content .content__default>table th {
+    text-align: left;
+    white-space: nowrap;
+    color: #909399;
+    font-weight: 400;
+}
+
+.page-content .content__default>table td, .page-content .content__default>table th {
+    border-bottom: 1px solid #dcdfe6;
+    padding: 15px;
+    max-width: 250px;
+}
+
+.page-content .content__default>table td{
+    color:  #606266
+}
+
+.theme-default-content:not(.custom) > h2:first-child + p{
+    margin: 1em 0;
+}
+
+.theme-default-content.content__default p{
+    font-size: 14px;
+    color: #5e6d82;
+    line-height: 1.5em;
 }

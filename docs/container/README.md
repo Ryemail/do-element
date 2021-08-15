@@ -1,6 +1,21 @@
-## Container
+---
+pageClass: page-content
+lang: zh-CN
+---
 
-### Layout 布局
+## Container 布局容器
+
+用于布局的容器组件，方便快速搭建页面的基本结构：
+
+`<d-container>`：外层容器。
+
+`<d-header>`：顶栏。
+
+`<d-menu>`：侧边栏。
+
+`<d-footer>`：底栏。
+
+### 实例
 
 ::: demo
 
@@ -18,7 +33,6 @@
 				<d-menu :default-active="active" :menus="menus" />
 
 				<d-content title="测试">
-					<!-- <router-view class="d-router-view" /> -->
 					<div class="d-router-view">
 						<p v-for="item in 100" :key="item">{{ item }}</p>
 					</div>
@@ -45,9 +59,6 @@
 					{ en_name: 'tabs', name: 'Tabs' },
 				],
 			};
-		},
-		created() {
-			console.log(this);
 		},
 	};
 </script>
@@ -85,3 +96,32 @@
 
 <= delete spaces here
 :::
+
+### Header Attributes
+
+| 参数      | 说明            | 类型   | 默认值 |
+| :-------- | :-------------- | :----- | :----- |
+| logo      | 左上角展示 logo | string | \_     |
+| logo-name | 左上角展示文字  | string | \_     |
+| title     | 标题            | string | \_     |
+
+### Content Attributes
+
+| 参数  | 说明                             | 类型     | 默认值 |
+| :---- | :------------------------------- | :------- | :----- |
+| backs | 需要添加返回按钮的 page 名称集合 | string[] | []     |
+| title | Content 标题                     | string   | \_     |
+
+### Content Attributes
+
+| 参数  | 说明                             | 类型     | 默认值 |
+| :---- | :------------------------------- | :------- | :----- |
+| backs | 需要添加返回按钮的 page 名称集合 | string[] | []     |
+| title | Content 标题                     | string   | \_     |
+
+### Content Attributes
+
+| 参数           | 说明               | 类型     | 默认值 |
+| :------------- | :----------------- | :------- | :----- |
+| default-active | 当前激活的状态名称 | string   | \_     |
+| menus          | 导航栏数据         | object[] | []     |

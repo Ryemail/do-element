@@ -120,13 +120,10 @@ export default {
 			action: 'https://jsonplaceholder.typicode.com/posts/',
 
 			image: {
-				value1: { name: '', url: '' },
-				value2: { name: '', url: '' },
+				value1: '',
+				value2: '',
 				value3: [
-					{
-						name: '美女2',
-						url: 'https://img0.baidu.com/it/u=742901718,4133898817&fm=26&fmt=auto&gp=0.jpg',
-					},
+					'https://img0.baidu.com/it/u=742901718,4133898817&fm=26&fmt=auto&gp=0.jpg',
 				],
 			},
 		};
