@@ -22,9 +22,7 @@
 </template>
 
 <script>
-import doTool from 'do-tool';
-
-console.log(doTool);
+// import doTool from 'do-tool';
 
 export default {
 	name: 'App',

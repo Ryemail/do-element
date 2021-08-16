@@ -10,13 +10,13 @@ import './styles/reset.less';
 
 import '../packages/theme-chalk/src/index.less';
 
-import GlDsign from '../packages/index.js';
+import DoElement from '../packages/index.js';
 
 import './mock';
 
 Vue.use(ElementUI);
 
-Vue.use(GlDsign);
+Vue.use(DoElement, 123);
 
 Vue.config.productionTip = false;
 

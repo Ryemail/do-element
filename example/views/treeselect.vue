@@ -46,7 +46,6 @@
 						:load="loadNode"
 						:lazy="true"
 					/>
-					{{ value2 }}
 				</template>
 			</d-form>
 		</div>
@@ -147,7 +146,7 @@ export default {
 					{ name: 'region', id: 1 },
 					{ name: 'form', id: 4 },
 				]);
-				this.value2 = [1, 2];
+				this.value = [1, 2];
 			}
 
 			if (node.level === 1) {

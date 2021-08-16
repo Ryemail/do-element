@@ -3,8 +3,6 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { DefinePlugin } = require('webpack');
 
-console.log(path.resolve(__dirname, '../utils/index.js'));
-
 module.exports = {
 	mode: 'development',
 	entry: path.resolve(__dirname, '..', 'example/main.js'),
