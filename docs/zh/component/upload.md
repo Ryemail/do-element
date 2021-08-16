@@ -101,12 +101,12 @@ lang: zh-CN
 		:rules="rules"
 		@event="onEvent"
 	>
-		<template #upload="{ data }">
+		<template #upload>
 			<d-upload
 				:action="action"
 				accept="image"
 				list-type="picture-card"
-				v-model="data.images"
+				v-model="form.images"
 			>
 			</d-upload>
 		</template>
@@ -120,7 +120,9 @@ lang: zh-CN
 				value: '',
 				action: 'https://jsonplaceholder.typicode.com/posts/',
 				form: {
-					images: [],
+					images: [
+						// 'https://img0.baidu.com/it/u=1842651722,868171696&fm=26&fmt=auto&gp=0.jpg',
+					],
 				},
 				rules: {
 					images: [

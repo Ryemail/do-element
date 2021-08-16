@@ -1,3 +1,8 @@
+---
+pageClass: page-content
+lang: zh-CN
+---
+
 ## Form
 
 ### 输入框 Input
@@ -62,7 +67,7 @@
 
 ```html
 <template>
-	<d-form :columns="columns" :buttons="null" :form="form"></d-form>
+	<d-form :columns="columns" :form="form"></d-form>
 </template>
 
 <script>
@@ -72,13 +77,16 @@
 				form: {
 					textarea: '',
 				},
+				rules: {
+					textarea: [{ required: true, message: '请选择' }],
+				},
 				columns: [
 					{
 						type: 'textarea',
 						prop: 'textarea',
 						label: '文本框',
 						placeholder: '请输入文字',
-						showWordLimit: 20,
+						showWordLimit: true,
 						maxlength: 20,
 					},
 				],
@@ -263,6 +271,112 @@
 					},
 				],
 			};
+		},
+	};
+</script>
+```
+
+:::
+
+### 在 dialog 中使用
+
+::: demo
+
+```html
+<template>
+	<el-button @click="visible=true">dialog</el-button>
+
+	<d-dialog :visible.sync="visible" title="嵌套表单" @event="onEvent">
+		<d-form
+			:columns="columns"
+			:rules="rules"
+			:buttons="null"
+			:form="form"
+			ref="form"
+		></d-form>
+	</d-dialog>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				visible: false,
+				form: {
+					date: '',
+					daterange: '',
+					datetime: '',
+					datetimerange: '',
+				},
+				rules: {
+					date: [
+						{
+							required: true,
+							type: 'date',
+							message: '请选择活动区域',
+							trigger: 'change',
+						},
+					],
+					datetime: [
+						{
+							required: true,
+							type: 'date',
+							message: '请选择活动区域',
+							trigger: 'change',
+						},
+					],
+					daterange: [
+						{
+							required: true,
+							message: '请选择活动区域',
+							trigger: 'change',
+						},
+					],
+					datetimerange: [
+						{
+							required: true,
+							message: '请选择活动区域',
+							trigger: 'change',
+						},
+					],
+				},
+				columns: [
+					{
+						type: 'date',
+						prop: 'date',
+						label: '时间',
+						placeholder: '请选择时间',
+					},
+					{
+						type: 'daterange',
+						prop: 'daterange',
+						label: '日期范围',
+						placeholder: ['请选择日期'],
+					},
+					{
+						type: 'datetime',
+						prop: 'datetime',
+						label: '日期时间',
+						placeholder: '请选择日期',
+					},
+					{
+						type: 'datetimerange',
+						prop: 'datetimerange',
+						label: '日期时间范围',
+						placeholder: '请选择日期时间范围',
+					},
+				],
+			};
+		},
+		methods: {
+			async onEvent(item) {
+				if (item.prop === 'submit') {
+					// 验证表单
+					const validated = await this.$refs.form.validate();
+
+					console.log(validated);
+				}
+			},
 		},
 	};
 </script>

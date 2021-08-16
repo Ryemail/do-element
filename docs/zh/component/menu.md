@@ -11,7 +11,13 @@ lang: zh-CN
 
 ```html
 <template>
-	<d-menu :default-active="active" :menus="menus" />
+	<div>
+		<d-menu
+			:default-active="active"
+			:router="false"
+			:menus="menus"
+		></d-menu>
+	</div>
 </template>
 
 <script>
@@ -34,7 +40,6 @@ lang: zh-CN
 </script>
 ```
 
-<= delete spaces here
 :::
 
 ### Attributes

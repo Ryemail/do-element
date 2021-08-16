@@ -18,6 +18,8 @@ Vue.use(ElementUI);
 
 Vue.use(GlDsign);
 
+Vue.config.productionTip = false;
+
 new Vue({
 	render: (h) => h(App),
 	router,

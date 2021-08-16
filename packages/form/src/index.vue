@@ -279,7 +279,6 @@ export default {
 	watch: {
 		dataForm: {
 			handler(value, oldValue) {
-				console.log(value, '表单在变化');
 				this.isChange = parseEqual(value, oldValue || {});
 				this.onValidate();
 			},
@@ -355,6 +354,8 @@ export default {
 
 				if (valid && item) return this.$emit('event', item);
 			};
+
+			console.log(this.eform, 'this.eform');
 
 			this.eform.validate(valider);
 
