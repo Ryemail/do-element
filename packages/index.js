@@ -2,7 +2,6 @@ import Link from './link';
 import PageTabs from './page-tabs';
 import Dialog from './dialog';
 import Upload from './upload';
-import TreeSelect from './tree-select';
 import Table from './table';
 import Form from './form';
 import Container from './container';
@@ -17,7 +16,6 @@ const components = [
 	PageTabs,
 	Dialog,
 	Upload,
-	TreeSelect,
 	Table,
 	Form,
 	Header,
@@ -47,7 +45,6 @@ export default {
 	PageTabs,
 	Dialog,
 	Upload,
-	TreeSelect,
 	Table,
 	Form,
 	Container,

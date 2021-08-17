@@ -3,7 +3,6 @@
     "pageTabs": "./packages/page-tabs/index.js",
     "dialog": "./packages/dialog/index.js",
     "upload": "./packages/upload/index.js",
-    "treeSelect": "./packages/tree-select/index.js",
     "table": "./packages/table/index.js",
     "header": "./packages/header/index.js",
     "footer": "./packages/footer/index.js",

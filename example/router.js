@@ -55,11 +55,6 @@ const router = new VueRouter({
 			component: () => import('./views/upload.vue'),
 		},
 		{
-			path: '/treeselect',
-			name: 'treeselect',
-			component: () => import('./views/treeselect.vue'),
-		},
-		{
 			path: '/table',
 			name: 'table',
 			component: () => import('./views/table.vue'),

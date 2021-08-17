@@ -24,7 +24,6 @@ module.exports = {
 				{ title: 'Modal 操作弹窗', path: '/zh/component/modal' },
 				{ title: 'PageTabs tab页', path: '/zh/component/page-tabs' },
 				{ title: 'Upload 文件上传', path: '/zh/component/upload' },
-				{ title: 'TreeSelect', path: '/zh/component/tree-select' },
 			],
 			'/zh/utils/': [
 				{ title: 'Link 文字链接', path: '/zh/utils/object' },
