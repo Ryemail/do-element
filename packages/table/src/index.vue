@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import { getTableData } from './ajax';
+import { getTable } from './ajax';
 import { parseKeys } from '@/utils';
 
 export default {
@@ -133,8 +133,8 @@ export default {
 			type: Object,
 			default: () => {
 				return {
-					data: 'data.data',
-					total: 'data.total',
+					data: 'data',
+					total: 'total',
 					code: 'code',
 				};
 			},
@@ -203,7 +203,7 @@ export default {
 			try {
 				const { url, headers, method, tableQuery } = this;
 
-				const response = await getTableData({
+				const response = await getTable({
 					url,
 					data: tableQuery,
 					headers,
@@ -212,8 +212,8 @@ export default {
 
 				const {
 					code = 'code',
-					data = 'data.data',
-					total = 'data.total',
+					data = 'data',
+					total = 'total',
 				} = this.keys;
 
 				this.responseData = response;
@@ -224,6 +224,8 @@ export default {
 					);
 					this.tableTotal = parseKeys(response, total) || 0;
 				}
+
+				this.$emit('on-response', this.responseData);
 
 				this.loading = false;
 			} catch (error) {

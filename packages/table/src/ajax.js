@@ -28,7 +28,7 @@ function getBody(xhr) {
 	}
 }
 
-export function getTableData(option) {
+export function getTable(option) {
 	return new Promise((resolve, reject) => {
 		if (typeof XMLHttpRequest === 'undefined') {
 			return;

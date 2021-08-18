@@ -7,11 +7,11 @@ module.exports = {
 		displayAllHeaders: true,
 		head: [['link', { rel: 'icon', href: '/image/log.png' }]],
 		nav: [
-			{ text: '组件', link: '/zh/component/container' },
-			{ text: '工具', link: '/zh/utils/object' },
+			{ text: '组件', link: '/zh/component/' },
+			{ text: '工具', link: '/zh/utils/' },
 		],
 		sidebar: {
-			'/zh/component': [
+			'/zh/component/': [
 				{
 					title: 'Container 页面布局',
 					path: '/zh/component/container',
@@ -26,7 +26,10 @@ module.exports = {
 				{ title: 'Upload 文件上传', path: '/zh/component/upload' },
 			],
 			'/zh/utils/': [
-				{ title: 'Link 文字链接', path: '/zh/utils/object' },
+				{ title: 'Object', path: '/zh/utils/object' },
+				{ title: 'Array', path: '/zh/utils/array' },
+				{ title: 'Number', path: '/zh/utils/number' },
+				{ title: 'Date', path: '/zh/utils/date' },
 			],
 		},
 		repo: 'Ryemail/do-design',

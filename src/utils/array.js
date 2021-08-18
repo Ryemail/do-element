@@ -25,7 +25,7 @@ export function arrayToTree(items, props = defaultProps) {
 
 		const treeItem = itemMap[id];
 
-		if (pid === 0) {
+		if (!pid) {
 			result.push(treeItem);
 		} else {
 			if (!itemMap[pid]) {
