@@ -2,6 +2,7 @@ module.exports = {
 	lang: 'zh-CN',
 	title: 'DoElement',
 	plugins: ['demo-container'],
+	base: '/docs/',
 	themeConfig: {
 		sidebarDepth: 0,
 		displayAllHeaders: true,

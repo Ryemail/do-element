@@ -1,12 +1,21 @@
-import ElementUI from 'element-ui';
+// import ElementUI from 'element-ui';
 import DoElement from '../../lib';
 import 'element-ui/lib/theme-chalk/index.css';
 import '../../lib/theme-chalk/index.css';
 import './public/font/iconfont.css';
 
 export default ({ Vue, router }) => {
-	Vue.use(ElementUI);
-	Vue.use(DoElement);
+	Vue.mixin({
+		mounted() {
+			import('element-ui').then((ElementUI) => {
+				Vue.use(ElementUI);
+			});
+
+			import('do-element').then((D) => {
+				Vue.use(D);
+			});
+		},
+	});
 
 	router.beforeEach((to, from, next) => {
 		if (to.path === '/') {
