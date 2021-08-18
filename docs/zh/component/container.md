@@ -11,6 +11,8 @@ lang: zh-CN
 
 `<d-header>`：顶栏。
 
+`<d-content>`：内容显示区。
+
 `<d-menu>`：侧边栏。
 
 `<d-footer>`：底栏。
@@ -95,6 +97,10 @@ lang: zh-CN
 ```
 
 <= delete spaces here
+:::
+
+::: tip
+d-header、d-content、d-footer 只能在 d-container 中使用，否则样式不受控制
 :::
 
 ### Header Attributes

@@ -83,6 +83,10 @@ lang: zh-CN
 <= delete spaces here
 :::
 
+::: tip
+当点击事件与 to 同时存在时，忽略点击事件，使用 to 进行跳转
+:::
+
 ### Attributes
 
 | 参数     | 说明                | 类型          | 可选值                               | 默认值  |

@@ -33,11 +33,11 @@ export default {
 	},
 	methods: {
 		onClick() {
+			if (this.disabled) return false;
+
 			if (this.to) {
 				return this.$router.push(this.to);
 			}
-
-			if (this.disabled) return false;
 
 			this.$emit('click');
 		},
