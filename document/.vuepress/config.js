@@ -1,7 +1,7 @@
 module.exports = {
 	lang: 'zh-CN',
 	title: 'DoElement',
-	// dest: '/',
+	base: '/do-element/',
 	plugins: ['demo-container'],
 	themeConfig: {
 		sidebarDepth: 0,
