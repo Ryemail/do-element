@@ -2984,10 +2984,10 @@ dns-txt@^2.0.2:
   dependencies:
     buffer-indexof "^1.0.0"
 
-do-element@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/do-element/-/do-element-1.0.0.tgz#e6c20378e7aae8c62c61d2e9be25c1c5299f5cc8"
-  integrity sha512-zZ/oPMKMAvm1eVMKdNjrPi3OIMkeWWeKRNE/x37hyGhJaa2LGwqa1U+5YwVXItHvpRVYA6+Ra0aWn8piaIkUMw==
+do-element@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/do-element/-/do-element-1.0.1.tgz#4f3bf9606a2d04fee561d1b4105650aec28a4159"
+  integrity sha512-BbZHNXmLRM7HJ0x2CxV+/3iBov8Oz68vZ+YBKSbUkEzwixMuHcrF0fnw6YglBKf8mr7rZCbGNPA95dTrpotdww==
   dependencies:
     core-js "3"
 
