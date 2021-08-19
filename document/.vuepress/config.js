@@ -1,6 +1,7 @@
 module.exports = {
 	lang: 'zh-CN',
 	title: 'DoElement',
+	base: '/do-element/',
 	plugins: ['demo-container'],
 	// dest: '/docs/dist',
 	themeConfig: {

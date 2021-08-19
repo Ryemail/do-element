@@ -1,22 +1,10 @@
 // import ElementUI from 'element-ui';
-// import DoElement from '../../lib';
+// import DoElement from 'do-element';
 import 'element-ui/lib/theme-chalk/index.css';
 import '../../lib/theme-chalk/index.css';
 import './public/font/iconfont.css';
 
 export default ({ Vue, router }) => {
-	Vue.mixin({
-		mounted() {
-			import('element-ui').then((ElementUI) => {
-				Vue.use(ElementUI);
-			});
-
-			import('../../lib').then((D) => {
-				Vue.use(D);
-			});
-		},
-	});
-
 	router.beforeEach((to, from, next) => {
 		if (to.path === '/') {
 			next('/zh/component/container');
@@ -27,5 +15,13 @@ export default ({ Vue, router }) => {
 		} else {
 			next();
 		}
+	});
+
+	import('element-ui').then(function (E) {
+		Vue.use(E);
+	});
+
+	import('do-element').then(function (D) {
+		Vue.use(D);
 	});
 };
