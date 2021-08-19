@@ -96,7 +96,7 @@ lang: zh-CN
 
 ```html
 <template>
-	<d-table :columns="columns" url="/json/data.json">
+	<d-table :columns="columns" url="/do-element/json/data.json">
 		<template #operate="{ row }">
 			<el-button size="mini">编辑</el-button>
 			<el-button type="danger" size="mini">删除</el-button>
@@ -147,7 +147,7 @@ lang: zh-CN
 
 ```html
 <template>
-	<d-table type="grid" url="/json/data.json" :col="3">
+	<d-table type="grid" url="/do-element/json/data.json" :col="3">
 		<template #default="{ data }">
 			<div>姓名：{{ data.name }}</div>
 			<div>地址：{{ data.address }}</div>

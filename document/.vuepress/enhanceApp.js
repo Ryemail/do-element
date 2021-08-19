@@ -17,11 +17,15 @@ export default ({ Vue, router }) => {
 		}
 	});
 
-	import('element-ui').then(function (E) {
-		Vue.use(E);
-	});
+	Vue.mixin({
+		mounted() {
+			import('element-ui').then(function (E) {
+				Vue.use(E);
+			});
 
-	import('do-element').then(function (D) {
-		Vue.use(D);
+			import('do-element').then(function (D) {
+				Vue.use(D);
+			});
+		},
 	});
 };
