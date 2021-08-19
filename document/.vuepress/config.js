@@ -1,9 +1,11 @@
+const path = require('path');
+
 module.exports = {
 	lang: 'zh-CN',
 	title: 'DoElement',
 	base: '/do-element/',
 	plugins: ['demo-container'],
-	// dest: '/docs/dist',
+	dest: path.resolve(__dirname, '../../docs'),
 	themeConfig: {
 		sidebarDepth: 0,
 		displayAllHeaders: true,
