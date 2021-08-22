@@ -15,19 +15,55 @@ module.exports = {
 			{ text: '工具', link: '/zh/utils/' },
 		],
 		sidebar: {
-			'/zh/component/': [
+			'/zh/component': [
 				{
-					title: 'Container 页面布局',
-					path: '/zh/component/container',
+					title: '指南',
+					path: '/zh/component/guide/', // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+					sidebarDepth: 0, // 可选的, 默认值是 1
+					collapsable: false,
+					children: [
+						{
+							title: '依赖说明',
+							path: '/zh/component/guide/package',
+						},
+						{
+							title: '安装',
+							path: '/zh/component/guide/install',
+						},
+					],
 				},
-				{ title: 'Link 文字链接', path: '/zh/component/link' },
-				{ title: 'Form 表单', path: '/zh/component/form' },
-				{ title: 'Table 表格', path: '/zh/component/table' },
-				{ title: 'Dialog 对话框', path: '/zh/component/dialog' },
-				{ title: 'Menu 导航菜单', path: '/zh/component/menu' },
-				{ title: 'Modal 操作弹窗', path: '/zh/component/modal' },
-				{ title: 'PageTabs tab页', path: '/zh/component/page-tabs' },
-				{ title: 'Upload 文件上传', path: '/zh/component/upload' },
+				{
+					title: '组件', // 必要的
+					path: '/zh/component/', // 可选的, 标题的跳转链接，应为绝对路径且必须存在
+					sidebarDepth: 0, // 可选的, 默认值是 1
+					collapsable: false,
+					children: [
+						{
+							title: 'Container 页面布局',
+							path: '/zh/component/container',
+						},
+						{ title: 'Link 文字链接', path: '/zh/component/link' },
+						{ title: 'Form 表单', path: '/zh/component/form' },
+						{ title: 'Table 表格', path: '/zh/component/table' },
+						{
+							title: 'Dialog 对话框',
+							path: '/zh/component/dialog',
+						},
+						{ title: 'Menu 导航菜单', path: '/zh/component/menu' },
+						{
+							title: 'Modal 操作弹窗',
+							path: '/zh/component/modal',
+						},
+						{
+							title: 'PageTabs tab页',
+							path: '/zh/component/page-tabs',
+						},
+						{
+							title: 'Upload 文件上传',
+							path: '/zh/component/upload',
+						},
+					],
+				},
 			],
 			'/zh/utils/': [
 				{ title: 'Object', path: '/zh/utils/object' },
@@ -36,7 +72,7 @@ module.exports = {
 				{ title: 'Date', path: '/zh/utils/date' },
 			],
 		},
-		repo: 'Ryemail/do-design',
+		repo: 'Ryemail/do-element',
 		repoLabel: 'GitHub',
 	},
 };
