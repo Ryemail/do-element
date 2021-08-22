@@ -18,7 +18,6 @@ module.exports = {
 			'/zh/component': [
 				{
 					title: '指南',
-					path: '/zh/component/guide/', // 可选的, 标题的跳转链接，应为绝对路径且必须存在
 					sidebarDepth: 0, // 可选的, 默认值是 1
 					collapsable: false,
 					children: [
@@ -34,7 +33,6 @@ module.exports = {
 				},
 				{
 					title: '组件', // 必要的
-					path: '/zh/component/', // 可选的, 标题的跳转链接，应为绝对路径且必须存在
 					sidebarDepth: 0, // 可选的, 默认值是 1
 					collapsable: false,
 					children: [
