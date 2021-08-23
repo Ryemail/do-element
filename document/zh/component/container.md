@@ -32,7 +32,11 @@ lang: zh-CN
 			/>
 
 			<main class="d-main">
-				<d-menu :default-active="active" :menus="menus" />
+				<d-menu
+					:default-active="active"
+					:router="false"
+					:menus="menus"
+				/>
 
 				<d-content title="测试">
 					<div class="d-router-view">

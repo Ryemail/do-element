@@ -10,10 +10,12 @@ module.exports = {
 		path: path.resolve(__dirname, '..', 'lib'),
 		filename: 'index.js',
 		chunkFilename: '[id].js',
-		libraryTarget: 'umd',
-		libraryExport: 'default',
-		library: 'GlDESIGN',
 		umdNamedDefine: true,
+		library: {
+			name: 'DOELEMENT',
+			type: 'umd',
+			export: 'default',
+		},
 		globalObject: "typeof self !== 'undefined' ? self : this",
 	},
 	resolve: {
