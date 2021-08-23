@@ -9,6 +9,7 @@ module.exports = {
 	themeConfig: {
 		sidebarDepth: 0,
 		displayAllHeaders: true,
+		lastUpdated: '上次更新',
 		head: [['link', { rel: 'icon', href: '/image/log.png' }]],
 		nav: [
 			{ text: '组件', link: '/zh/component/' },
@@ -22,7 +23,7 @@ module.exports = {
 					collapsable: false,
 					children: [
 						{
-							title: '依赖说明',
+							title: '介绍',
 							path: '/zh/component/guide/package',
 						},
 						{

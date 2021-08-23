@@ -14,7 +14,7 @@ yarn add do-element
 
 ### CDN
 
-目前可以通过 [unpkg.com/do-element](https://unpkg.com/do-element) 获取到最新版本的资源，在页面上引入 js 和 css 文件即可开始使用
+目前可以通过 [unpkg.com/do-element](https://unpkg.com/do-element/) 获取到最新版本的资源，在页面上引入 js 和 css 文件即可开始使用
 
 ```html
 <!-- 引入样式 -->
@@ -29,3 +29,23 @@ yarn add do-element
 ::: tip
 建议使用 CDN 引入 Element 的用户在链接地址上锁定版本，以免将来 Element 升级时受到非兼容性更新的影响。锁定版本的方法请查看 [unpkg.com](https://unpkg.com/)。
 :::
+
+### 组件列表
+
+```js
+import {
+	Link,
+	PageTabs,
+	Dialog,
+	Upload,
+	Table,
+	Form,
+	Container,
+	Header,
+	Footer,
+	Content,
+	Menu,
+	modal,
+	notice,
+} from 'do-element';
+```
