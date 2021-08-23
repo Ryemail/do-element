@@ -9,14 +9,6 @@ export default ({ Vue, router }) => {
 		mounted() {
 			Vue.use(ElementUI);
 			Vue.use(DoElement);
-			// import('element-ui').then(function (E) {
-			// 	console.log('我在加载element-ui');
-			// 	Vue.use(E);
-
-			// });
-			// import('../../lib').then(function (D) {
-			// 	Vue.use(D);
-			// });
 		},
 	});
 
