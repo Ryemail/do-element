@@ -211,12 +211,11 @@ lang: zh-CN
 | cellEmpty          | 单元格数据为空时的填充                           | string   | \_         | -                                          |
 | headerRowClassName | 表格头部类名                                     | string   | \_         |                                            |
 | border             | 是否需要表格边框                                 | boolean  | true/false | true                                       |
-
-| 其他参数 | 同 element-ui 的 dialog 参数 | \_ | \_ |
+| 其他参数           | 同 element-ui 的 table 参数                      | \_       | \_         | \_                                         |
 
 ### Events
 
-| 事件名称    | 说明                                              | 参数 |
-| :---------- | :------------------------------------------------ | :--- |
-| on-response | 在接口调用后执行，返回接口数据，仅在 url 存在有效 | \_   |
-| 其他事件    | 同 element-ui 的 table 组件 事件                  | \_   |
+| 事件名称    | 说明                                              | 参数     |
+| :---------- | :------------------------------------------------ | :------- |
+| on-response | 在接口调用后执行，返回接口数据，仅在 url 存在有效 | response |
+| 其他事件    | 同 element-ui 的 table 组件 事件                  | \_       |
