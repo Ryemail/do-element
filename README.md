@@ -1,5 +1,9 @@
 # do-element
 
+do-element 是基于 element-ui 的一个二次封装库，在请使用必须引入 element-ui 的 js 、css 文件。着重对 form 组件、table 组件、upload 组件进行了封装
+
+### [View Document](https://ryemail.github.io/do-element/zh/component/guide/package.html)
+
 ### npm 安装
 
 推荐使用 npm 的方式安装，它能更好地和 [webpack](https://webpack.js.org/) 打包工具配合使用
@@ -46,4 +50,8 @@ import {
 	modal, //方法
 	notice, //方法
 } from 'do-element';
+```
+
+```
+
 ```
