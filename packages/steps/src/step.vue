@@ -6,7 +6,7 @@
 
 <script>
 export default {
-	name: 'DoStep',
+	name: 'DStep',
 	props: {
 		title: {
 			type: String,

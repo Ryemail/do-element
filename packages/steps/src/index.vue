@@ -24,7 +24,7 @@
 
 <script>
 export default {
-	name: 'DoSteps',
+	name: 'DSteps',
 	props: {
 		active: {
 			type: Number,

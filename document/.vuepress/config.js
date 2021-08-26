@@ -61,6 +61,10 @@ module.exports = {
 							title: 'Upload 文件上传',
 							path: '/zh/component/upload',
 						},
+						{
+							title: 'Steps 分步',
+							path: '/zh/component/steps',
+						},
 					],
 				},
 			],
