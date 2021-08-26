@@ -1,20 +1,20 @@
 <template>
-	<div class="do-steps">
-		<div class="do-steps-header">
+	<div class="d-steps">
+		<div class="d-steps-header">
 			<div
-				class="do-steps-item"
+				class="d-steps-item"
 				:style="style"
 				:class="isActive(index) ? 'is-active' : ''"
 				v-for="(item, index) in children"
 				:key="index"
 			>
-				<span class="do-steps-number">{{ index + 1 }}</span>
-				<span class="do-steps-label">{{ item.title }}</span>
+				<span class="d-steps-number">{{ index + 1 }}</span>
+				<span class="d-steps-label">{{ item.title }}</span>
 			</div>
 		</div>
 
 		<div
-			class="do-steps-content"
+			class="d-steps-content"
 			:style="{ display: showCurrent ? 'block' : 'flex' }"
 		>
 			<slot></slot>

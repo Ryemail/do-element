@@ -1,5 +1,5 @@
 <template>
-	<div class="do-steps-pane" :class="[!parent.showCurrent && 'do-steps-1']">
+	<div class="d-steps-pane" :class="[!parent.showCurrent && 'd-steps-1']">
 		<div v-show="isActive"><slot></slot></div>
 	</div>
 </template>
