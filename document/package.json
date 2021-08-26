@@ -8,6 +8,7 @@
         "docs:build": "vuepress build"
     },
     "devDependencies": {
+        "@vuepress/plugin-back-to-top": "^1.8.2",
         "async-validator": "4.0.1",
         "do-element": "1.0.4",
         "element-ui": "^2.15.5",

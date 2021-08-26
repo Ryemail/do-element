@@ -71,6 +71,11 @@ const router = new VueRouter({
 				layout: () => import('./views/layout.vue'),
 			},
 		},
+		{
+			path: '/steps',
+			name: 'steps',
+			component: () => import('./views/steps.vue'),
+		},
 	],
 });
 

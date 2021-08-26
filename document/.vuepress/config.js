@@ -4,7 +4,7 @@ module.exports = {
 	lang: 'zh-CN',
 	title: 'DoElement',
 	base: '/do-element/',
-	plugins: ['demo-container'],
+	plugins: ['demo-container', '@vuepress/back-to-top'],
 	dest: path.resolve(__dirname, '../../docs'),
 	themeConfig: {
 		sidebarDepth: 0,

@@ -11,12 +11,10 @@ lang: zh-CN
 
 ```html
 <template>
-	<div>
-		<el-button @click="onDialog">Dialog</el-button>
-		<d-dialog :visible.sync="visible" title="Dialog" @event="onEvent">
-			<p v-for="item in 10">{{ item }}</p>
-		</d-dialog>
-	</div>
+	<el-button @click="onDialog">Dialog</el-button>
+	<d-dialog :visible.sync="visible" title="Dialog" @event="onEvent">
+		<p v-for="item in 10">{{ item }}</p>
+	</d-dialog>
 </template>
 
 <script>

@@ -9,6 +9,9 @@ import Header from './header';
 import Footer from './footer';
 import Content from './content';
 import Menu from './menu';
+import Steps from './steps';
+import Step from './step';
+
 import { modal, notice } from './modal';
 
 const components = [
@@ -23,6 +26,8 @@ const components = [
 	Container,
 	Content,
 	Menu,
+	Steps,
+	Step,
 ];
 
 function install(Vue) {
@@ -52,6 +57,8 @@ export default {
 	Footer,
 	Content,
 	Menu,
+	Steps,
+	Step,
 	modal,
 	notice,
 };
