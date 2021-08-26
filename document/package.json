@@ -1,17 +1,17 @@
 {
     "name": "docs",
     "version": "1.0.0",
-    "main": "index.js",
     "license": "MIT",
     "scripts": {
         "docs:dev": "vuepress dev",
-        "docs:build": "vuepress build"
+        "docs:build": "rimraf docs && vuepress build"
     },
     "devDependencies": {
         "@vuepress/plugin-back-to-top": "^1.8.2",
         "async-validator": "4.0.1",
         "do-element": "1.0.4",
         "element-ui": "^2.15.5",
+        "rimraf": "^3.0.2",
         "vuepress": "^1.8.2",
         "vuepress-plugin-demo-container": "^0.2.0"
     },

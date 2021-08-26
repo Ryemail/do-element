@@ -1,6 +1,6 @@
 {
     "name": "do-element",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Secondary encapsulation of basic element-ui",
     "author": "1956045780@qq.com",
     "license": "MIT",
@@ -14,6 +14,16 @@
         "packages",
         "package.json"
     ],
+    "keywords": [
+        "do-elemnet",
+        "element",
+        "element-ui"
+    ],
+    "homepage": "https://ryemail.github.io/do-element/zh/component/guide/package.html",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Ryemail/do-element.git"
+    },
     "scripts": {
         "example": "webpack serve --config build/webpack.example.js ",
         "build:lib": "webpack --mode=production --config build/webpack.prod.js",
