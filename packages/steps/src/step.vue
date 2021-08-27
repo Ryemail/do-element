@@ -25,10 +25,10 @@ export default {
 			const { showCurrent } = this.parent;
 
 			if (showCurrent) {
-				return this.currentIndex == this.parent.active;
+				return this.currentIndex === this.parent.active;
 			}
 
-			return this.currentIndex <= this.parent.active;
+			return true;
 		},
 	},
 };
