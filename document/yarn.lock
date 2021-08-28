@@ -1167,6 +1167,13 @@
   dependencies:
     lodash.debounce "^4.0.8"
 
+"@vuepress/plugin-back-to-top@^1.8.2":
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-back-to-top/-/plugin-back-to-top-1.8.2.tgz#e9794409d1d589e4952b0700291270d2696e6d01"
+  integrity sha512-htAf2m8+6cGmYQexWerznGBY10y1E4TBfebYC3Y3wqNjFjvXUmRKcAG/u6Yxvey4OFkQUxbth2ilKi/GlIW8aQ==
+  dependencies:
+    lodash.debounce "^4.0.8"
+
 "@vuepress/plugin-last-updated@1.8.2":
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/@vuepress/plugin-last-updated/-/plugin-last-updated-1.8.2.tgz#7ce689f8d5050cf0213949bc2e5aa879c09ff4b1"
@@ -2984,10 +2991,10 @@ dns-txt@^2.0.2:
   dependencies:
     buffer-indexof "^1.0.0"
 
-do-element@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/do-element/-/do-element-1.0.4.tgz#8f455c66db67563f90b2dafaeff6508275ad6fac"
-  integrity sha512-CXYc7R+NLvxP5s2xPswk/vpwVvBdLhHyVKC21qcwv14elRqhxfH9ocfV9KZS/HXBVBSjFk91zc8O3hCW3mLCOQ==
+do-element@1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/do-element/-/do-element-1.0.7.tgz#8853dc2cbc5362f96493b07c442fa81020b1e642"
+  integrity sha512-kQZXu9EkeizgQDtdPBjAlc3X9JBZBQmfnwkPTxM2CSGQ+pRpG6HeD9ztUKUV5H3PCwdQOFbskDQdkNBJxBWFkw==
   dependencies:
     core-js "3"
 

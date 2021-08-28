@@ -7,8 +7,9 @@
         "docs:build": "rimraf docs && vuepress build"
     },
     "devDependencies": {
+        "@vuepress/plugin-back-to-top": "^1.8.2",
         "async-validator": "4.0.1",
-        "do-element": "1.0.4",
+        "do-element": "1.0.7",
         "element-ui": "^2.15.5",
         "rimraf": "^3.0.2",
         "vuepress": "^1.8.2",

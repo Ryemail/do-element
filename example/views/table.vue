@@ -6,7 +6,11 @@
 		</div>
 		<div class="module">
 			<h3 class="module-title">动态数据</h3>
-			<d-table url="/api/tableList" :columns="columns2">
+			<d-table
+				url="/api/tableList"
+				:keys="{ data: 'data.data' }"
+				:columns="columns2"
+			>
 				<!-- 使用插槽 -->
 				<template #zip="{ row }">
 					{{ row.status }}
@@ -20,6 +24,7 @@
 				type="grid"
 				:col="3"
 				url="/api/tableList"
+				:keys="{ data: 'data.data' }"
 				:columns="columns"
 			>
 				<template #default="{ data }">

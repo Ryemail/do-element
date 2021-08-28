@@ -11,6 +11,9 @@ import Content from './content';
 import Menu from './menu';
 import TimelineItem from './timeline-item';
 import Timeline from './timeline';
+import Steps from './steps';
+import Step from './step';
+
 import { modal, notice } from './modal';
 
 const components = [
@@ -27,6 +30,8 @@ const components = [
 	Menu,
 	Timeline,
 	TimelineItem,
+	Steps,
+	Step,
 ];
 
 function install(Vue) {
@@ -58,6 +63,8 @@ export default {
 	Menu,
 	Timeline,
 	TimelineItem,
+	Steps,
+	Step,
 	modal,
 	notice,
 };
