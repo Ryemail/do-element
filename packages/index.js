@@ -9,6 +9,8 @@ import Header from './header';
 import Footer from './footer';
 import Content from './content';
 import Menu from './menu';
+import TimelineItem from './timeline-item';
+import Timeline from './timeline';
 import { modal, notice } from './modal';
 
 const components = [
@@ -23,6 +25,8 @@ const components = [
 	Container,
 	Content,
 	Menu,
+	Timeline,
+	TimelineItem,
 ];
 
 function install(Vue) {
@@ -52,6 +56,8 @@ export default {
 	Footer,
 	Content,
 	Menu,
+	Timeline,
+	TimelineItem,
 	modal,
 	notice,
 };
