@@ -1,13 +1,21 @@
 .d-timeline {
 	padding: 15px 0;
+	list-style: none;
+	margin: 0;
+	line-height: inherit;
 	.d-timeline-item {
 		display: flex;
 		justify-content: flex-start;
 		min-height: 48px;
+		&:last-child {
+			.d-timeline-tail {
+				display: none;
+			}
+		}
 	}
 	.d-timeline-node {
 		position: relative;
-		padding: 0 15px;
+		padding: 0 10px;
 	}
 	.d-timeline-dot {
 		position: absolute;
@@ -21,6 +29,16 @@
 		background-color: #ffffff;
 		i {
 			color: inherit;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			background-color: #ffffff;
+		}
+		&.d-timeline-icon {
+			background-color: transparent;
+			border: 0;
+			width: auto;
+			height: auto;
 		}
 	}
 	.d-timeline-tail {
@@ -36,9 +54,17 @@
 	.d-timeline-left {
 		padding-bottom: 20px;
 		margin-top: -4px;
-	}
-	.d-timeline-right {
+		flex: 1;
+
 		word-wrap: break-word;
 		word-break: break-all;
+	}
+	.d-timeline-left {
+		text-align: right;
+		padding-right: 10px;
+	}
+	.d-timeline-right {
+		text-align: left;
+		padding-left: 10px;
 	}
 }

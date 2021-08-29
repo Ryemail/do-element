@@ -65,6 +65,10 @@ module.exports = {
 							title: 'Steps 分步',
 							path: '/zh/component/steps',
 						},
+						{
+							title: 'TimeLine 时间轴',
+							path: '/zh/component/timeline',
+						},
 					],
 				},
 			],

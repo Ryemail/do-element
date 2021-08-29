@@ -22,12 +22,12 @@
 </template>
 
 <script>
-import doing from 'do-tool';
+// import doing from 'do-tool';
 
-console.log(doing.dateFormat(new Date(), 'yyyy-MM-dd'));
-console.log(doing.checkType('')('object'));
-console.log(doing.clone({ name: 'ddd' }));
-console.log(doing);
+// console.log(doing.dateFormat(new Date(), 'yyyy-MM-dd'));
+// console.log(doing.checkType('')('object'));
+// console.log(doing.clone({ name: 'ddd' }));
+// console.log(doing);
 
 export default {
 	name: 'App',
@@ -44,6 +44,7 @@ export default {
 				{ label: 'Form', name: 'form' },
 				{ label: 'layout 布局', name: 'layout' },
 				{ label: 'Steps', name: 'steps' },
+				{ label: 'TimeLine', name: 'timeline' },
 			],
 			active: 'link',
 		};

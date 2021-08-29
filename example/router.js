@@ -76,6 +76,11 @@ const router = new VueRouter({
 			name: 'steps',
 			component: () => import('./views/steps.vue'),
 		},
+		{
+			path: '/timeline',
+			name: 'timeline',
+			component: () => import('./views/timeline.vue'),
+		},
 	],
 });
 
