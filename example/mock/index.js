@@ -23,7 +23,7 @@ const getMockData = function () {
 	// url: Random.url(), //生成随机URL(每次运行结果不同)
 	// ip: Random.ip(), //  "74.97.41.159" 生成随机IP(每次运行结果不同)
 
-	for (let i = 0; i < 10; i++) {
+	for (let i = 0; i < 1; i++) {
 		const newObject = {
 			id: i + 1,
 			name: `${Random.clast()}${Random.cname()}`,

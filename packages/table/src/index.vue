@@ -62,10 +62,14 @@
 			<table class="d-grid-table">
 				<tr v-for="(item, key) in numbers" :key="key">
 					<td
-						class="d-grid-td"
+						:class="[value && 'd-grid-td']"
 						v-for="(value, index) in structure(item[0], item[1])"
 						:key="index"
 					>
+						<div
+							v-if="value && selection"
+							class="d-td-selection"
+						></div>
 						<slot :data="value" :row="key" :col="index"></slot>
 					</td>
 				</tr>
@@ -128,6 +132,8 @@ export default {
 		limit: { type: Number, default: 10 },
 
 		total: { type: Number, default: 0 },
+
+		selection: { type: Boolean, default: true },
 
 		keys: {
 			type: Object,
@@ -251,7 +257,14 @@ export default {
 		},
 
 		structure(startIndex, endIndex) {
-			return this.tableData.slice(startIndex, endIndex);
+			const rows = this.tableData.slice(startIndex, endIndex);
+			if (rows.length < this.col) {
+				return [
+					...rows,
+					...new Array(this.col - rows.length).fill(null),
+				];
+			}
+			return rows;
 		},
 	},
 };

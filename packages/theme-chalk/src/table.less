@@ -42,13 +42,27 @@
 	border-collapse: inherit;
 	border: none;
 	width: 100%;
+	table-layout: fixed;
 }
 
 .d-grid-table .d-grid-td {
+	position: relative;
 	border-radius: 4px;
 	border: 1px solid #e5e5e5;
 	height: 100%;
 	padding: 10px;
+	overflow: hidden;
+	.d-td-selection {
+		position: absolute;
+		right: -17px;
+		top: -7px;
+		width: 46px;
+		height: 26px;
+		// background: #f5f7fa;
+		text-align: center;
+		transform: rotate(45deg);
+		// box-shadow: 0 1px 1px #e4e7ed;
+	}
 }
 
 .d-grid-table .d-grid-td:hover {
