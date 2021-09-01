@@ -8,8 +8,9 @@
 			<h3 class="module-title">动态数据</h3>
 			<d-table
 				url="/api/tableList"
-				:keys="{ data: 'data.data' }"
+				:keys="{ data: 'data.data', total: 'data.total' }"
 				:columns="columns2"
+				:page.sync="page"
 			>
 				<!-- 使用插槽 -->
 				<template #zip="{ row }">
@@ -39,6 +40,7 @@
 export default {
 	data() {
 		return {
+			page: 2,
 			table1: [
 				{
 					date: '2016-05-03',

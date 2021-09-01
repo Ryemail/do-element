@@ -32,6 +32,7 @@
         "build:utils": " babel src --out-dir lib --ignore src/index.js",
         "docs:dev": "vuepress dev docs",
         "docs:build": "vuepress build docs",
+        "lint": "./node_modules/.bin/eslint --ext .js,.vue",
         "dist": "rimraf lib && yarn run build:lib && yarn run build:component && yarn run build:theme && yarn run build:utils"
     },
     "devDependencies": {

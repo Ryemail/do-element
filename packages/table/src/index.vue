@@ -254,6 +254,8 @@ export default {
 		// 分页
 		reload(page) {
 			this.tableQuery.page = page;
+
+			this.$emit('update:page', page);
 		},
 
 		structure(startIndex, endIndex) {
