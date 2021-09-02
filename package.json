@@ -29,7 +29,7 @@
         "build:lib": "webpack --mode=production --config build/webpack.prod.js",
         "build:component": "webpack --mode=production --config build/webpack.component.js",
         "build:theme": "gulp --gulpfile packages/theme-chalk/gulpfile.js",
-        "build:utils": " babel src --out-dir lib --ignore src/index.js",
+        "build:utils": " babel src --out-dir lib",
         "docs:dev": "vuepress dev docs",
         "docs:build": "vuepress build docs",
         "lint": "./node_modules/.bin/eslint --ext .js,.vue",
