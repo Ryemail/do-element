@@ -59,6 +59,7 @@
         "less": "^4.1.1",
         "less-loader": "^10.0.1",
         "mockjs": "^1.1.0",
+        "portfinder": "^1.0.28",
         "prettier": "2.3.2",
         "rimraf": "^3.0.2",
         "style-loader": "^3.2.1",

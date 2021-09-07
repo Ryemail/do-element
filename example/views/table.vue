@@ -11,6 +11,7 @@
 				:keys="{ data: 'data.data', total: 'data.total' }"
 				:columns="columns2"
 				:page.sync="page"
+				ref="table"
 			>
 				<!-- 使用插槽 -->
 				<template #zip="{ row }">
@@ -18,6 +19,8 @@
 				</template>
 			</d-table>
 		</div>
+
+		<el-button @click="onReload">Reload</el-button>
 		<div class="module">
 			<h3 class="module-title">Grid 列表</h3>
 
@@ -156,6 +159,9 @@ export default {
 	methods: {
 		onClick() {
 			alert('点击事件');
+		},
+		onReload() {
+			this.$refs.table.reload();
 		},
 	},
 };

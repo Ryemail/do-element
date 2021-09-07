@@ -14,7 +14,7 @@ module.exports = {
 	devServer: {
 		open: true,
 		compress: true,
-		port: 8080, // 端口号
+		port: 8081, // 端口号
 		historyApiFallback: true,
 	},
 	resolve: {

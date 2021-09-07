@@ -6,7 +6,7 @@
 				:class="[
 					'd-steps-title',
 					isActive(index) ? 'is-active' : '',
-					!simple && 'do-steps-bg',
+					!simple && 'd-steps-bg',
 				]"
 				v-for="(item, index) in children"
 				:key="index"

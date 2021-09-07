@@ -10,6 +10,7 @@
 			:border="border"
 			v-on="$listeners"
 			v-bind="$attrs"
+			ref="table"
 		>
 			<template v-for="(item, key) in columns">
 				<!-- 数据列 -->
@@ -79,8 +80,8 @@
 		<div class="d-pagination">
 			<el-pagination
 				hide-on-sinde-page
-				@size-change="reload"
-				@current-change="reload"
+				@size-change="onPageChange"
+				@current-change="onPageChange"
 				:current-page="tableQuery.page"
 				:total="tableTotal || tableData.length"
 				layout="total, prev, pager, next, jumper"
@@ -93,6 +94,7 @@
 <script>
 import { getTable } from './ajax';
 import { parseKeys } from '@/utils';
+import { getRow } from './drag';
 
 export default {
 	name: 'DTable',
@@ -150,6 +152,8 @@ export default {
 		headerRowClassName: { type: String, default: 'd-table-header' },
 
 		border: { type: Boolean, default: true },
+
+		queryChangeRun: { type: Boolean, default: false },
 	},
 	data() {
 		return {
@@ -195,15 +199,25 @@ export default {
 		},
 		tableQuery: {
 			handler() {
-				if (this.url) this.fetchTable();
+				if (this.url && this.queryChangeRun) this.reload();
 			},
 			deep: true,
 			immediate: true,
 		},
 	},
+	created() {
+		if (!this.queryChangeRun) {
+			this.reload();
+		}
+	},
+	mounted() {
+		this.drag();
+	},
 	methods: {
 		parseKeys,
-		async fetchTable() {
+
+		// 请求表格数据
+		async reload() {
 			this.loading = true;
 
 			try {
@@ -239,6 +253,7 @@ export default {
 				this.loading = false;
 			}
 		},
+
 		modifyData(data) {
 			if (!data) return [];
 
@@ -251,8 +266,9 @@ export default {
 			}
 			return data;
 		},
+
 		// 分页
-		reload(page) {
+		onPageChange(page) {
 			this.tableQuery.page = page;
 
 			this.$emit('update:page', page);
@@ -267,6 +283,46 @@ export default {
 				];
 			}
 			return rows;
+		},
+		onMouseDown(event, column) {
+			console.log(event, column);
+		},
+		drag() {
+			if (this.$refs.table === undefined) return;
+
+			const selector = this.$refs.table.$el;
+
+			const wrapper = selector.querySelector('.el-table__body tbody');
+
+			let target = null;
+
+			function onWrapperMouseDown(event) {
+				target = getRow(event.target);
+
+				target.addEventListener('mousemmove', onRowMouseMove, false);
+			}
+
+			function onRowMouseMove(event) {
+				console.log(event);
+			}
+
+			wrapper.addEventListener('mousedown', onWrapperMouseDown, false);
+			// wrapper.addEventListener(
+			// 	'mouseup',
+			// 	function () {
+			// 		wrapper.removeEventListener(
+			// 			'mousedown',
+			// 			onWrapperMouseDown,
+			// 			false
+			// 		);
+			// 		target.removeEventListener(
+			// 			'mousemmove',
+			// 			onRowMouseMove,
+			// 			false
+			// 		);
+			// 	},
+			// 	false
+			// );
 		},
 	},
 };

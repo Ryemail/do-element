@@ -39,7 +39,6 @@ export default {
 				{ label: 'pageTabs 页面tabs', name: 'pageTabs' },
 				{ label: 'Dialog 对话框', name: 'dialog' },
 				{ label: 'Upload 文件上传', name: 'upload' },
-				{ label: 'TreeSelect', name: 'treeselect' },
 				{ label: 'Table', name: 'table' },
 				{ label: 'Form', name: 'form' },
 				{ label: 'layout 布局', name: 'layout' },
