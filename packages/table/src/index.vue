@@ -10,6 +10,8 @@
 			:border="border"
 			v-on="$listeners"
 			v-bind="$attrs"
+			:cell-class-name="onCellClassName"
+			@cell-click="onCellClick"
 			ref="table"
 		>
 			<template v-for="(item, key) in columns">
@@ -25,7 +27,7 @@
 					:min-width="item.minWidth"
 					:width="item.width"
 				>
-					<template slot-scope="{ $index, row }">
+					<template slot-scope="{ $index, row, column }">
 						<template v-if="item.type === 'slot'">
 							<slot
 								:name="item.prop"
@@ -42,6 +44,17 @@
 							/>
 							<template v-else>
 								{{ parseKeys(row, item.prop) || cellEmpty }}
+								{{ column.i }}
+							</template>
+							<template v-if="item.edit">
+								<el-input
+									class="d-cell-input"
+									v-if="
+										$index === point.x &&
+										getColumnIndex(column.id) === point.y
+									"
+									v-model="row[item.prop]"
+								/>
 							</template>
 						</template>
 					</template>
@@ -94,7 +107,7 @@
 <script>
 import { getTable } from './ajax';
 import { parseKeys, clone } from '@/utils';
-import { onCreateDrop } from './drag';
+import { onCreateDrop, on, getTarget } from './drag';
 
 export default {
 	name: 'DTable',
@@ -165,6 +178,10 @@ export default {
 			loading: false,
 			columnType: ['selection', 'index', 'expand'],
 			responseData: null,
+			point: {
+				x: -1,
+				y: -1,
+			},
 		};
 	},
 	computed: {
@@ -210,7 +227,7 @@ export default {
 		},
 	},
 	created() {
-		if (!this.queryChangeRun) {
+		if (!this.queryChangeRun && this.url) {
 			this.reload();
 		}
 	},
@@ -219,6 +236,10 @@ export default {
 	},
 	methods: {
 		parseKeys,
+
+		getColumnIndex(id) {
+			return +id.charAt(id.length - 1) - 1;
+		},
 
 		// 请求表格数据
 		async reload(page) {
@@ -277,6 +298,12 @@ export default {
 			return data;
 		},
 
+		onCellClassName({ row, rowIndex }) {
+			row.index = rowIndex;
+
+			return '';
+		},
+
 		// 分页
 		onPageChange(page) {
 			this.tableQuery.page = page;
@@ -309,6 +336,41 @@ export default {
 			return rows;
 		},
 
+		onCellClick(row, column, cell, event) {
+			const property = this.columns.find(
+				(item) => item.prop === column.property
+			);
+
+			const { rowIndex } = getTarget(event.target);
+
+			const columnIndex = this.columns.findIndex(
+				(item) => item.prop === column.property
+			);
+
+			this.$emit('cell-click', { row, column, cell, event });
+
+			if (!property) return;
+
+			if (property.edit !== true) return;
+
+			this.point.x = rowIndex;
+			this.point.y = columnIndex;
+
+			this.$nextTick(() => {
+				const input = cell.querySelector('input');
+
+				if (input) {
+					input.focus();
+
+					on(input, 'blur', () => {
+						this.point = { x: -1, y: -1 };
+
+						this.$emit('cell-edit', { rowIndex, columnIndex, row });
+					});
+				}
+			});
+		},
+
 		onDrag() {
 			if (this.$refs.table === undefined) return;
 
@@ -320,8 +382,6 @@ export default {
 				const data = clone(this.tableArray);
 
 				const drag = data[dragIndex];
-
-				console.log(dragIndex, dropIndex);
 
 				data.splice(dragIndex, 1);
 

@@ -2,7 +2,12 @@
 	<div>
 		<div class="module">
 			<h3 class="module-title">基础表格</h3>
-			<d-table :data="table1" :columns="columns"></d-table>
+			<d-table
+				:data="table1"
+				:columns="columns"
+				@cell-edit="onCellEdit"
+				drag
+			></d-table>
 		</div>
 		<div class="module">
 			<h3 class="module-title">动态数据</h3>
@@ -41,68 +46,13 @@
 </template>
 
 <script>
+import { clone } from '../../src/utils';
+
 export default {
 	data() {
 		return {
 			page: 2,
-			table1: [
-				{
-					date: '2016-05-03',
-					name: '王小虎',
-					province: '上海',
-					city: '普陀区',
-					address: '上海市普陀区金沙江路 1518 弄',
-					zip: 200333,
-				},
-				{
-					date: '2016-05-02',
-					name: '王小虎',
-					province: '上海',
-					city: '普陀区',
-					address: '上海市普陀区金沙江路 1518 弄',
-					zip: 200333,
-				},
-				{
-					date: '2016-05-04',
-					name: '王小虎',
-					province: '上海',
-					city: '普陀区',
-					address: '上海市普陀区金沙江路 1518 弄',
-					zip: 200333,
-				},
-				{
-					date: '2016-05-01',
-					name: '王小虎',
-					province: '上海',
-					city: '普陀区',
-					address: '上海市普陀区金沙江路 1518 弄',
-					zip: 200333,
-				},
-				{
-					date: '2016-05-08',
-					name: '王小虎',
-					province: '上海',
-					city: '普陀区',
-					address: '上海市普陀区金沙江路 1518 弄',
-					zip: 200333,
-				},
-				{
-					date: '2016-05-06',
-					name: '王小虎',
-					province: '上海',
-					city: '普陀区',
-					address: '上海市普陀区金沙江路 1518 弄',
-					zip: 200333,
-				},
-				{
-					date: '2016-05-07',
-					name: '王小虎',
-					province: '上海',
-					city: '普陀区',
-					address: '上海市普陀区金沙江路 1518 弄',
-					zip: 200333,
-				},
-			],
+			table1: [],
 			tableData1: [
 				{
 					id: 1,
@@ -131,8 +81,8 @@ export default {
 				},
 			],
 			columns: [
-				{ prop: 'name', label: '姓名', width: 100 },
-				{ prop: 'address', label: '地址' },
+				{ prop: 'name', label: '姓名', width: 100, edit: true },
+				{ prop: 'address', label: '地址', edit: true },
 				{ prop: 'date', label: '时间' },
 				{ prop: 'zip', label: '邮编' },
 			],
@@ -158,7 +108,7 @@ export default {
 		};
 	},
 	mounted() {
-		this.table1 = [...this.table1, ...this.table1];
+		this.table1 = [...clone(this.tableData1), ...clone(this.tableData1)];
 	},
 	methods: {
 		onClick() {
@@ -166,6 +116,9 @@ export default {
 		},
 		onReload() {
 			this.$refs.table.reload();
+		},
+		onCellEdit({ rowIndex, columnIndex, row }) {
+			console.log(rowIndex, columnIndex, row);
 		},
 	},
 };

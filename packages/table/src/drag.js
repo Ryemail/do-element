@@ -6,7 +6,7 @@ function prevent(event) {
 	}
 }
 
-function on(ele, eventName, callback) {
+export function on(ele, eventName, callback) {
 	if (ele.addEventListener) {
 		ele.addEventListener(eventName, callback, false);
 	} else if (ele.attachEvent) {
