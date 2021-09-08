@@ -4,7 +4,7 @@
 		<el-table
 			v-if="type === 'table'"
 			v-loading="loading"
-			:data="tableData"
+			:data="tableArray"
 			style="width: 100%"
 			:header-row-class-name="headerRowClassName"
 			:border="border"
@@ -83,7 +83,7 @@
 				@size-change="onPageChange"
 				@current-change="onPageChange"
 				:current-page="tableQuery.page"
-				:total="tableTotal || tableData.length"
+				:total="tableTotal || data.length"
 				layout="total, prev, pager, next, jumper"
 			>
 			</el-pagination>
@@ -93,8 +93,8 @@
 
 <script>
 import { getTable } from './ajax';
-import { parseKeys } from '@/utils';
-import { getRow } from './drag';
+import { parseKeys, clone } from '@/utils';
+import { onCreateDrop } from './drag';
 
 export default {
 	name: 'DTable',
@@ -154,6 +154,8 @@ export default {
 		border: { type: Boolean, default: true },
 
 		queryChangeRun: { type: Boolean, default: false },
+
+		drag: { type: Boolean, default: false },
 	},
 	data() {
 		return {
@@ -166,17 +168,9 @@ export default {
 		};
 	},
 	computed: {
-		tableData() {
-			const { data, tableArray, page, limit, url } = this;
-			const start = limit * (page - 1);
-
-			if (url) return [...data, ...tableArray];
-
-			return data.slice(start, start + limit);
-		},
 		numbers() {
-			const { tableData, col } = this;
-			const length = Math.ceil(tableData.length / col),
+			const { tableArray, col } = this;
+			const length = Math.ceil(tableArray.length / col),
 				numbers = [];
 
 			let index = 0;
@@ -204,6 +198,16 @@ export default {
 			deep: true,
 			immediate: true,
 		},
+		data: {
+			immediate: true,
+			handler(data) {
+				const { page, limit } = this;
+
+				const start = limit * (page - 1);
+
+				this.tableArray = data.slice(start, start + limit);
+			},
+		},
 	},
 	created() {
 		if (!this.queryChangeRun) {
@@ -211,14 +215,19 @@ export default {
 		}
 	},
 	mounted() {
-		this.drag();
+		this.drag && this.onDrag();
 	},
 	methods: {
 		parseKeys,
 
 		// 请求表格数据
-		async reload() {
+		async reload(page) {
 			this.loading = true;
+
+			// page 存在,则重置当到指定页面,负责充值到当前页
+			if (page) {
+				this.onPageChange(page);
+			}
 
 			try {
 				const { url, headers, method, tableQuery } = this;
@@ -242,6 +251,7 @@ export default {
 					this.tableArray = this.modifyData(
 						parseKeys(response, data)
 					);
+
 					this.tableTotal = parseKeys(response, total) || 0;
 				}
 
@@ -271,11 +281,25 @@ export default {
 		onPageChange(page) {
 			this.tableQuery.page = page;
 
+			this.onStructureData();
+
 			this.$emit('update:page', page);
 		},
 
+		onStructureData() {
+			// 静态数据下进行分页
+			if (!this.url) {
+				const { limit, page } = this.tableQuery;
+				const start = limit * (page - 1);
+				this.tableArray = this.data.slice(start, start + limit);
+			} else {
+				// 动态数据下请求接口
+				this.reload();
+			}
+		},
+
 		structure(startIndex, endIndex) {
-			const rows = this.tableData.slice(startIndex, endIndex);
+			const rows = this.tableArray.slice(startIndex, endIndex);
 			if (rows.length < this.col) {
 				return [
 					...rows,
@@ -284,45 +308,31 @@ export default {
 			}
 			return rows;
 		},
-		onMouseDown(event, column) {
-			console.log(event, column);
-		},
-		drag() {
+
+		onDrag() {
 			if (this.$refs.table === undefined) return;
 
 			const selector = this.$refs.table.$el;
 
-			const wrapper = selector.querySelector('.el-table__body tbody');
+			const tbody = selector.querySelector('.el-table__body tbody');
 
-			let target = null;
+			onCreateDrop(tbody, (dragIndex, dropIndex) => {
+				const data = clone(this.tableArray);
 
-			function onWrapperMouseDown(event) {
-				target = getRow(event.target);
+				const drag = data[dragIndex];
 
-				target.addEventListener('mousemmove', onRowMouseMove, false);
-			}
+				console.log(dragIndex, dropIndex);
 
-			function onRowMouseMove(event) {
-				console.log(event);
-			}
+				data.splice(dragIndex, 1);
 
-			wrapper.addEventListener('mousedown', onWrapperMouseDown, false);
-			// wrapper.addEventListener(
-			// 	'mouseup',
-			// 	function () {
-			// 		wrapper.removeEventListener(
-			// 			'mousedown',
-			// 			onWrapperMouseDown,
-			// 			false
-			// 		);
-			// 		target.removeEventListener(
-			// 			'mousemmove',
-			// 			onRowMouseMove,
-			// 			false
-			// 		);
-			// 	},
-			// 	false
-			// );
+				data.splice(dropIndex, 0, drag);
+
+				this.tableArray = data;
+
+				this.$emit('on-drag', dragIndex, dropIndex, data);
+
+				console.log(data);
+			});
 		},
 	},
 };

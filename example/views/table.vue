@@ -12,6 +12,7 @@
 				:columns="columns2"
 				:page.sync="page"
 				ref="table"
+				drag
 			>
 				<!-- 使用插槽 -->
 				<template #zip="{ row }">
@@ -155,6 +156,9 @@ export default {
 				{ type: 'slot', prop: 'zip', label: '邮编(插槽使用)' }, // 插槽使用
 			],
 		};
+	},
+	mounted() {
+		this.table1 = [...this.table1, ...this.table1];
 	},
 	methods: {
 		onClick() {
