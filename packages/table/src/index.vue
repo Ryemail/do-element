@@ -10,7 +10,6 @@
 			:border="border"
 			v-on="$listeners"
 			v-bind="$attrs"
-			:cell-class-name="onCellClassName"
 			@cell-click="onCellClick"
 			ref="table"
 		>
@@ -44,7 +43,6 @@
 							/>
 							<template v-else>
 								{{ parseKeys(row, item.prop) || cellEmpty }}
-								{{ column.i }}
 							</template>
 							<template v-if="item.edit">
 								<el-input
@@ -84,7 +82,12 @@
 							v-if="value && selection"
 							class="d-td-selection"
 						></div>
-						<slot :data="value" :row="key" :col="index"></slot>
+						<slot
+							v-if="value"
+							:data="value"
+							:row="key"
+							:col="index"
+						></slot>
 					</td>
 				</tr>
 			</table>
@@ -238,7 +241,7 @@ export default {
 		parseKeys,
 
 		getColumnIndex(id) {
-			return +id.charAt(id.length - 1) - 1;
+			return Number(id.split('_').pop()) - 1;
 		},
 
 		// 请求表格数据
@@ -298,12 +301,6 @@ export default {
 			return data;
 		},
 
-		onCellClassName({ row, rowIndex }) {
-			row.index = rowIndex;
-
-			return '';
-		},
-
 		// 分页
 		onPageChange(page) {
 			this.tableQuery.page = page;
@@ -343,9 +340,7 @@ export default {
 
 			const { rowIndex } = getTarget(event.target);
 
-			const columnIndex = this.columns.findIndex(
-				(item) => item.prop === column.property
-			);
+			const columnIndex = cell.cellIndex;
 
 			this.$emit('cell-click', { row, column, cell, event });
 
@@ -383,9 +378,13 @@ export default {
 
 				const drag = data[dragIndex];
 
-				data.splice(dragIndex, 1);
-
-				data.splice(dropIndex, 0, drag);
+				if (dropIndex < dragIndex) {
+					data.splice(dropIndex, 0, drag);
+					data.splice(dragIndex + 1, 1);
+				} else {
+					data.splice(dropIndex + 1, 0, drag);
+					data.splice(dragIndex, 1);
+				}
 
 				this.tableArray = data;
 
