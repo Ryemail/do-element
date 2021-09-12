@@ -1,6 +1,6 @@
 <template>
 	<el-scrollbar id="app">
-		<div v-if="$route.name !== 'layout'" class="app-content">
+		<!-- <div v-if="$route.name !== 'layout'" class="app-content">
 			<el-tabs
 				class="gl-left-tabs"
 				tab-position="left"
@@ -16,8 +16,9 @@
 				</el-tab-pane>
 			</el-tabs>
 			<router-view class="gl-view"></router-view>
-		</div>
+		</div> -->
 		<router-view name="layout" />
+		<router-view />
 	</el-scrollbar>
 </template>
 

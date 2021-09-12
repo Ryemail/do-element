@@ -10,10 +10,11 @@ module.exports = {
 		path: path.join(__dirname, 'dist'),
 		filename: 'js/[name].js',
 		clean: true,
+		publicPath: '/',
 	},
 	devServer: {
 		open: true,
-		compress: true,
+		hot: true,
 		port: 8081, // 端口号
 		historyApiFallback: true,
 	},

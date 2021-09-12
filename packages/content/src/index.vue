@@ -1,8 +1,13 @@
 <template>
 	<div class="d-content">
-		<d-page-title :backs="backs" :title="title" />
-
-		<slot></slot>
+		<d-page-title
+			v-if="!exclude.includes($route.name)"
+			:backs="backs"
+			:title="title"
+		/>
+		<transition name="fade-transform" mode="out-in">
+			<slot></slot>
+		</transition>
 	</div>
 </template>
 
@@ -20,6 +25,10 @@ export default {
 		title: {
 			type: String,
 			default: () => '',
+		},
+		exclude: {
+			type: Array,
+			default: () => [],
 		},
 	},
 };
