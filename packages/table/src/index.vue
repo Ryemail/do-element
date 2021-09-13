@@ -218,6 +218,12 @@ export default {
 			deep: true,
 			immediate: true,
 		},
+		limit(val) {
+			this.tableQuery.limit = val;
+		},
+		page(val) {
+			this.tableQuery.page = val;
+		},
 		data: {
 			immediate: true,
 			handler(data) {
