@@ -53,6 +53,8 @@ export default {
 			}
 
 			if (this.router) {
+				if (this.onGetIndex(index) === this.defaultActive) return;
+
 				this.$router.push(this.tabs[index].to);
 			}
 		},
@@ -64,7 +66,6 @@ export default {
 			let name = current.to;
 
 			if (typeof current.to === 'object') {
-				console.log(index, current.to);
 				name = current.to.path || current.to.name;
 			}
 

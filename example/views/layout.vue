@@ -3,13 +3,10 @@
 		<d-header />
 
 		<main class="d-main">
-			<d-menu :default-active="$route.matched[0].name" :menus="menus" />
+			<d-menu :default-active="defaultActive" :menus="menus" />
 
-			<d-content title="测试">
-				<router-view class="" />
-				<div class="d-router-view">
-					<p v-for="item in 100" :key="item">{{ item }}</p>
-				</div>
+			<d-content :title="title" :backs="['layout', 'tabs1']">
+				<router-view class="d-router-view"></router-view>
 			</d-content>
 		</main>
 
@@ -22,17 +19,32 @@ export default {
 	data() {
 		return {
 			menus: [
-				{ en_name: 'link', name: 'Link' },
-				{ en_name: 'dialog', name: 'Dialog' },
-				{ en_name: 'modal', name: 'Modal' },
-				{ en_name: 'table', name: 'Table' },
-				{ en_name: 'form', name: 'Form' },
-				{ en_name: 'upload', name: 'Upload' },
-				{ en_name: 'tabs', name: 'Tabs' },
+				{ name: 'pageTabs', en_name: 'pageTabs' },
+				{ name: 'Table', en_name: 'table' },
+				{ name: 'Form', en_name: 'form' },
+				{ name: 'Steps', en_name: 'steps' },
+				{ name: 'TimeLine', en_name: 'timeline' },
 			],
+			defaultActive: '',
 		};
 	},
-	methods: {},
+	watch: {
+		$route: {
+			immediate: true,
+			handler({ matched }) {
+				this.defaultActive = matched[1].name;
+			},
+		},
+	},
+	computed: {
+		title() {
+			const { query, meta } = this.$route;
+
+			if (query.title) return query.title;
+
+			return meta.title;
+		},
+	},
 };
 </script>
 

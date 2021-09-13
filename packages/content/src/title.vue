@@ -3,15 +3,15 @@
 		<template v-if="backs.includes($route && $route.name)">
 			<el-link
 				class="d-back"
-				@click="$routet.back()"
+				@click="$router.back()"
 				icon="el-icon-back"
 				:underline="false"
 			>
 				返回
 			</el-link>
-			<el-divider direction="vertical"></el-divider>
+			<div class="d-divider"></div>
 		</template>
-		<span v-if="title">{{ title }}</span>
+		<span v-if="title" v-html="title"></span>
 	</div>
 </template>
 
