@@ -9,7 +9,7 @@
 		active-text-color="#FFFFFF"
 		:router="router"
 	>
-		<d-submenu v-for="item in menus" :key="item.en_name" :item="item" />
+		<d-submenu v-for="(item, index) in menus" :key="index" :item="item" />
 	</el-menu>
 </template>
 
@@ -44,6 +44,21 @@ export default {
 			type: String,
 			default: '#3E3E69',
 		},
+		keys: {
+			type: Object,
+			default() {
+				return { path: 'path', title: 'title', child: 'child' };
+			},
+		},
+	},
+	provide() {
+		const attrs = { path: 'path', title: 'title', child: 'child' };
+		return {
+			keys: {
+				...attrs,
+				...this.keys,
+			},
+		};
 	},
 };
 </script>

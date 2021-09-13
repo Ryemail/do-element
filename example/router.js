@@ -18,11 +18,7 @@ const routes = [
 	// 	name: 'link',
 	// 	component: () => import('./views/link.vue'),
 	// },
-	// {
-	// 	path: '/modal',
-	// 	name: 'modal',
-	// 	component: () => import('./views/modal.vue'),
-	// },
+
 	// {
 	// 	path: '/pageTabs',
 	// 	name: 'pageTabs',
@@ -118,6 +114,11 @@ const routes = [
 				path: 'table',
 				name: 'table',
 				component: () => import('./views/table.vue'),
+			},
+			{
+				path: 'modal',
+				name: 'modal',
+				component: () => import('./views/modal.vue'),
 			},
 		],
 	},

@@ -18,7 +18,7 @@
 			background-color: #ffffff;
 		}
 	}
-	&.is-active {
+	&.is-active:not(.d-steps-success) {
 		.d-steps-number {
 			background: #61c5c1;
 			border-color: #61c5c1;
@@ -26,6 +26,16 @@
 		}
 		.d-steps-label {
 			color: #000000;
+		}
+	}
+	&.d-steps-success {
+		.d-steps-number {
+			border-color: #61c5c1;
+			.el-icon-check {
+				color: #61c5c1;
+				font-size: 14px;
+				font-weight: bold;
+			}
 		}
 	}
 

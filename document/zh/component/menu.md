@@ -44,8 +44,9 @@ lang: zh-CN
 
 ### Attributes
 
-| 参数           | 说明                           | 类型     | 默认值 |
-| :------------- | :----------------------------- | :------- | :----- |
-| default-active | 当前激活的状态名称             | string   | \_     |
-| menus          | 导航栏数据                     | object[] | []     |
-| 其他参数       | 同 element-ui 的 menu 组件属性 | \_       | \_     |
+| 参数           | 说明                           | 类型     | 默认值                                    |
+| :------------- | :----------------------------- | :------- | :---------------------------------------- |
+| default-active | 当前激活的状态名称             | string   | \_                                        |
+| menus          | 导航栏数据                     | object[] | []                                        |
+| keys           | menu-item 数据属性 key         | object   | {path:'path',title:'title',child:'child'} |
+| 其他参数       | 同 element-ui 的 menu 组件属性 | \_       | \_                                        |

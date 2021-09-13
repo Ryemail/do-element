@@ -5,6 +5,11 @@ lang: zh-CN
 
 ## Modal
 
+:::danger
+使用 modal 时请确保引入的 iconfont 库中有名称为 warning、error 的 icon
+
+:::
+
 ::: demo
 
 ```html
@@ -85,12 +90,12 @@ lang: zh-CN
 
 ### Modal Options
 
-| 参数     | 说明                                                 | 类型              | 可选值 | 默认值 |
-| :------- | :--------------------------------------------------- | :---------------- | :----- | :----- |
-| icon     | 图标名称 ，若不在图标库内则忽略                      | string            | \_     | \_     |
-| title    | Modal 标题                                           | string            | \_     | \_     |
-| message  | Modal 消息正文内容                                   | string / string[] | \_     | \_     |
-| 其他参数 | 参数同 element-ui MessageBox.confirm 方法 的 options | object            | \_     | \_     |
+| 参数      | 说明                                                 | 类型              | 可选值 | 默认值 |
+| :-------- | :--------------------------------------------------- | :---------------- | :----- | :----- |
+| iconClass | 图标名称 ，若不在图标库内则忽略                      | string            | \_     | \_     |
+| title     | Modal 标题                                           | string            | \_     | \_     |
+| message   | Modal 消息正文内容                                   | string / string[] | \_     | \_     |
+| 其他参数  | 参数同 element-ui MessageBox.confirm 方法 的 options | object            | \_     | \_     |
 
 ### Notice Options
 

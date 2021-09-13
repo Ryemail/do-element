@@ -3,7 +3,14 @@
 		<d-header />
 
 		<main class="d-main">
-			<d-menu :default-active="defaultActive" :menus="menus" />
+			<d-menu
+				:default-active="defaultActive"
+				:menus="menus"
+				:keys="{
+					path: 'en_name',
+					title: 'name',
+				}"
+			/>
 
 			<d-content :title="title" :backs="['layout', 'tabs1']">
 				<router-view class="d-router-view"></router-view>
@@ -24,6 +31,7 @@ export default {
 				{ name: 'Form', en_name: 'form' },
 				{ name: 'Steps', en_name: 'steps' },
 				{ name: 'TimeLine', en_name: 'timeline' },
+				{ name: 'Modal 弹窗提示', en_name: 'modal' },
 			],
 			defaultActive: '',
 		};

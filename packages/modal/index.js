@@ -5,7 +5,6 @@ const defaultOptions = {
 	cancelButtonText: '取消',
 	dangerouslyUseHTMLString: true,
 	customClass: 'd-confirm-box',
-	icon: 'warning',
 	showClose: false,
 };
 
@@ -17,14 +16,19 @@ const noticeOptions = {
 	showClose: false,
 };
 
-export function modal({ message, title = '', options = {} }) {
+export function modal(options) {
 	const icon = 'd-icon-';
 
-	options = { ...options, ...defaultOptions };
+	options = { ...defaultOptions, ...options };
 
-	options.iconClass = icon + options.icon;
+	if (!options.iconClass) {
+		options.iconClass = icon + options.type;
+	}
 
-	delete options.icon;
+	const { message, title } = options;
+
+	delete options.message;
+	delete options.title;
 
 	let html = '<div class="d-modal-title">' + title + '</div>';
 

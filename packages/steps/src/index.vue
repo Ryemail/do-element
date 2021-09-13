@@ -7,6 +7,7 @@
 					'd-steps-title',
 					isActive(index) ? 'is-active' : '',
 					!simple && 'd-steps-bg',
+					index < active && 'd-steps-success',
 				]"
 				v-for="(item, index) in children"
 				:key="index"
@@ -20,7 +21,10 @@
 						class="d-steps-number"
 						:style="onNumberStyle(index)"
 					>
-						{{ index + 1 }}
+						<template v-if="index >= active">
+							{{ index + 1 }}
+						</template>
+						<i v-else class="el-icon-check"></i>
 					</span>
 					<span class="d-steps-label">{{ item.title }}</span>
 				</span>

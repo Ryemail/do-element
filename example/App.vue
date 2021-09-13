@@ -25,11 +25,6 @@
 <script>
 // import doing from 'do-tool';
 
-// console.log(doing.dateFormat(new Date(), 'yyyy-MM-dd'));
-// console.log(doing.checkType('')('object'));
-// console.log(doing.clone({ name: 'ddd' }));
-// console.log(doing);
-
 export default {
 	name: 'App',
 	data() {
