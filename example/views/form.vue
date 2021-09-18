@@ -9,10 +9,20 @@
 			</div>
 
 			<d-form
-				:inline="true"
 				:form="form"
 				:label-width="width"
 				:columns="columns"
+				@event="onEvent"
+			/>
+
+			<br />
+			<br />
+			<br />
+
+			<d-form
+				:form="form"
+				:inline="true"
+				:columns="columns1"
 				@event="onEvent"
 			/>
 		</div>
@@ -77,15 +87,40 @@ export default {
 				address: '',
 			},
 			visible: false,
+			columns1: [
+				{
+					type: 'input',
+					prop: 'name',
+					placeholder: '请输入姓名',
+					attrs: {
+						clearable: true,
+					},
+				},
+				{
+					type: 'select',
+					prop: 'sex',
+					placeholder: '请选择性别',
+					lazyLoad(resolve) {
+						setTimeout(() => {
+							resolve([
+								{ value: '1', label: '男' },
+								{ value: '2', label: '女' },
+							]);
+						}, 1000);
+					},
+				},
+				{
+					type: 'date',
+					prop: 'date',
+					placeholder: '请选择时间',
+				},
+			],
 			columns: [
 				{
 					type: 'input',
 					prop: 'name',
 					label: '姓名',
 					placeholder: '请输入姓名',
-					attrs: {
-						clearable: true,
-					},
 				},
 				{
 					type: 'select',

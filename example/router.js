@@ -126,6 +126,11 @@ const routes = [
 				name: 'modal',
 				component: () => import('./views/modal.vue'),
 			},
+			{
+				path: 'statistic',
+				name: 'statistic',
+				component: () => import('./views/statistic.vue'),
+			},
 		],
 	},
 	// {

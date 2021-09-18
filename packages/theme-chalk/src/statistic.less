@@ -1,0 +1,36 @@
+.d-statistic {
+	font-family: NotoSansHans-Regular, NotoSansHans;
+	color: #333333;
+	display: flex;
+	text-align: center;
+	padding: 20px;
+	width: 100%;
+	&.d-statistic-top {
+		border-top: 1px solid #e6e6e6;
+	}
+	&.d-statistic-bottom {
+		border-bottom: 1px solid #e6e6e6;
+	}
+
+	&.d-statistic-updown {
+		border-bottom: 1px solid #e6e6e6;
+		border-top: 1px solid #e6e6e6;
+	}
+}
+
+.d-statistic-item {
+	flex: 1;
+	&:not(:last-child) {
+		border-right: 1px solid #e6e6e6;
+	}
+	.d-value {
+		font-size: 24px;
+		color: #333333;
+		line-height: 1;
+		height: 36px;
+	}
+	.d-title {
+		font-size: 14px;
+		line-height: 1;
+	}
+}

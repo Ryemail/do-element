@@ -25,6 +25,7 @@
 					:label="item.label"
 					:min-width="item.minWidth"
 					:width="item.width"
+					:show-overflow-tooltip="onTooltip(item)"
 				>
 					<template slot-scope="{ $index, row, column }">
 						<template v-if="item.type === 'slot'">
@@ -87,7 +88,7 @@
 							:data="value"
 							:row="key"
 							:col="index"
-						></slot>
+						/>
 					</td>
 				</tr>
 			</table>
@@ -100,7 +101,7 @@
 				@current-change="onPageChange"
 				:current-page="tableQuery.page"
 				:total="tableTotal || data.length"
-				layout="total, prev, pager, next, jumper"
+				:layout="layout"
 			>
 			</el-pagination>
 		</div>
@@ -172,6 +173,11 @@ export default {
 		queryChangeRun: { type: Boolean, default: false },
 
 		drag: { type: Boolean, default: false },
+
+		layout: {
+			type: String,
+			default: 'total, prev, pager, next, jumper',
+		},
 	},
 	data() {
 		return {
@@ -245,6 +251,12 @@ export default {
 	},
 	methods: {
 		parseKeys,
+
+		onTooltip(item) {
+			if (item.showOverflowTooltip) return item.showOverflowTooltip;
+
+			return true;
+		},
 
 		getColumnIndex(id) {
 			return Number(id.split('_').pop()) - 1;

@@ -33,7 +33,7 @@ export default {
 				{ name: 'Upload 文件上传', en_name: 'upload' },
 				{ name: 'Table', en_name: 'table' },
 				{ name: 'Form', en_name: 'form' },
-				// { name: 'layout 布局', en_name: 'layout' },
+				{ name: 'statistic', en_name: 'statistic' },
 				{ name: 'Steps', en_name: 'steps' },
 				{ name: 'TimeLine', en_name: 'timeline' },
 			],

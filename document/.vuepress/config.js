@@ -69,6 +69,10 @@ module.exports = {
 							title: 'TimeLine 时间轴',
 							path: '/zh/component/timeline',
 						},
+						{
+							title: 'statistic 统计数值',
+							path: '/zh/component/statistic',
+						},
 					],
 				},
 			],

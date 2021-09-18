@@ -82,13 +82,17 @@ export default {
 			],
 			columns: [
 				{ prop: 'name', label: '姓名', width: 100, edit: true },
-				{ prop: 'address', label: '地址', edit: true },
+				{
+					prop: 'address',
+					label: '地址',
+					edit: true,
+				},
 				{ prop: 'date', label: '时间' },
 				{ prop: 'zip', label: '邮编' },
 			],
 			columns2: [
 				{ prop: 'name', label: '姓名', width: 100 },
-				{ prop: 'address', label: '地址' },
+				{ prop: 'address', label: '地址', showOverflowTooltip: false },
 				{
 					prop: 'date',
 					label: '时间(render渲染)',

@@ -13,6 +13,8 @@ import TimelineItem from './timeline-item';
 import Timeline from './timeline';
 import Steps from './steps';
 import Step from './step';
+import Statistic from './statistic';
+import StatisticItem from './statistic-item';
 
 import { modal, notice } from './modal';
 
@@ -32,6 +34,8 @@ const components = [
 	TimelineItem,
 	Steps,
 	Step,
+	Statistic,
+	StatisticItem,
 ];
 
 function install(Vue) {
@@ -65,6 +69,8 @@ export default {
 	TimelineItem,
 	Steps,
 	Step,
+	Statistic,
+	StatisticItem,
 	modal,
 	notice,
 };
