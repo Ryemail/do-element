@@ -329,12 +329,16 @@ export default {
 		onLazyLoad() {
 			const type = ['select', 'checkbox', 'radio'];
 
-			this.dataColumns.forEach((item, index) => {
-				if (type.includes(item.type) && item.lazyLoad) {
-					item.lazyLoad((options) => {
-						item.options = options;
+			this.columns.forEach((item, index) => {
+				if (type.includes(item.type)) {
+					if (item.lazyLoad) {
+						item.lazyLoad((options) => {
+							item.options = options;
+							this.$set(this.dataColumns, index, item);
+						}, this.dataForm);
+					} else {
 						this.$set(this.dataColumns, index, item);
-					}, this.dataForm);
+					}
 				}
 			});
 		},

@@ -72,7 +72,6 @@ export default {
 			form: {
 				name: '',
 				sex: '',
-
 				switch: 2,
 				mark: '',
 				radio: '3',
@@ -92,22 +91,12 @@ export default {
 					type: 'input',
 					prop: 'name',
 					placeholder: '请输入姓名',
-					attrs: {
-						clearable: true,
-					},
 				},
 				{
 					type: 'select',
 					prop: 'sex',
 					placeholder: '请选择性别',
-					lazyLoad(resolve) {
-						setTimeout(() => {
-							resolve([
-								{ value: '1', label: '男' },
-								{ value: '2', label: '女' },
-							]);
-						}, 1000);
-					},
+					options: [],
 				},
 				{
 					type: 'date',
@@ -220,6 +209,21 @@ export default {
 		onDialogEvent(item) {
 			console.log(item);
 		},
+	},
+	created() {
+		this.$nextTick(() => {
+			const arr = {
+				type: 'select',
+				prop: 'sex',
+				placeholder: '请选择性别',
+				options: [
+					{ value: '1', label: '男' },
+					{ value: '2', label: '女' },
+				],
+			};
+			this.columns1.splice(1, 1, arr);
+			console.log(this.columns1);
+		});
 	},
 };
 </script>
