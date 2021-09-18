@@ -361,8 +361,6 @@ export default {
 				if (valid && item) return this.$emit('event', item);
 			};
 
-			console.log(this.eform, 'this.eform');
-
 			this.eform.validate(valider);
 
 			return Promise.resolve(flag);
