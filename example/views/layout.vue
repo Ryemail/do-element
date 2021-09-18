@@ -1,6 +1,6 @@
 <template>
 	<d-container>
-		<d-header />
+		<d-header title="顶顶顶顶顶1" />
 
 		<main class="d-main">
 			<d-menu

@@ -1,25 +1,7 @@
 <template>
-	<el-scrollbar id="app">
-		<!-- <div v-if="$route.name !== 'layout'" class="app-content">
-			<el-tabs
-				class="gl-left-tabs"
-				tab-position="left"
-				v-model="active"
-				@tab-click="onClick"
-			>
-				<el-tab-pane
-					v-for="item in list"
-					:key="item.name"
-					:label="item.label"
-					:name="item.name"
-				>
-				</el-tab-pane>
-			</el-tabs>
-			<router-view class="gl-view"></router-view>
-		</div> -->
+	<div id="app">
 		<router-view name="layout" />
-		<router-view />
-	</el-scrollbar>
+	</div>
 </template>
 
 <script>
