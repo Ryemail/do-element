@@ -56,13 +56,13 @@ lang: zh-CN
 			return {
 				active: 'link',
 				menus: [
-					{ en_name: 'link', name: 'Link' },
-					{ en_name: 'dialog', name: 'Dialog' },
-					{ en_name: 'modal', name: 'Modal' },
-					{ en_name: 'table', name: 'Table' },
-					{ en_name: 'form', name: 'Form' },
-					{ en_name: 'upload', name: 'Upload' },
-					{ en_name: 'tabs', name: 'Tabs' },
+					{ path: 'link', title: 'Link' },
+					{ path: 'dialog', title: 'Dialog' },
+					{ path: 'modal', title: 'Modal' },
+					{ path: 'table', title: 'Table' },
+					{ path: 'form', title: 'Form' },
+					{ path: 'upload', title: 'Upload' },
+					{ path: 'tabs', title: 'Tabs' },
 				],
 			};
 		},

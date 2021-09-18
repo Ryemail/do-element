@@ -13,11 +13,6 @@ const routes = [
 		path: '/',
 		redirect: '/layout',
 	},
-	// {
-	// 	path: '/link',
-	// 	name: 'link',
-	// 	component: () => import('./views/link.vue'),
-	// },
 
 	// {
 	// 	path: '/pageTabs',
@@ -37,11 +32,7 @@ const routes = [
 	// 		},
 	// 	],
 	// },
-	// {
-	// 	path: '/dialog',
-	// 	name: 'dialog',
-	// 	component: () => import('./views/dialog.vue'),
-	// },
+
 	// {
 	// 	path: '/upload',
 	// 	name: 'upload',
@@ -103,12 +94,27 @@ const routes = [
 				},
 			},
 			{
+				path: 'link',
+				name: 'link',
+				component: () => import('./views/link.vue'),
+			},
+			{
 				path: 'timeline',
 				name: 'timeline',
 				component: () => import('./views/timeline.vue'),
 				meta: {
 					title: 'timeline',
 				},
+			},
+			{
+				path: 'upload',
+				name: 'upload',
+				component: () => import('./views/upload.vue'),
+			},
+			{
+				path: 'dialog',
+				name: 'dialog',
+				component: () => import('./views/dialog.vue'),
 			},
 			{
 				path: 'table',

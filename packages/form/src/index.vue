@@ -121,6 +121,7 @@
 				<el-date-picker
 					v-if="item.type === 'date'"
 					type="date"
+					:clearable="item.clearable || false"
 					:placeholder="item.placeholder"
 					v-model="dataForm[item.prop]"
 					:format="item.format"
@@ -134,23 +135,24 @@
 				<el-date-picker
 					v-if="item.type === 'daterange'"
 					type="daterange"
+					:clearable="item.clearable || false"
 					v-model="dataForm[item.prop]"
-					:range-separator="item.separator || '-'"
+					:range-separator="dataForm[item.prop] ? item.separator : ''"
 					:format="item.format"
 					:readonly="item.readonly"
 					:disabled="item.disabled"
 					:value-format="item.valueFormat"
 					:picker-options="item.pickerOptions"
-					:start-placeholder="item.placeholder && item.placeholder[0]"
-					:end-placeholder="item.placeholder && item.placeholder[1]"
+					:start-placeholder="item.placeholder"
 				/>
 
 				<el-date-picker
 					v-if="item.type === 'datetime'"
 					type="datetime"
+					:clearable="item.clearable || false"
 					:placeholder="item.placeholder"
 					v-model="dataForm[item.prop]"
-					:format="item.format"
+					:format="item.format || 'yyyy-MM-dd hh:mm'"
 					:readonly="item.readonly"
 					:disabled="item.disabled"
 					:value-format="item.valueFormat"
@@ -161,14 +163,14 @@
 					v-if="item.type === 'datetimerange'"
 					type="datetimerange"
 					v-model="dataForm[item.prop]"
-					:range-separator="item.separator"
-					:format="item.format"
+					:clearable="item.clearable || false"
+					:range-separator="dataForm[item.prop] ? item.separator : ''"
+					:format="item.format || 'yyyy-MM-dd hh:mm'"
 					:readonly="item.readonly"
 					:disabled="item.disabled"
 					:value-format="item.valueFormat"
 					:picker-options="item.pickerOptions"
-					:start-placeholder="item.placeholder && item.placeholder[0]"
-					:end-placeholder="item.placeholder && item.placeholder[1]"
+					:start-placeholder="item.placeholder"
 				/>
 
 				<slot

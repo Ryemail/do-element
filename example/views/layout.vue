@@ -26,12 +26,16 @@ export default {
 	data() {
 		return {
 			menus: [
-				{ name: 'pageTabs', en_name: 'pageTabs' },
+				{ name: 'Link 文字链接', en_name: 'link' },
+				{ name: 'Modal 弹窗提示', en_name: 'modal' },
+				{ name: 'pageTabs 页面tabs', en_name: 'pageTabs' },
+				{ name: 'Dialog 对话框', en_name: 'dialog' },
+				{ name: 'Upload 文件上传', en_name: 'upload' },
 				{ name: 'Table', en_name: 'table' },
 				{ name: 'Form', en_name: 'form' },
+				// { name: 'layout 布局', en_name: 'layout' },
 				{ name: 'Steps', en_name: 'steps' },
 				{ name: 'TimeLine', en_name: 'timeline' },
-				{ name: 'Modal 弹窗提示', en_name: 'modal' },
 			],
 			defaultActive: '',
 		};

@@ -4,17 +4,13 @@
 			<h3 class="module-title">基本表单</h3>
 
 			<div class="flex">
-				<span class="label">是否开启行内</span>
-				<el-switch v-model="isInline"> </el-switch>
-			</div>
-			<div class="flex">
 				<span class="label">label 宽度</span>
 				<el-input style="width: 300px" v-model="width" />
 			</div>
 
 			<d-form
+				:inline="true"
 				:form="form"
-				:inline="isInline"
 				:label-width="width"
 				:columns="columns"
 				@event="onEvent"
@@ -115,7 +111,7 @@ export default {
 					type: 'daterange',
 					prop: 'daterange',
 					label: '日期范围',
-					placeholder: ['请选择日期'],
+					placeholder: '请选择日期',
 				},
 				{
 					type: 'datetime',

@@ -1,6 +1,6 @@
 {
     "name": "do-element",
-    "version": "1.0.24",
+    "version": "1.0.25",
     "description": "Secondary encapsulation of basic element-ui",
     "author": "1956045780@qq.com",
     "license": "MIT",
@@ -46,6 +46,8 @@
         "babel-loader": "^8.2.2",
         "css-loader": "^6.2.0",
         "do-tool": "^0.0.5",
+        "element-theme": "^2.0.1",
+        "element-theme-chalk": "^2.15.6",
         "element-ui": "^2.15.5",
         "eslint": "^7.32.0",
         "eslint-loader": "^4.0.2",
