@@ -25,6 +25,7 @@
 				:columns="columns1"
 				@event="onEvent"
 			/>
+			<d-divider></d-divider>
 		</div>
 
 		<div class="module">

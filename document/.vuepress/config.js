@@ -73,6 +73,10 @@ module.exports = {
 							title: 'statistic 统计数值',
 							path: '/zh/component/statistic',
 						},
+						{
+							title: 'divider 分割线',
+							path: '/zh/component/divider',
+						},
 					],
 				},
 			],

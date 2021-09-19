@@ -12,9 +12,12 @@ lang: zh-CN
 ```html
 <template>
 	<d-statistic>
-		<d-statistic-item title="3434" value="4343434" />
-		<d-statistic-item title="3434" value="4343434" />
-		<d-statistic-item title="3434" value="4343434" />
+		<d-statistic-item title="销售总量" value="1000" />
+		<d-statistic-item>
+			<template #title>插槽使用</template>
+			<template #value>2000</template>
+		</d-statistic-item>
+		<d-statistic-item title="昨日订单量" value="3000" />
 	</d-statistic>
 </template>
 

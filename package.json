@@ -1,6 +1,6 @@
 {
     "name": "do-element",
-    "version": "1.0.30",
+    "version": "1.0.32",
     "description": "Secondary encapsulation of basic element-ui",
     "author": "1956045780@qq.com",
     "license": "MIT",
@@ -44,6 +44,7 @@
         "@vue/babel-preset-jsx": "^1.2.4",
         "@vue/eslint-config-prettier": "^6.0.0",
         "babel-loader": "^8.2.2",
+        "copy-webpack-plugin": "^9.0.1",
         "css-loader": "^6.2.0",
         "do-tool": "^0.0.5",
         "element-theme": "^2.0.1",
