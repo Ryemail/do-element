@@ -1,5 +1,9 @@
 const path = require('path');
 
+const version = require('../../package.json').version;
+
+console.log(version);
+
 module.exports = {
 	lang: 'zh-CN',
 	title: 'DoElement',
@@ -14,6 +18,12 @@ module.exports = {
 		nav: [
 			{ text: '组件', link: '/zh/component/' },
 			{ text: '工具', link: '/zh/utils/' },
+			{
+				text: version,
+				link: 'javascript:;',
+				target: '_self',
+				rel: '',
+			},
 		],
 		sidebar: {
 			'/zh/component': [
