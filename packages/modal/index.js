@@ -38,9 +38,7 @@ export function modal(options) {
 		html += message.map((text) => '<div>' + text + '</div>').join('');
 	}
 
-	return new Promise((resolve, reject) => {
-		MessageBox.confirm(html, '', options).then(resolve).catch(reject);
-	});
+	return MessageBox.confirm(html, '', options);
 }
 
 export function notice(options) {

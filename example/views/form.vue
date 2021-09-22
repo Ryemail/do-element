@@ -57,7 +57,7 @@
 				:inline="isInline"
 				:label-width="width"
 				:columns="columns"
-				:button="null"
+				:buttons="null"
 			/>
 		</d-dialog>
 	</div>
