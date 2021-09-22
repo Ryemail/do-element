@@ -1,9 +1,11 @@
 <template>
 	<div class="statistic">
 		<d-statistic>
-			<d-statistic-item title="3434" value="4343434" />
-			<d-statistic-item title="3434" value="4343434" />
-			<d-statistic-item title="3434" value="4343434" />
+			<d-statistic-item title="3434" value="4343434.89" />
+			<d-statistic-item title="3434" value="4343434.32333" :precision="2">
+				<template #suffix>899</template>
+			</d-statistic-item>
+			<d-statistic-item title="3434" value="4343434" :precision="2" />
 		</d-statistic>
 	</div>
 </template>

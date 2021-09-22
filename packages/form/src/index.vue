@@ -216,7 +216,7 @@ export default {
 
 		rules: { type: Object, default: () => ({}) },
 
-		size: { type: String, default: '' },
+		size: { type: String, default: 'medium' },
 
 		labelWidth: { type: Number, default: 140 },
 

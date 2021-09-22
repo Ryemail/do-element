@@ -45,6 +45,13 @@ import {
 	Footer,
 	Content,
 	Menu,
+	Timeline,
+	TimelineItem,
+	Steps,
+	Step,
+	Statistic,
+	StatisticItem,
+	Divider,
 	modal,
 	notice,
 } from 'do-element';

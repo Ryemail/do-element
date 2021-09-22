@@ -1,3 +1,4 @@
+const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const { DefinePlugin } = require('webpack');
@@ -85,6 +86,14 @@ module.exports = {
 		new VueLoaderPlugin(),
 		new DefinePlugin({
 			'process.env.BASE_URL': JSON.stringify('./'),
+		}),
+		new CopyPlugin({
+			patterns: [
+				{
+					from: path.join(__dirname, '../theme'),
+					to: path.join(__dirname, '../lib/element'),
+				},
+			],
 		}),
 	],
 };

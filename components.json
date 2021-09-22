@@ -9,5 +9,12 @@
     "content": "./packages/content/index.js",
     "container": "./packages/container/index.js",
     "menu": "./packages/menu/index.js",
-    "form": "./packages//form/index.js"
+    "form": "./packages/form/index.js",
+    "timeline": "./packages/timeline/index.js",
+    "timelineItem": "./packages/timeline-item/index.js",
+    "steps": "./packages/steps/index.js",
+    "step": "./packages/step/index.js",
+    "statistic": "./packages/statistic/index.js",
+    "statisticItem": "./packages/statistic-item/index.js",
+    "divider": "./packages/divider/index.js"
 }

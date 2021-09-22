@@ -15,6 +15,7 @@ import Steps from './steps';
 import Step from './step';
 import Statistic from './statistic';
 import StatisticItem from './statistic-item';
+import Divider from './divider';
 
 import { modal, notice } from './modal';
 
@@ -36,6 +37,7 @@ const components = [
 	Step,
 	Statistic,
 	StatisticItem,
+	Divider,
 ];
 
 function install(Vue) {
@@ -71,6 +73,7 @@ export default {
 	Step,
 	Statistic,
 	StatisticItem,
+	Divider,
 	modal,
 	notice,
 };

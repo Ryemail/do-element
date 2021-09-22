@@ -1,6 +1,6 @@
 {
     "name": "do-element",
-    "version": "1.0.30",
+    "version": "1.0.33",
     "description": "Secondary encapsulation of basic element-ui",
     "author": "1956045780@qq.com",
     "license": "MIT",
@@ -30,8 +30,6 @@
         "build:component": "webpack --mode=production --config build/webpack.component.js",
         "build:theme": "gulp --gulpfile packages/theme-chalk/gulpfile.js",
         "build:utils": " babel src --out-dir lib",
-        "docs:dev": "vuepress dev docs",
-        "docs:build": "vuepress build docs",
         "lint": "./node_modules/.bin/eslint --ext .js,.vue",
         "dist": "rimraf lib && yarn run build:lib && yarn run build:component && yarn run build:theme && yarn run build:utils"
     },
@@ -44,6 +42,7 @@
         "@vue/babel-preset-jsx": "^1.2.4",
         "@vue/eslint-config-prettier": "^6.0.0",
         "babel-loader": "^8.2.2",
+        "copy-webpack-plugin": "^9.0.1",
         "css-loader": "^6.2.0",
         "do-tool": "^0.0.5",
         "element-theme": "^2.0.1",
