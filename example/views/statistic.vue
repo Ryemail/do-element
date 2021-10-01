@@ -1,7 +1,9 @@
 <template>
 	<div class="statistic">
 		<d-statistic align-items="start">
-			<d-statistic-item title="3434" value="4343434.89" />
+			<d-statistic-item title="3434" value="4343434.89">
+				<div>344</div>
+			</d-statistic-item>
 			<d-statistic-item title="3434" value="4343434.32333" :precision="2">
 				<template #suffix>899</template>
 			</d-statistic-item>
