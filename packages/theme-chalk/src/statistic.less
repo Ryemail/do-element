@@ -6,6 +6,7 @@
 	padding: 20px 0;
 	width: 100%;
 	box-sizing: border-box;
+
 	&.d-statistic-top {
 		border-top: 1px solid #e6e6e6;
 	}
@@ -21,22 +22,27 @@
 
 .d-statistic-item {
 	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	&:not(:last-child) {
 		border-right: 1px solid #e6e6e6;
 	}
 	.d-value {
 		font-size: 24px;
-		color: #333333;
 		line-height: 1;
-		height: 36px;
+		color: #333333;
 		display: inline-flex;
-
-		&--inner {
-			padding: 0 4px;
-		}
+		margin-bottom: 10px;
 		font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto,
 			helvetica neue, Arial, noto sans, sans-serif, apple color emoji,
 			segoe ui emoji, segoe ui symbol, noto color emoji;
+	}
+	.d-statistic-prefix {
+		padding-left: 4px;
+	}
+	.d-statistic-suffix {
+		padding-right: 4px;
 	}
 	.d-title {
 		font-size: 14px;

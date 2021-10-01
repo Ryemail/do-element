@@ -12,6 +12,10 @@ export default {
 			type: String,
 			default: 'bottom',
 		},
+		alignItems: {
+			type: String,
+			default: '',
+		},
 	},
 };
 </script>
