@@ -104,6 +104,11 @@ export default {
 					prop: 'date',
 					placeholder: '请选择时间',
 				},
+				{
+					type: 'daterange',
+					prop: 'daterange',
+					placeholder: '请选择时间',
+				},
 			],
 			columns: [
 				{
@@ -136,6 +141,7 @@ export default {
 					type: 'daterange',
 					prop: 'daterange',
 					label: '日期范围',
+					separator: '至',
 					placeholder: '请选择日期',
 				},
 				{

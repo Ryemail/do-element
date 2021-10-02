@@ -137,7 +137,9 @@
 					type="daterange"
 					:clearable="item.clearable || false"
 					v-model="dataForm[item.prop]"
-					:range-separator="dataForm[item.prop] ? item.separator : ''"
+					:range-separator="
+						item.separator | onSeparator(dataForm[item.prop])
+					"
 					:format="item.format"
 					:readonly="item.readonly"
 					:disabled="item.disabled"
@@ -276,6 +278,15 @@ export default {
 		},
 		parentVisible() {
 			return this.parent ? this.parent.$attrs.visible : false;
+		},
+	},
+	filters: {
+		onSeparator(separator, value) {
+			if (value === '') return '';
+
+			if (value.every((val) => val)) return separator;
+
+			return '';
 		},
 	},
 	watch: {
