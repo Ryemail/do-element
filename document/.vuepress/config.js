@@ -95,6 +95,7 @@ module.exports = {
 				{ title: 'Array', path: '/zh/utils/array' },
 				{ title: 'Number', path: '/zh/utils/number' },
 				{ title: 'Date', path: '/zh/utils/date' },
+				{ title: '千分位', path: '/zh/utils/thousandth' },
 			],
 		},
 		repo: 'Ryemail/do-element',

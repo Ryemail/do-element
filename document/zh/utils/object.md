@@ -28,7 +28,7 @@ parseEqual({ name: 'zh' }, { name: 'zh' }); // 输出 true
 
 ### parseQuery
 
-解析 url 转化成 object
+解析 url,将链接参数转化成 object
 
 ```js
 const url = 'https://www.baidu.com/s?name=ruanyao&age=24&sex=男';
