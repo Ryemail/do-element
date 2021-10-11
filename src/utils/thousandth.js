@@ -1,4 +1,9 @@
-export function thousandth(value, groupSeparator, decimalSeparator, precision) {
+export function thousandth(
+	value,
+	groupSeparator = ',',
+	decimalSeparator = '.',
+	precision
+) {
 	const val = String(value);
 	const cells = val.match(/^(-?)(\d*)(\.(\d+))?$/);
 

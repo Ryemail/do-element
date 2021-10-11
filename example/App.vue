@@ -10,31 +10,7 @@
 export default {
 	name: 'App',
 	data() {
-		return {
-			list: [
-				{ label: 'Link 文字链接', name: 'link' },
-				{ label: 'Modal 弹窗提示', name: 'modal' },
-				{ label: 'pageTabs 页面tabs', name: 'pageTabs' },
-				{ label: 'Dialog 对话框', name: 'dialog' },
-				{ label: 'Upload 文件上传', name: 'upload' },
-				{ label: 'Table', name: 'table' },
-				{ label: 'Form', name: 'form' },
-				{ label: 'layout 布局', name: 'layout' },
-				{ label: 'Steps', name: 'steps' },
-				{ label: 'TimeLine', name: 'timeline' },
-			],
-			active: 'link',
-		};
-	},
-	watch: {
-		$route(value) {
-			this.active = value.matched[0].name;
-		},
-	},
-	methods: {
-		onClick(tab) {
-			this.$router.push('/' + tab.name);
-		},
+		return {};
 	},
 };
 </script>

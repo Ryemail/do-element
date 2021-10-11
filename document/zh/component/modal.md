@@ -24,6 +24,7 @@ lang: zh-CN
 		methods: {
 			onModal() {
 				this.$modal({
+					type: 'warning',
 					title: '我是dialog的标题',
 					message: '我是提示的内容',
 				})

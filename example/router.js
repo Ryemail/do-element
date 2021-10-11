@@ -119,11 +119,12 @@ const router = new VueRouter({
 });
 
 router.beforeEach((from, to, next) => {
-	console.log(to.name);
 	const excludeRoutes = ['/'];
-	if (!excludeRoutes.includes(to.path) && to.matched.length === 0) {
-		return next({ name: '404' });
-	}
+
+	console.log(to.matched, excludeRoutes);
+	// if (to.name !== '404' && to.matched.length === 0) {
+	// 	return next({ name: '404' });
+	// }
 
 	next();
 });

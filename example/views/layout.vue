@@ -12,7 +12,10 @@
 				}"
 			/>
 
-			<d-content :title="title" :backs="['layout', 'tabs1']">
+			<d-content
+				:title="title"
+				:show-back="['layout', 'tabs1', 'link'].includes($route.name)"
+			>
 				<router-view class="d-router-view"></router-view>
 			</d-content>
 		</main>
@@ -27,7 +30,7 @@ export default {
 		return {
 			menus: [
 				{ name: 'Link 文字链接', en_name: 'link' },
-				{ name: 'Modal 弹窗提示', en_name: 'modal' },
+				{ name: 'Modal 弹窗提示', en_name: 'modal4' },
 				{ name: 'pageTabs 页面tabs', en_name: 'pageTabs' },
 				{ name: 'Dialog 对话框', en_name: 'dialog' },
 				{ name: 'Upload 文件上传', en_name: 'upload' },

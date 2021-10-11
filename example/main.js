@@ -3,11 +3,10 @@ import App from './App.vue';
 import router from './router';
 
 import ElementUI from 'element-ui';
-// import 'element-ui/lib/theme-chalk/index.css';
-import '../theme/index.css';
-
-import './styles/fonts/iconfont.css';
+import 'element-ui/lib/theme-chalk/index.css';
+// import '../theme/index.css';
 import './styles/reset.less';
+import './styles/fonts/iconfont.css';
 
 import '../packages/theme-chalk/src/index.less';
 

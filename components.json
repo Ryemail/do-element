@@ -16,5 +16,6 @@
     "step": "./packages/step/index.js",
     "statistic": "./packages/statistic/index.js",
     "statisticItem": "./packages/statistic-item/index.js",
-    "divider": "./packages/divider/index.js"
+    "divider": "./packages/divider/index.js",
+    "pageTitle": "./packages/page-title/index.js"
 }

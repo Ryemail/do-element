@@ -51,6 +51,10 @@ module.exports = {
 							title: 'Container 页面布局',
 							path: '/zh/component/container',
 						},
+						{
+							title: 'PageTitle 页面标题',
+							path: '/zh/component/page-title',
+						},
 						{ title: 'Link 文字链接', path: '/zh/component/link' },
 						{ title: 'Form 表单', path: '/zh/component/form' },
 						{ title: 'Table 表格', path: '/zh/component/table' },

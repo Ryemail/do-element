@@ -18,6 +18,7 @@ import StatisticItem from './statistic-item';
 import Divider from './divider';
 
 import { modal, notice } from './modal';
+import PageTitle from './page-title';
 
 const components = [
 	Link,
@@ -38,6 +39,7 @@ const components = [
 	Statistic,
 	StatisticItem,
 	Divider,
+	PageTitle,
 ];
 
 function install(Vue) {
@@ -66,6 +68,7 @@ export default {
 	Header,
 	Footer,
 	Content,
+	PageTitle,
 	Menu,
 	Timeline,
 	TimelineItem,

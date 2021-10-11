@@ -266,7 +266,7 @@ export default {
 		async reload(page) {
 			this.loading = true;
 
-			// page 存在,则重置当到指定页面,负责充值到当前页
+			// page 存在,则重置当到指定页面,负责重置到当前页
 			if (page) {
 				this.onPageChange(page);
 			}
@@ -407,8 +407,6 @@ export default {
 				this.tableArray = data;
 
 				this.$emit('on-drag', dragIndex, dropIndex, data);
-
-				console.log(data);
 			});
 		},
 	},
