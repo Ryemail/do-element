@@ -3,14 +3,7 @@
 		<d-header title="顶顶顶顶顶1" />
 
 		<main class="d-main">
-			<d-menu
-				:default-active="defaultActive"
-				:menus="menus"
-				:keys="{
-					path: 'en_name',
-					title: 'name',
-				}"
-			/>
+			<d-menu :default-active="defaultActive" :menus="menus" />
 
 			<d-content
 				:title="title"
@@ -19,7 +12,6 @@
 				<router-view class="d-router-view"></router-view>
 			</d-content>
 		</main>
-
 		<d-footer />
 	</d-container>
 </template>
@@ -29,16 +21,16 @@ export default {
 	data() {
 		return {
 			menus: [
-				{ name: 'Link 文字链接', en_name: 'link' },
-				{ name: 'Modal 弹窗提示', en_name: 'modal4' },
-				{ name: 'pageTabs 页面tabs', en_name: 'pageTabs' },
-				{ name: 'Dialog 对话框', en_name: 'dialog' },
-				{ name: 'Upload 文件上传', en_name: 'upload' },
-				{ name: 'Table', en_name: 'table' },
-				{ name: 'Form', en_name: 'form' },
-				{ name: 'statistic', en_name: 'statistic' },
-				{ name: 'Steps', en_name: 'steps' },
-				{ name: 'TimeLine', en_name: 'timeline' },
+				{ title: 'Link 文字链接', path: 'link' },
+				{ title: 'Modal 弹窗提示', path: 'modal4' },
+				{ title: 'pageTabs 页面tabs', path: 'pageTabs' },
+				{ title: 'Dialog 对话框', path: 'dialog' },
+				{ title: 'Upload 文件上传', path: 'upload' },
+				{ title: 'Table', path: 'table' },
+				{ title: 'Form', path: 'form' },
+				{ title: 'statistic', path: 'statistic' },
+				{ title: 'Steps', path: 'steps' },
+				{ title: 'TimeLine', path: 'timeline' },
 			],
 			defaultActive: '',
 		};
