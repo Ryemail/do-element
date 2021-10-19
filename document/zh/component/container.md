@@ -114,6 +114,7 @@ d-header、d-content、d-footer 只能在 d-container 中使用，否则样式�
 | logo      | 左上角展示 logo | string | \_     |
 | logo-name | 左上角展示文字  | string | \_     |
 | title     | 标题            | string | \_     |
+| href      | logo 跳转链接   | string | \_     |
 
 ### Content Attributes
 
