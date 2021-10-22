@@ -3,29 +3,18 @@
 		<div class="module">
 			<h3 class="module-title">基本表单</h3>
 
-			<div class="flex">
-				<span class="label">label 宽度</span>
-				<el-input style="width: 300px" v-model="width" />
-			</div>
-
 			<d-form
 				:form="form"
-				:label-width="width"
 				:columns="columns"
 				@event="onEvent"
-			/>
-
-			<br />
-			<br />
-			<br />
-
-			<d-form
-				:form="form"
 				:inline="true"
-				:columns="columns1"
-				@event="onEvent"
+				:label-width="0"
 			/>
 			<d-divider></d-divider>
+
+			<br />
+			<br />
+			<br />
 		</div>
 
 		<div class="module">
@@ -114,13 +103,13 @@ export default {
 				{
 					type: 'input',
 					prop: 'name',
-					label: '姓名',
+					// label: '姓名',
 					placeholder: '请输入姓名',
 				},
 				{
 					type: 'select',
 					prop: 'sex',
-					label: '性别',
+					// label: '性别',
 					placeholder: '请选择性别',
 					lazyLoad(resolve) {
 						setTimeout(() => {
@@ -134,61 +123,59 @@ export default {
 				{
 					type: 'date',
 					prop: 'date',
-					label: '时间',
+					// label: '时间',
 					placeholder: '请选择时间',
 				},
 				{
 					type: 'daterange',
 					prop: 'daterange',
-					label: '日期范围',
+					// label: '日期范围',
 					separator: '至',
 					placeholder: '请选择日期',
 				},
 				{
 					type: 'datetime',
 					prop: 'datetime',
-					label: '日期时间',
+					// label: '日期时间',
 					placeholder: '请选择日期',
 				},
 				{
 					type: 'datetimerange',
 					prop: 'datetimerange',
-					label: '日期时间范围',
+					// label: '日期时间范围',
 					placeholder: '请选择日期时间范围',
 				},
-				{
-					type: 'textarea',
-					prop: 'mark',
-					label: '文本框',
-					placeholder: '请输入内容',
-				},
-				{
-					type: 'switch',
-					prop: 'switch',
-					label: '开关切换',
-					inactive: 1,
-					active: 2,
-				},
-				{
-					type: 'checkbox',
-					prop: 'check',
-					label: '复选框',
-					options: [
-						{ value: '2', label: '复选框1' },
-						{ value: '3', label: '复选框2' },
-						{ value: '4', label: '复选框3' },
-					],
-				},
-				{
-					type: 'radio',
-					prop: 'radio',
-					label: '单选框',
-					options: [
-						{ value: '2', label: '单选框1' },
-						{ value: '3', label: '单选框2' },
-						{ value: '4', label: '单选框3' },
-					],
-				},
+				// {
+				// 	type: 'textarea',
+				// 	prop: 'mark',
+				// 	placeholder: '请输入内容',
+				// },
+				// {
+				// 	type: 'switch',
+				// 	prop: 'switch',
+				// 	inactive: 1,
+				// 	active: 2,
+				// },
+				// {
+				// 	type: 'checkbox',
+				// 	prop: 'check',
+				// 	// label: '复选框',
+				// 	options: [
+				// 		{ value: '2', label: '复选框1' },
+				// 		{ value: '3', label: '复选框2' },
+				// 		{ value: '4', label: '复选框3' },
+				// 	],
+				// },
+				// {
+				// 	type: 'radio',
+				// 	prop: 'radio',
+				// 	// label: '单选框',
+				// 	options: [
+				// 		{ value: '2', label: '单选框1' },
+				// 		{ value: '3', label: '单选框2' },
+				// 		{ value: '4', label: '单选框3' },
+				// 	],
+				// },
 			],
 			columns2: [
 				{
@@ -216,6 +203,9 @@ export default {
 		onDialogEvent(item) {
 			console.log(item);
 		},
+		onMore() {
+			console.log('ddd');
+		},
 	},
 	created() {
 		this.$nextTick(() => {
@@ -229,7 +219,6 @@ export default {
 				],
 			};
 			this.columns1.splice(1, 1, arr);
-			console.log(this.columns1);
 		});
 	},
 };
