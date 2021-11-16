@@ -122,7 +122,7 @@
 -------------------------- */
 /* Descriptions
 -------------------------- */
-/* Skeleton 
+/* Skeleton
 --------------------------*/
 /* Svg
 --------------- */
@@ -260,7 +260,7 @@
 -------------------------- */
 /* Descriptions
 -------------------------- */
-/* Skeleton 
+/* Skeleton
 --------------------------*/
 /* Svg
 --------------- */
@@ -455,7 +455,7 @@
 
 .el-tabs--border-card {
   background: #ffffff;
-  border: 1px solid #dcdfe6;
+  border: 1px solid #cccccc;
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12), 0 0 6px 0 rgba(0, 0, 0, 0.04);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12), 0 0 6px 0 rgba(0, 0, 0, 0.04); }
   .el-tabs--border-card > .el-tabs__content {
@@ -479,8 +479,8 @@
     .el-tabs--border-card > .el-tabs__header .el-tabs__item.is-active {
       color: #61c5c1;
       background-color: #ffffff;
-      border-right-color: #dcdfe6;
-      border-left-color: #dcdfe6; }
+      border-right-color: #cccccc;
+      border-left-color: #cccccc; }
     .el-tabs--border-card > .el-tabs__header .el-tabs__item:not(.is-disabled):hover {
       color: #61c5c1; }
     .el-tabs--border-card > .el-tabs__header .el-tabs__item.is-disabled {
@@ -514,7 +514,7 @@
 
 .el-tabs--bottom.el-tabs--border-card .el-tabs__header.is-bottom {
   border-bottom: 0;
-  border-top: 1px solid #dcdfe6; }
+  border-top: 1px solid #cccccc; }
 
 .el-tabs--bottom.el-tabs--border-card .el-tabs__nav-wrap.is-bottom {
   margin-top: -1px;

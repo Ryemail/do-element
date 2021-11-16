@@ -123,7 +123,7 @@
 -------------------------- */
 /* Descriptions
 -------------------------- */
-/* Skeleton 
+/* Skeleton
 --------------------------*/
 /* Svg
 --------------- */
@@ -261,7 +261,7 @@
 -------------------------- */
 /* Descriptions
 -------------------------- */
-/* Skeleton 
+/* Skeleton
 --------------------------*/
 /* Svg
 --------------- */
@@ -391,7 +391,7 @@
 -------------------------- */
 /* Descriptions
 -------------------------- */
-/* Skeleton 
+/* Skeleton
 --------------------------*/
 /* Svg
 --------------- */
@@ -409,7 +409,7 @@
     white-space: nowrap;
     vertical-align: middle;
     background: #ffffff;
-    border: 1px solid #dcdfe6;
+    border: 1px solid #cccccc;
     font-weight: 500;
     border-left: 0;
     color: #606266;
@@ -435,7 +435,7 @@
       .el-radio-button__inner [class*="el-icon-"] + span {
         margin-left: 5px; }
   .el-radio-button:first-child .el-radio-button__inner {
-    border-left: 1px solid #dcdfe6;
+    border-left: 1px solid #cccccc;
     border-radius: 4px 0 0 4px;
     -webkit-box-shadow: none !important;
     box-shadow: none !important; }

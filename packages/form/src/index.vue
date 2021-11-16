@@ -23,13 +23,8 @@
 				<el-input
 					v-if="item.type === 'input'"
 					v-model="dataForm[item.prop]"
-					:placeholder="item.placeholder"
-					:show-word-limit="item.showWordLimit"
-					:minlength="item.minlength"
-					:clearable="item.clearable"
-					:maxlength="item.maxlength"
-					:disabled="item.disabled"
-					:readonly="item.readonly"
+					v-bind="item.attr"
+					v-on="item.event"
 					@input="onInput(item)"
 				>
 					<!-- 前后插槽 -->
@@ -51,33 +46,25 @@
 				<el-input
 					v-if="item.type === 'textarea'"
 					type="textarea"
-					:show-word-limit="item.showWordLimit"
-					:minlength="item.minlength"
-					:maxlength="item.maxlength"
-					:placeholder="item.placeholder"
-					:disabled="item.disabled"
-					:readonly="item.readonly"
 					v-model="dataForm[item.prop]"
+					v-bind="item.attr"
+					v-on="item.event"
 				/>
 
 				<!-- 开关 -->
 				<el-switch
 					v-if="item.type === 'switch'"
 					v-model="dataForm[item.prop]"
-					:disabled="item.disabled"
-					:width="item.width"
-					:active-value="item.active"
-					:inactive-value="item.inactive"
-					:active-color="item.activeColor"
-					:inactive-color="item.inactiveColor"
+					v-bind="item.attr"
+					v-on="item.event"
 				/>
 
 				<!-- select -->
 				<el-select
 					v-if="item.type === 'select'"
 					v-model="dataForm[item.prop]"
-					:placeholder="item.placeholder"
-					:disabled="item.disabled"
+					v-bind="item.attr"
+					v-on="item.event"
 				>
 					<el-option
 						v-for="(option, index) in item.options"
@@ -91,7 +78,8 @@
 				<el-checkbox-group
 					v-if="item.type === 'checkbox'"
 					v-model="dataForm[item.prop]"
-					:disabled="item.disabled"
+					v-bind="item.attr"
+					v-on="item.event"
 				>
 					<el-checkbox
 						v-for="(option, index) in item.options"
@@ -107,7 +95,8 @@
 				<el-radio-group
 					v-if="item.type === 'radio'"
 					v-model="dataForm[item.prop]"
-					:disabled="item.disabled"
+					v-bind="item.attr"
+					v-on="item.event"
 				>
 					<el-radio
 						v-for="(option, index) in item.options"
@@ -118,79 +107,25 @@
 					</el-radio>
 				</el-radio-group>
 
-				<el-date-picker
-					type="date"
-					:clearable="item.clearable || false"
-					v-model="dataForm[item.prop]"
-					:format="item.format"
-					:readonly="item.readonly"
-					:disabled="item.disabled"
-					:value-format="item.valueFormat"
-					:picker-options="item.pickerOptions"
-					style="width: 100%"
-				/>
-
+				<!-- 时间 -->
 				<el-time-select
 					v-if="item.type === 'time'"
 					v-model="dataForm[item.prop]"
-					v-bind="item.native || {}"
+					:clearable="item.clearable || false"
+					v-bind="item.attr"
+					v-on="item.event"
 				/>
 
+				<!-- 日期时间 -->
 				<el-date-picker
-					v-if="item.type === 'date'"
-					type="date"
-					:clearable="item.clearable || false"
-					:placeholder="item.placeholder"
+					v-if="dateType.includes(item.type)"
+					:type="item.type"
 					v-model="dataForm[item.prop]"
-					:format="item.format"
-					:readonly="item.readonly"
-					:disabled="item.disabled"
-					:value-format="item.valueFormat"
-					:picker-options="item.pickerOptions"
-					style="width: 100%"
-				/>
-
-				<el-date-picker
-					v-if="item.type === 'daterange'"
-					type="daterange"
-					:clearable="item.clearable || false"
-					v-model="dataForm[item.prop]"
-					:range-separator="
-						item.separator | onSeparator(dataForm[item.prop])
-					"
-					:format="item.format"
-					:readonly="item.readonly"
-					:disabled="item.disabled"
-					:value-format="item.valueFormat"
-					:picker-options="item.pickerOptions"
-					:start-placeholder="item.placeholder"
-				/>
-
-				<el-date-picker
-					v-if="item.type === 'datetime'"
-					type="datetime"
-					:clearable="item.clearable || false"
-					:placeholder="item.placeholder"
-					v-model="dataForm[item.prop]"
-					:format="item.format || 'yyyy-MM-dd hh:mm'"
-					:readonly="item.readonly"
-					:disabled="item.disabled"
-					:value-format="item.valueFormat"
-					:picker-options="item.pickerOptions"
-				/>
-
-				<el-date-picker
-					v-if="item.type === 'datetimerange'"
-					type="datetimerange"
-					v-model="dataForm[item.prop]"
-					:clearable="item.clearable || false"
-					:range-separator="dataForm[item.prop] ? item.separator : ''"
-					:format="item.format || 'yyyy-MM-dd hh:mm'"
-					:readonly="item.readonly"
-					:disabled="item.disabled"
-					:value-format="item.valueFormat"
-					:picker-options="item.pickerOptions"
-					:start-placeholder="item.placeholder"
+					:clearable="(item.attr && item.attr.clearable) || false"
+					:range-separator="item | onSeparator(dataForm[item.prop])"
+					:format="onFormat(item)"
+					v-bind="item.attr"
+					v-on="item.event"
 				/>
 
 				<slot
@@ -252,6 +187,7 @@ export default {
 		return {
 			dataColumns: clone(this.columns),
 			isChange: false,
+			dateType: ['datetimerange', 'datetime', 'daterange', 'date'],
 		};
 	},
 	computed: {
@@ -299,10 +235,11 @@ export default {
 		},
 	},
 	filters: {
-		onSeparator(separator, value) {
-			if (value === '') return '';
+		onSeparator(item, value) {
+			if (!value) return '';
 
-			if (value.every((val) => val)) return separator;
+			if (Array.isArray(value) && value.every((val) => val))
+				return (item.attr && item.attr.rangeSeparator) || '-';
 
 			return '';
 		},
@@ -335,6 +272,15 @@ export default {
 		},
 	},
 	methods: {
+		onFormat(item) {
+			if (item.attr && item.attr.format) {
+				return item.attr.format;
+			} else if (['datetimerange', 'datetime'].includes(item.type)) {
+				return 'yyyy-MM-dd hh:mm';
+			} else {
+				return 'yyyy-MM-dd';
+			}
+		},
 		onInput(item) {
 			if (!item.number) return;
 

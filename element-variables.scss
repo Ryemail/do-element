@@ -94,8 +94,8 @@ $--color-text-regular: #606266 !default;
 $--color-text-secondary: #909399 !default;
 /// color|1|Font Color|2
 $--color-text-placeholder: #c0c4cc !default;
-/// color|1|Border Color|3
-$--border-color-base: #dcdfe6 !default;
+/// color|1|Border Color|3 #dcdfe6
+$--border-color-base: #cccccc !default;
 /// color|1|Border Color|3
 $--border-color-light: #e4e7ed !default;
 /// color|1|Border Color|3
@@ -1016,7 +1016,7 @@ $--descriptions-title-font-size: 16px !default;
 $--descriptions-table-border: 1px solid $--border-color-lighter !default;
 $--descriptions-item-bordered-label-background: #fafafa !default;
 
-/* Skeleton 
+/* Skeleton
 --------------------------*/
 $--skeleton-color: #f2f2f2 !default;
 $--skeleton-to-color: #e6e6e6 !default;

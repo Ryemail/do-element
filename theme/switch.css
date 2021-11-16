@@ -122,7 +122,7 @@
 -------------------------- */
 /* Descriptions
 -------------------------- */
-/* Skeleton 
+/* Skeleton
 --------------------------*/
 /* Svg
 --------------- */
@@ -260,7 +260,7 @@
 -------------------------- */
 /* Descriptions
 -------------------------- */
-/* Skeleton 
+/* Skeleton
 --------------------------*/
 /* Svg
 --------------- */
@@ -315,12 +315,12 @@
     position: relative;
     width: 40px;
     height: 20px;
-    border: 1px solid #dcdfe6;
+    border: 1px solid #cccccc;
     outline: none;
     border-radius: 10px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    background: #dcdfe6;
+    background: #cccccc;
     cursor: pointer;
     -webkit-transition: border-color .3s, background-color .3s;
     transition: border-color .3s, background-color .3s;

@@ -122,7 +122,7 @@
 -------------------------- */
 /* Descriptions
 -------------------------- */
-/* Skeleton 
+/* Skeleton
 --------------------------*/
 /* Svg
 --------------- */
@@ -260,7 +260,7 @@
 -------------------------- */
 /* Descriptions
 -------------------------- */
-/* Skeleton 
+/* Skeleton
 --------------------------*/
 /* Svg
 --------------- */
@@ -392,7 +392,7 @@
 -------------------------- */
 /* Descriptions
 -------------------------- */
-/* Skeleton 
+/* Skeleton
 --------------------------*/
 /* Svg
 --------------- */
@@ -530,7 +530,7 @@
 -------------------------- */
 /* Descriptions
 -------------------------- */
-/* Skeleton 
+/* Skeleton
 --------------------------*/
 /* Svg
 --------------- */
@@ -556,7 +556,7 @@
     color: #606266;
     background-color: #ffffff;
     background-image: none;
-    border: 1px solid #dcdfe6;
+    border: 1px solid #cccccc;
     border-radius: 4px;
     -webkit-transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
     transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); }
@@ -647,7 +647,7 @@
     background-color: #ffffff;
     background-image: none;
     border-radius: 4px;
-    border: 1px solid #dcdfe6;
+    border: 1px solid #cccccc;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     color: #606266;
@@ -774,7 +774,7 @@
     vertical-align: middle;
     display: table-cell;
     position: relative;
-    border: 1px solid #dcdfe6;
+    border: 1px solid #cccccc;
     border-radius: 4px;
     padding: 0 20px;
     width: 1px;
@@ -858,11 +858,11 @@
   .el-input-number__increase {
     right: 1px;
     border-radius: 0 4px 4px 0;
-    border-left: 1px solid #dcdfe6; }
+    border-left: 1px solid #cccccc; }
   .el-input-number__decrease {
     left: 1px;
     border-radius: 4px 0 0 4px;
-    border-right: 1px solid #dcdfe6; }
+    border-right: 1px solid #cccccc; }
   .el-input-number.is-disabled .el-input-number__increase, .el-input-number.is-disabled .el-input-number__decrease {
     border-color: #e4e7ed;
     color: #e4e7ed; }
@@ -916,14 +916,14 @@
       transform: scale(0.8); }
   .el-input-number.is-controls-right .el-input-number__increase {
     border-radius: 0 4px 0 0;
-    border-bottom: 1px solid #dcdfe6; }
+    border-bottom: 1px solid #cccccc; }
   .el-input-number.is-controls-right .el-input-number__decrease {
     right: 1px;
     bottom: 1px;
     top: auto;
     left: auto;
     border-right: none;
-    border-left: 1px solid #dcdfe6;
+    border-left: 1px solid #cccccc;
     border-radius: 0 0 4px 0; }
   .el-input-number.is-controls-right[class*=medium] [class*=increase], .el-input-number.is-controls-right[class*=medium] [class*=decrease] {
     line-height: 16px; }

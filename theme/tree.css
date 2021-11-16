@@ -123,7 +123,7 @@
 -------------------------- */
 /* Descriptions
 -------------------------- */
-/* Skeleton 
+/* Skeleton
 --------------------------*/
 /* Svg
 --------------- */
@@ -261,7 +261,7 @@
 -------------------------- */
 /* Descriptions
 -------------------------- */
-/* Skeleton 
+/* Skeleton
 --------------------------*/
 /* Svg
 --------------- */
@@ -391,7 +391,7 @@
 -------------------------- */
 /* Descriptions
 -------------------------- */
-/* Skeleton 
+/* Skeleton
 --------------------------*/
 /* Svg
 --------------- */
@@ -637,7 +637,7 @@
 -------------------------- */
 /* Descriptions
 -------------------------- */
-/* Skeleton 
+/* Skeleton
 --------------------------*/
 /* Svg
 --------------- */
@@ -769,7 +769,7 @@
 -------------------------- */
 /* Descriptions
 -------------------------- */
-/* Skeleton 
+/* Skeleton
 --------------------------*/
 /* Svg
 --------------- */
@@ -907,7 +907,7 @@
 -------------------------- */
 /* Descriptions
 -------------------------- */
-/* Skeleton 
+/* Skeleton
 --------------------------*/
 /* Svg
 --------------- */
@@ -931,7 +931,7 @@
   .el-checkbox.is-bordered {
     padding: 9px 20px 9px 10px;
     border-radius: 4px;
-    border: 1px solid #dcdfe6;
+    border: 1px solid #cccccc;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     line-height: normal;
@@ -989,7 +989,7 @@
     vertical-align: middle; }
     .el-checkbox__input.is-disabled .el-checkbox__inner {
       background-color: #edf2fc;
-      border-color: #dcdfe6;
+      border-color: #cccccc;
       cursor: not-allowed; }
       .el-checkbox__input.is-disabled .el-checkbox__inner::after {
         cursor: not-allowed;
@@ -998,12 +998,12 @@
         cursor: not-allowed; }
     .el-checkbox__input.is-disabled.is-checked .el-checkbox__inner {
       background-color: #f2f6fc;
-      border-color: #dcdfe6; }
+      border-color: #cccccc; }
       .el-checkbox__input.is-disabled.is-checked .el-checkbox__inner::after {
         border-color: #c0c4cc; }
     .el-checkbox__input.is-disabled.is-indeterminate .el-checkbox__inner {
       background-color: #f2f6fc;
-      border-color: #dcdfe6; }
+      border-color: #cccccc; }
       .el-checkbox__input.is-disabled.is-indeterminate .el-checkbox__inner::before {
         background-color: #c0c4cc;
         border-color: #c0c4cc; }
@@ -1041,7 +1041,7 @@
   .el-checkbox__inner {
     display: inline-block;
     position: relative;
-    border: 1px solid #dcdfe6;
+    border: 1px solid #cccccc;
     border-radius: 2px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -1100,7 +1100,7 @@
     vertical-align: middle;
     cursor: pointer;
     background: #ffffff;
-    border: 1px solid #dcdfe6;
+    border: 1px solid #cccccc;
     border-left: 0;
     color: #606266;
     -webkit-appearance: none;
@@ -1151,7 +1151,7 @@
   .el-checkbox-button.is-disabled:first-child .el-checkbox-button__inner {
     border-left-color: #ebeef5; }
   .el-checkbox-button:first-child .el-checkbox-button__inner {
-    border-left: 1px solid #dcdfe6;
+    border-left: 1px solid #cccccc;
     border-radius: 4px 0 0 4px;
     -webkit-box-shadow: none !important;
     box-shadow: none !important; }

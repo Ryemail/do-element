@@ -2,7 +2,7 @@
 	<div class="d-table">
 		<!-- 表格布局 -->
 		<el-table
-			v-if="type === 'table'"
+			v-if="type === 'table' && tableArray.length"
 			v-loading="loading"
 			:data="tableArray"
 			style="width: 100%"
@@ -18,14 +18,8 @@
 				<el-table-column
 					v-if="!columnType.includes(item.type)"
 					:key="key"
-					:type="item.type"
-					:fixed="item.fixed"
-					:align="item.align"
-					:prop="item.prop"
-					:label="item.label"
-					:min-width="item.minWidth"
-					:width="item.width"
 					:show-overflow-tooltip="onTooltip(item)"
+					v-bind="item"
 				>
 					<template slot-scope="{ $index, row, column }">
 						<template v-if="item.type === 'slot'">
@@ -93,10 +87,14 @@
 				</tr>
 			</table>
 		</div>
+
+		<template v-if="tableArray.length <= 0">
+			<img src="./nodata.png" class="d-table--empty" />
+		</template>
 		<!-- 页脚 -->
-		<div class="d-pagination">
+		<div class="d-pagination" v-if="tableTotal || data.length">
 			<el-pagination
-				hide-on-sinde-page
+				:hide-on-single-page="true"
 				@size-change="onPageChange"
 				@current-change="onPageChange"
 				:current-page="tableQuery.page"

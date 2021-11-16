@@ -69,6 +69,7 @@ export default {
 				date: '',
 				daterange: '',
 				datetime: '',
+				time: '',
 				datetimerange: '',
 			},
 			form2: {
@@ -104,13 +105,17 @@ export default {
 					type: 'input',
 					prop: 'name',
 					// label: '姓名',
-					placeholder: '请输入姓名',
+					attr: {
+						placeholder: '请输入姓名',
+					},
 				},
 				{
 					type: 'select',
 					prop: 'sex',
 					// label: '性别',
-					placeholder: '请选择性别',
+					attr: {
+						placeholder: '请选择性别',
+					},
 					lazyLoad(resolve) {
 						setTimeout(() => {
 							resolve([
@@ -123,27 +128,40 @@ export default {
 				{
 					type: 'date',
 					prop: 'date',
-					// label: '时间',
-					placeholder: '请选择时间',
+					attr: {
+						placeholder: '请选择时间',
+					},
+				},
+				{
+					type: 'time',
+					prop: 'time',
+					attr: {
+						placeholder: '请选择时间',
+					},
 				},
 				{
 					type: 'daterange',
 					prop: 'daterange',
-					// label: '日期范围',
 					separator: '至',
-					placeholder: '请选择日期',
+					attr: {
+						startPlaceholder: '请选择日期',
+					},
 				},
 				{
 					type: 'datetime',
 					prop: 'datetime',
 					// label: '日期时间',
-					placeholder: '请选择日期',
+					attr: {
+						placeholder: '请选择日期',
+					},
 				},
 				{
 					type: 'datetimerange',
 					prop: 'datetimerange',
 					// label: '日期时间范围',
-					placeholder: '请选择日期时间范围',
+					attr: {
+						startPlaceholder: '请选择日期时间范围',
+					},
 				},
 				// {
 				// 	type: 'textarea',
