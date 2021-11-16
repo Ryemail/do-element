@@ -119,6 +119,24 @@
 				</el-radio-group>
 
 				<el-date-picker
+					type="date"
+					:clearable="item.clearable || false"
+					v-model="dataForm[item.prop]"
+					:format="item.format"
+					:readonly="item.readonly"
+					:disabled="item.disabled"
+					:value-format="item.valueFormat"
+					:picker-options="item.pickerOptions"
+					style="width: 100%"
+				/>
+
+				<el-time-select
+					v-if="item.type === 'time'"
+					v-model="dataForm[item.prop]"
+					v-bind="item.native || {}"
+				/>
+
+				<el-date-picker
 					v-if="item.type === 'date'"
 					type="date"
 					:clearable="item.clearable || false"

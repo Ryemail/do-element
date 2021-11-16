@@ -12,11 +12,11 @@ import router from './router';
 
 import ElementUI from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css';
+import '../packages/theme-chalk/src/index.less';
+
 import '../theme/index.css';
 import './styles/reset.less';
 import './styles/fonts/iconfont.css';
-
-import '../packages/theme-chalk/src/index.less';
 
 import DoElement from '../packages/index.js';
 
