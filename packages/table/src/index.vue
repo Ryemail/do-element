@@ -19,6 +19,7 @@
 					v-if="!columnType.includes(item.type)"
 					:key="key"
 					:show-overflow-tooltip="onTooltip(item)"
+					:header-align="'left'"
 					v-bind="item"
 				>
 					<template slot-scope="{ $index, row, column }">
@@ -88,9 +89,12 @@
 			</table>
 		</div>
 
-		<template v-if="tableArray.length <= 0">
-			<img src="./nodata.png" class="d-table--empty" />
-		</template>
+		<d-table-empty v-if="tableArray.length <= 0">
+			<template v-if="$scopedSlots.empty">
+				<slot name="empty" />
+			</template>
+		</d-table-empty>
+
 		<!-- 页脚 -->
 		<div class="d-pagination" v-if="tableTotal || data.length">
 			<el-pagination
@@ -110,10 +114,12 @@
 import { getTable } from './ajax';
 import { parseKeys, clone } from '@/utils';
 import { onCreateDrop, on, getTarget } from './drag';
+import DTableEmpty from './empty.vue';
 
 export default {
 	name: 'DTable',
 	components: {
+		DTableEmpty,
 		cellRender: {
 			functional: true,
 			props: {
@@ -383,28 +389,30 @@ export default {
 		},
 
 		onDrag() {
-			if (this.$refs.table === undefined) return;
+			this.$nextTick(() => {
+				if (this.$refs.table === undefined) return;
 
-			const selector = this.$refs.table.$el;
+				const selector = this.$refs.table.$el;
 
-			const tbody = selector.querySelector('.el-table__body tbody');
+				const tbody = selector.querySelector('.el-table__body tbody');
 
-			onCreateDrop(tbody, (dragIndex, dropIndex) => {
-				const data = clone(this.tableArray);
+				onCreateDrop(tbody, (dragIndex, dropIndex) => {
+					const data = clone(this.tableArray);
 
-				const drag = data[dragIndex];
+					const drag = data[dragIndex];
 
-				if (dropIndex < dragIndex) {
-					data.splice(dropIndex, 0, drag);
-					data.splice(dragIndex + 1, 1);
-				} else {
-					data.splice(dropIndex + 1, 0, drag);
-					data.splice(dragIndex, 1);
-				}
+					if (dropIndex < dragIndex) {
+						data.splice(dropIndex, 0, drag);
+						data.splice(dragIndex + 1, 1);
+					} else {
+						data.splice(dropIndex + 1, 0, drag);
+						data.splice(dragIndex, 1);
+					}
 
-				this.tableArray = data;
+					this.tableArray = data;
 
-				this.$emit('on-drag', dragIndex, dropIndex, data);
+					this.$emit('on-drag', dragIndex, dropIndex, data);
+				});
 			});
 		},
 	},

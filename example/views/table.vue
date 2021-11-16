@@ -7,7 +7,8 @@
 				:columns="columns"
 				@cell-edit="onCellEdit"
 				drag
-			></d-table>
+			>
+			</d-table>
 		</div>
 		<div class="module">
 			<h3 class="module-title">动态数据</h3>
@@ -46,7 +47,7 @@
 </template>
 
 <script>
-import { clone } from '../../src/utils';
+// import { clone } from '../../src/utils';
 
 export default {
 	data() {
@@ -112,7 +113,7 @@ export default {
 		};
 	},
 	mounted() {
-		this.table1 = [...clone(this.tableData1), ...clone(this.tableData1)];
+		// this.table1 = [...clone(this.tableData1), ...clone(this.tableData1)];
 	},
 	methods: {
 		onClick() {

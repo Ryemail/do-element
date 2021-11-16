@@ -8,6 +8,7 @@ module.exports = {
 	target: ['web', 'es5'],
 	entry: path.resolve(__dirname, '..', 'packages/index.js'),
 	output: {
+		publicPath: './',
 		path: path.resolve(__dirname, '..', 'lib'),
 		filename: 'index.js',
 		chunkFilename: '[id].js',
