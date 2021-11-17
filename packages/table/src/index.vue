@@ -3,25 +3,60 @@
 		<!-- 表格布局 -->
 		<el-table
 			v-if="type === 'table' && tableArray.length"
-			v-loading="loading"
 			:data="tableArray"
-			style="width: 100%"
+			ref="table"
 			:header-row-class-name="headerRowClassName"
 			:border="border"
 			v-on="$listeners"
 			v-bind="$attrs"
 			@cell-click="onCellClick"
-			ref="table"
 		>
-			<template v-for="(item, key) in columns">
+			<template v-for="(item, key) in copyColumn">
 				<!-- 数据列 -->
 				<el-table-column
 					v-if="!columnType.includes(item.type)"
 					:key="key"
 					:show-overflow-tooltip="onTooltip(item)"
-					:header-align="'left'"
 					v-bind="item"
 				>
+					<template slot="header" slot-scope="{ column }">
+						{{ column.label }}
+
+						<template v-if="key + 1 === copyColumn.length">
+							<el-popover
+								placement="bottom-end"
+								width="100"
+								trigger="hover"
+							>
+								<svg
+									slot="reference"
+									viewBox="0 0 1024 1024"
+									width="18"
+									height="18"
+									class="d-table-choose-icon"
+								>
+									<path
+										fill="#cccccc"
+										d="M589.960533 478.685867l132.437334-139.400534A43.144533 43.144533 0 1 1 785.066667 398.677333L664.439467 525.653333l11.8784-29.764266v442.094933a83.899733 83.899733 0 0 1-83.694934 83.626667 83.285333 83.285333 0 0 1-60.074666-25.531734L391.714133 850.602667a83.5584 83.5584 0 0 1-23.552-58.1632V516.164267L73.9328 232.2432a135.7824 135.7824 0 0 1-29.354667-148.343467A135.9872 135.9872 0 0 1 170.461867 0h676.4544c55.296 0 104.721067 33.041067 125.815466 84.104533a135.5776 135.5776 0 0 1-28.8768 147.524267l-59.8016 62.941867a43.144533 43.144533 0 1 1-62.600533-59.392c23.210667-24.576 23.210667-24.576 60.6208-63.761067a49.629867 49.629867 0 0 0-35.157333-85.060267h-676.522667a49.629867 49.629867 0 0 0-46.011733 30.72 49.152 49.152 0 0 0 10.171733 53.6576l320.170667 308.770134v311.773866l135.304533 140.014934v-452.608z"
+									></path>
+								</svg>
+
+								<el-checkbox-group
+									class="d-table-checkbox-group"
+									@change="onLabelChange"
+									v-model="showColumnChecked"
+								>
+									<el-checkbox
+										v-for="item in copyColumn"
+										:key="item.prop"
+										:label="item.prop"
+									>
+										{{ item.label }}
+									</el-checkbox>
+								</el-checkbox-group>
+							</el-popover>
+						</template>
+					</template>
 					<template slot-scope="{ $index, row, column }">
 						<template v-if="item.type === 'slot'">
 							<slot
@@ -54,14 +89,7 @@
 					</template>
 				</el-table-column>
 				<!-- 索引 复选框列 -->
-				<template v-else>
-					<el-table-column
-						:key="key"
-						:type="item.type"
-						:fixed="item.fixed"
-						:width="item.width"
-					/>
-				</template>
+				<el-table-column v-else :key="key" v-bind="item" />
 			</template>
 		</el-table>
 
@@ -189,6 +217,8 @@ export default {
 			tableArray: [],
 			tableTotal: this.total,
 			loading: false,
+			copyColumn: this.columns,
+			showColumnChecked: this.columns.map((val) => val.prop),
 			columnType: ['selection', 'index', 'expand'],
 			responseData: null,
 			point: {
@@ -255,6 +285,13 @@ export default {
 	},
 	methods: {
 		parseKeys,
+
+		onLabelChange(labels) {
+			console.log(labels);
+			// labels.forEach((value) => {
+			// 	//
+			// });
+		},
 
 		onTooltip(item) {
 			if (item.showOverflowTooltip) return item.showOverflowTooltip;

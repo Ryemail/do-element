@@ -1,6 +1,6 @@
 <template>
 	<d-container>
-		<d-header title="顶顶顶顶顶1" />
+		<d-header title="DOELEMENT" />
 
 		<main class="d-main">
 			<d-menu :default-active="defaultActive" :menus="menus" />
@@ -22,7 +22,7 @@ export default {
 		return {
 			menus: [
 				{ title: 'Link 文字链接', path: 'link' },
-				{ title: 'Modal 弹窗提示', path: 'modal4' },
+				{ title: 'Modal 弹窗提示', path: 'modal' },
 				{ title: 'pageTabs 页面tabs', path: 'pageTabs' },
 				{ title: 'Dialog 对话框', path: 'dialog' },
 				{ title: 'Upload 文件上传', path: 'upload' },
@@ -54,15 +54,3 @@ export default {
 	},
 };
 </script>
-
-<style lang="less" scoped>
-.flex {
-	display: flex;
-	margin-bottom: 10px;
-	.label {
-		width: 125px;
-		padding-right: 15px;
-		text-align: right;
-	}
-}
-</style>

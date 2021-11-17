@@ -20,6 +20,7 @@
 		<div class="module">
 			<h3 class="module-title">插槽使用</h3>
 		</div>
+		#61c5c1 #cccccc #dcdcee
 		<d-form
 			:form="form2"
 			:label-width="width"
@@ -200,7 +201,6 @@ export default {
 					type: 'input',
 					prop: 'name',
 					label: '姓名',
-					placeholder: '请输入姓名',
 					slot: 'default',
 				},
 				{

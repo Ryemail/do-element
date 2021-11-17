@@ -741,10 +741,10 @@
   .el-input--medium {
     font-size: 14px; }
     .el-input--medium .el-input__inner {
-      height: 34px;
-      line-height: 34px; }
+      height: 36px;
+      line-height: 36px; }
     .el-input--medium .el-input__icon {
-      line-height: 34px; }
+      line-height: 36px; }
   .el-input--small {
     font-size: 13px; }
     .el-input--small .el-input__inner {
@@ -3568,7 +3568,7 @@
       border-color: #61c5c1; }
   .el-cascader--medium {
     font-size: 14px;
-    line-height: 34px; }
+    line-height: 36px; }
   .el-cascader--small {
     font-size: 13px;
     line-height: 32px; }
