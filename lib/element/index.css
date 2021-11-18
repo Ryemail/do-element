@@ -2942,10 +2942,10 @@
   .el-input--medium {
     font-size: 14px; }
     .el-input--medium .el-input__inner {
-      height: 36px;
-      line-height: 36px; }
+      height: 34px;
+      line-height: 34px; }
     .el-input--medium .el-input__icon {
-      line-height: 36px; }
+      line-height: 34px; }
   .el-input--small {
     font-size: 13px; }
     .el-input--small .el-input__inner {
@@ -6166,10 +6166,10 @@
   .el-input--medium {
     font-size: 14px; }
     .el-input--medium .el-input__inner {
-      height: 36px;
-      line-height: 36px; }
+      height: 34px;
+      line-height: 34px; }
     .el-input--medium .el-input__icon {
-      line-height: 36px; }
+      line-height: 34px; }
   .el-input--small {
     font-size: 13px; }
     .el-input--small .el-input__inner {
@@ -9721,10 +9721,10 @@
   .el-input--medium {
     font-size: 14px; }
     .el-input--medium .el-input__inner {
-      height: 36px;
-      line-height: 36px; }
+      height: 34px;
+      line-height: 34px; }
     .el-input--medium .el-input__icon {
-      line-height: 36px; }
+      line-height: 34px; }
   .el-input--small {
     font-size: 13px; }
     .el-input--small .el-input__inner {
@@ -10548,10 +10548,10 @@
   .el-input--medium {
     font-size: 14px; }
     .el-input--medium .el-input__inner {
-      height: 36px;
-      line-height: 36px; }
+      height: 34px;
+      line-height: 34px; }
     .el-input--medium .el-input__icon {
-      line-height: 36px; }
+      line-height: 34px; }
   .el-input--small {
     font-size: 13px; }
     .el-input--small .el-input__inner {
@@ -10679,13 +10679,13 @@
       cursor: not-allowed; }
   .el-input-number--medium {
     width: 200px;
-    line-height: 34px; }
+    line-height: 32px; }
     .el-input-number--medium .el-input-number__increase, .el-input-number--medium .el-input-number__decrease {
-      width: 36px;
+      width: 34px;
       font-size: 14px; }
     .el-input-number--medium .el-input__inner {
-      padding-left: 43px;
-      padding-right: 43px; }
+      padding-left: 41px;
+      padding-right: 41px; }
   .el-input-number--small {
     width: 130px;
     line-height: 30px; }
@@ -10734,7 +10734,7 @@
     border-left: 1px solid #cccccc;
     border-radius: 0 0 4px 0; }
   .el-input-number.is-controls-right[class*=medium] [class*=increase], .el-input-number.is-controls-right[class*=medium] [class*=decrease] {
-    line-height: 17px; }
+    line-height: 16px; }
   .el-input-number.is-controls-right[class*=small] [class*=increase], .el-input-number.is-controls-right[class*=small] [class*=decrease] {
     line-height: 15px; }
   .el-input-number.is-controls-right[class*=mini] [class*=increase], .el-input-number.is-controls-right[class*=mini] [class*=decrease] {
@@ -14471,10 +14471,10 @@
   .el-input--medium {
     font-size: 14px; }
     .el-input--medium .el-input__inner {
-      height: 36px;
-      line-height: 36px; }
+      height: 34px;
+      line-height: 34px; }
     .el-input--medium .el-input__icon {
-      line-height: 36px; }
+      line-height: 34px; }
   .el-input--small {
     font-size: 13px; }
     .el-input--small .el-input__inner {
@@ -21992,7 +21992,7 @@
     border-color: #61c5c1; }
 
 .el-range-editor--medium.el-input__inner {
-  height: 36px; }
+  height: 34px; }
 
 .el-range-editor--medium .el-range-separator {
   line-height: 28px;
@@ -23622,10 +23622,10 @@
   .el-input--medium {
     font-size: 14px; }
     .el-input--medium .el-input__inner {
-      height: 36px;
-      line-height: 36px; }
+      height: 34px;
+      line-height: 34px; }
     .el-input--medium .el-input__icon {
-      line-height: 36px; }
+      line-height: 34px; }
   .el-input--small {
     font-size: 13px; }
     .el-input--small .el-input__inner {
@@ -25100,7 +25100,7 @@
     border-color: #61c5c1; }
 
 .el-range-editor--medium.el-input__inner {
-  height: 36px; }
+  height: 34px; }
 
 .el-range-editor--medium .el-range-separator {
   line-height: 28px;
@@ -26999,7 +26999,7 @@
     border-color: #61c5c1; }
 
 .el-range-editor--medium.el-input__inner {
-  height: 36px; }
+  height: 34px; }
 
 .el-range-editor--medium .el-range-separator {
   line-height: 28px;
@@ -28307,10 +28307,10 @@
   .el-input--medium {
     font-size: 14px; }
     .el-input--medium .el-input__inner {
-      height: 36px;
-      line-height: 36px; }
+      height: 34px;
+      line-height: 34px; }
     .el-input--medium .el-input__icon {
-      line-height: 36px; }
+      line-height: 34px; }
   .el-input--small {
     font-size: 13px; }
     .el-input--small .el-input__inner {
@@ -31902,10 +31902,10 @@
   .el-input--medium {
     font-size: 14px; }
     .el-input--medium .el-input__inner {
-      height: 36px;
-      line-height: 36px; }
+      height: 34px;
+      line-height: 34px; }
     .el-input--medium .el-input__icon {
-      line-height: 36px; }
+      line-height: 34px; }
   .el-input--small {
     font-size: 13px; }
     .el-input--small .el-input__inner {
@@ -37056,10 +37056,10 @@
   .el-input--medium {
     font-size: 14px; }
     .el-input--medium .el-input__inner {
-      height: 36px;
-      line-height: 36px; }
+      height: 34px;
+      line-height: 34px; }
     .el-input--medium .el-input__icon {
-      line-height: 36px; }
+      line-height: 34px; }
   .el-input--small {
     font-size: 13px; }
     .el-input--small .el-input__inner {
@@ -37187,13 +37187,13 @@
       cursor: not-allowed; }
   .el-input-number--medium {
     width: 200px;
-    line-height: 34px; }
+    line-height: 32px; }
     .el-input-number--medium .el-input-number__increase, .el-input-number--medium .el-input-number__decrease {
-      width: 36px;
+      width: 34px;
       font-size: 14px; }
     .el-input-number--medium .el-input__inner {
-      padding-left: 43px;
-      padding-right: 43px; }
+      padding-left: 41px;
+      padding-right: 41px; }
   .el-input-number--small {
     width: 130px;
     line-height: 30px; }
@@ -37242,7 +37242,7 @@
     border-left: 1px solid #cccccc;
     border-radius: 0 0 4px 0; }
   .el-input-number.is-controls-right[class*=medium] [class*=increase], .el-input-number.is-controls-right[class*=medium] [class*=decrease] {
-    line-height: 17px; }
+    line-height: 16px; }
   .el-input-number.is-controls-right[class*=small] [class*=increase], .el-input-number.is-controls-right[class*=small] [class*=decrease] {
     line-height: 15px; }
   .el-input-number.is-controls-right[class*=mini] [class*=increase], .el-input-number.is-controls-right[class*=mini] [class*=decrease] {
@@ -37890,7 +37890,7 @@
     -webkit-transform: translateY(50%);
     transform: translateY(50%); }
   .el-slider.is-vertical.el-slider--with-input {
-    padding-bottom: 58px; }
+    padding-bottom: 56px; }
     .el-slider.is-vertical.el-slider--with-input .el-slider__input {
       overflow: visible;
       float: none;
@@ -46404,10 +46404,10 @@
   .el-input--medium {
     font-size: 14px; }
     .el-input--medium .el-input__inner {
-      height: 36px;
-      line-height: 36px; }
+      height: 34px;
+      line-height: 34px; }
     .el-input--medium .el-input__icon {
-      line-height: 36px; }
+      line-height: 34px; }
   .el-input--small {
     font-size: 13px; }
     .el-input--small .el-input__inner {
@@ -49231,7 +49231,7 @@
       border-color: #61c5c1; }
   .el-cascader--medium {
     font-size: 14px;
-    line-height: 36px; }
+    line-height: 34px; }
   .el-cascader--small {
     font-size: 13px;
     line-height: 32px; }
@@ -50656,10 +50656,10 @@
   .el-input--medium {
     font-size: 14px; }
     .el-input--medium .el-input__inner {
-      height: 36px;
-      line-height: 36px; }
+      height: 34px;
+      line-height: 34px; }
     .el-input--medium .el-input__icon {
-      line-height: 36px; }
+      line-height: 34px; }
   .el-input--small {
     font-size: 13px; }
     .el-input--small .el-input__inner {

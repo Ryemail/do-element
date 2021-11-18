@@ -20,7 +20,6 @@
 		<div class="module">
 			<h3 class="module-title">插槽使用</h3>
 		</div>
-		#61c5c1 #cccccc #dcdcee
 		<d-form
 			:form="form2"
 			:label-width="width"
@@ -44,10 +43,12 @@
 			@event="onDialogEvent"
 		>
 			<d-form
+				ref="form"
 				:form="form"
 				:inline="isInline"
 				:label-width="width"
 				:columns="columns"
+				:rules="rules"
 				:buttons="null"
 			/>
 		</d-dialog>
@@ -70,9 +71,14 @@ export default {
 				date: '',
 				daterange: '',
 				datetime: '',
-				time: '',
+				time1: '',
 				datetimerange: '',
 			},
+			rules: {
+				name: [{ required: true }],
+				sex: [{ required: true }],
+			},
+			value1: '',
 			form2: {
 				name: '',
 				address: '',
@@ -105,7 +111,6 @@ export default {
 				{
 					type: 'input',
 					prop: 'name',
-					// label: '姓名',
 					attr: {
 						placeholder: '请输入姓名',
 					},
@@ -135,8 +140,10 @@ export default {
 				},
 				{
 					type: 'time',
-					prop: 'time',
+					prop: 'time1',
 					attr: {
+						isRange: true,
+						startPlaceholder: '请选择时间',
 						placeholder: '请选择时间',
 					},
 				},
@@ -215,11 +222,21 @@ export default {
 	methods: {
 		// 表单事件
 		onEvent(item) {
-			console.log(item);
+			if (item.prop === 'reset') {
+				//
+			}
 		},
 		// 弹窗事件
-		onDialogEvent(item) {
+		async onDialogEvent(item) {
 			console.log(item);
+			if (item.prop === 'cancel') {
+				this.$refs.form.resetFields();
+			}
+			if (item.prop === 'submit') {
+				const via = await this.$refs.form.validate();
+
+				console.log(via);
+			}
 		},
 		onMore() {
 			console.log('ddd');

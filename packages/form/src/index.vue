@@ -2,7 +2,6 @@
 	<el-form
 		v-if="dataForm"
 		:model="dataForm"
-		:rules="rules"
 		:size="size"
 		ref="eform"
 		:class="['d-form']"
@@ -107,24 +106,41 @@
 					</el-radio>
 				</el-radio-group>
 
-				<!-- 时间 -->
+				<!-- 时间 select -->
 				<el-time-select
-					v-if="item.type === 'time'"
+					v-if="item.type === 'timeSelect'"
 					v-model="dataForm[item.prop]"
-					:clearable="item.clearable || false"
-					v-bind="item.attr"
+					v-bind="{ clearable: false, ...item.attr }"
 					v-on="item.event"
 				/>
+
+				<!-- 时间 picker -->
+				<el-time-picker
+					v-if="item.type === 'time'"
+					v-model="dataForm[item.prop]"
+					:range-separator="item | onSeparator(dataForm[item.prop])"
+					v-bind="{
+						clearable: false,
+						valueFormat: 'HH:mm',
+						format: 'HH:mm',
+						...item.attr,
+					}"
+					v-on="item.event"
+				>
+				</el-time-picker>
 
 				<!-- 日期时间 -->
 				<el-date-picker
 					v-if="dateType.includes(item.type)"
 					:type="item.type"
 					v-model="dataForm[item.prop]"
-					:clearable="(item.attr && item.attr.clearable) || false"
 					:range-separator="item | onSeparator(dataForm[item.prop])"
 					:format="onFormat(item)"
-					v-bind="item.attr"
+					v-bind="{
+						clearable: false,
+						valueFormat: onFormat(item),
+						...item.attr,
+					}"
 					v-on="item.event"
 				/>
 
@@ -169,8 +185,6 @@ export default {
 
 		columns: { type: Array, default: () => [] },
 
-		rules: { type: Object, default: () => ({}) },
-
 		size: { type: String, default: 'medium' },
 
 		labelWidth: { type: Number, default: 140 },
@@ -187,20 +201,13 @@ export default {
 		return {
 			dataColumns: clone(this.columns),
 			isChange: false,
+			dataForm: this.form,
 			dateType: ['datetimerange', 'datetime', 'daterange', 'date'],
 		};
 	},
 	computed: {
 		eform() {
 			return this.$refs.eform;
-		},
-		dataForm: {
-			get() {
-				return this.form;
-			},
-			set(value) {
-				this.$emit('update:form', value);
-			},
 		},
 		parent() {
 			let parent = this.$parent;
@@ -245,10 +252,19 @@ export default {
 		},
 	},
 	watch: {
+		form: {
+			handler(value) {
+				this.dataForm = value;
+			},
+			deep: true,
+		},
 		dataForm: {
 			handler(value, oldValue) {
 				this.isChange = parseEqual(value, oldValue || {});
+
 				this.onValidate();
+
+				this.$emit('update:form', value);
 			},
 			deep: true,
 			immediate: true,
@@ -322,7 +338,10 @@ export default {
 
 			if (item.prop === 'reset') {
 				this.$emit('event', item);
-				return this.resetFields();
+
+				this.resetFields();
+
+				return;
 			}
 
 			this.$emit('event', item);

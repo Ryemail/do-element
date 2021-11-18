@@ -1406,10 +1406,10 @@
   .el-input--medium {
     font-size: 14px; }
     .el-input--medium .el-input__inner {
-      height: 36px;
-      line-height: 36px; }
+      height: 34px;
+      line-height: 34px; }
     .el-input--medium .el-input__icon {
-      line-height: 36px; }
+      line-height: 34px; }
   .el-input--small {
     font-size: 13px; }
     .el-input--small .el-input__inner {

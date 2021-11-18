@@ -137,15 +137,13 @@ export default {
 				},
 			],
 			columns: [
-				{ prop: 'name', label: '姓名', edit: true, show: true },
-				{ prop: 'address', label: '地址', show: true },
-				{ prop: 'date', label: '时间', show: true },
+				{ prop: 'name', label: '姓名', edit: true },
+				{ prop: 'address', label: '地址' },
+				{ prop: 'date', label: '时间' },
 				{
 					prop: 'zip',
 					label: '邮编',
-					width: 200,
 					fixed: 'right',
-					show: true,
 				},
 			],
 			columns2: [
