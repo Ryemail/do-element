@@ -3,6 +3,7 @@
 		<!-- 表格布局 -->
 
 		<el-popover
+			v-if="tableArray.length"
 			placement="bottom-end"
 			class="dd"
 			width="100"
