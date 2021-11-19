@@ -126,6 +126,7 @@
 							...timeDefaultFormat,
 							...item.attr,
 						}"
+						:ref="item.prop"
 						v-on="item.event"
 					/>
 					<div
@@ -148,7 +149,6 @@
 					v-model="dataForm[item.prop]"
 					:range-separator="item | onSeparator(dataForm[item.prop])"
 					:format="onFormat(item)"
-					:ref="item.prop"
 					v-bind="{
 						clearable: false,
 						valueFormat: onFormat(item),
@@ -344,8 +344,6 @@ export default {
 	},
 	methods: {
 		onPicker(name) {
-			console.log();
-			// this.$refs[name].focus();
 			this.$refs[name][0].focus();
 		},
 		onFormat(item) {
