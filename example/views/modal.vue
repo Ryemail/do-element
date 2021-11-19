@@ -9,7 +9,7 @@
 		<div class="module">
 			<h3 class="module-title">通知 - 传递code</h3>
 			<el-button @click="onNoticeCode(200)">200</el-button>
-			<el-button @click="onNoticeCode(200)">400</el-button>
+			<el-button @click="onNoticeCode(400)">400</el-button>
 
 			<div class="module-tips">
 				<h3 class="module-tips-title">温馨提示</h3>
@@ -27,7 +27,8 @@
 		<div class="module">
 			<h3 class="module-title">弹窗确定</h3>
 			<el-button @click="onModal('warning')">警告</el-button>
-			<el-button @click="onModal('error')">危险</el-button>
+			<el-button @click="onModal('success')">成功</el-button>
+			<el-button @click="onModal('question')">询问</el-button>
 		</div>
 	</div>
 </template>

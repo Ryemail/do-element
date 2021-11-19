@@ -5,31 +5,12 @@
 			<d-table
 				:data="table1"
 				:columns="columns"
+				:page.sync="page"
+				:total="50"
 				@cell-edit="onCellEdit"
-				drag
 			>
 			</d-table>
 		</div>
-		<!-- <div class="module" style="margin: 20px 0">
-			<el-table :data="tableData" border>
-				<el-table-column fixed prop="date" label="日期" width="100">
-				</el-table-column>
-				<el-table-column prop="name" label="姓名"> </el-table-column>
-				<el-table-column prop="province" label="省份">
-				</el-table-column>
-				<el-table-column prop="city" label="市区" width="120">
-				</el-table-column>
-				<el-table-column prop="address" label="地址" width="300">
-				</el-table-column>
-				<el-table-column prop="zip" label="邮编"> </el-table-column>
-				<el-table-column fixed="right" label="操作" min-width="120">
-					<template>
-						<el-button type="text" size="small">查看</el-button>
-						<el-button type="text" size="small">编辑</el-button>
-					</template>
-				</el-table-column>
-			</el-table>
-		</div> -->
 
 		<div class="module">
 			<h3 class="module-title">动态数据</h3>
@@ -37,7 +18,6 @@
 				url="/api/tableList"
 				:keys="{ data: 'data.data', total: 'data.total' }"
 				:columns="columns2"
-				:page.sync="page"
 				ref="table"
 				drag
 			>
@@ -68,12 +48,13 @@
 </template>
 
 <script>
-import { clone } from '../../src/utils';
+// import { clone } from '../../src/utils';
+import axios from 'axios';
 
 export default {
 	data() {
 		return {
-			page: 2,
+			page: 1,
 			table1: [],
 			tableData: [
 				{
@@ -140,11 +121,7 @@ export default {
 				{ prop: 'name', label: '姓名', edit: true },
 				{ prop: 'address', label: '地址' },
 				{ prop: 'date', label: '时间' },
-				{
-					prop: 'zip',
-					label: '邮编',
-					fixed: 'right',
-				},
+				{ prop: 'zip', label: '邮编', fixed: 'right' },
 			],
 			columns2: [
 				{ prop: 'name', label: '姓名', edit: true },
@@ -174,9 +151,25 @@ export default {
 		};
 	},
 	mounted() {
-		this.table1 = [...clone(this.tableData1), ...clone(this.tableData1)];
+		// this.table1 = [...clone(this.tableData1), ...clone(this.tableData1)];
+	},
+	created() {
+		this.getTable();
+	},
+	watch: {
+		page: {
+			handler() {
+				this.getTable();
+			},
+		},
 	},
 	methods: {
+		async getTable() {
+			const { data } = await axios.get('/api/tableList');
+
+			console.log(data);
+			this.table1 = Object.values(data.data.data);
+		},
 		onClick() {
 			alert('点击事件');
 		},
@@ -185,9 +178,6 @@ export default {
 		},
 		onCellEdit({ rowIndex, columnIndex, row }) {
 			console.log(rowIndex, columnIndex, row);
-		},
-		onBaidu() {
-			location.replace('https://fanyi.baidu.com/#en/zh/');
 		},
 	},
 };

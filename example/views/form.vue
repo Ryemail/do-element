@@ -142,7 +142,7 @@ export default {
 					type: 'time',
 					prop: 'time1',
 					attr: {
-						isRange: true,
+						// isRange: true,
 						clearable: true,
 						startPlaceholder: '请选择时间',
 						placeholder: '请选择时间',

@@ -17,12 +17,16 @@ const noticeOptions = {
 };
 
 export function modal(options) {
-	const icon = 'd-icon-';
-
 	options = { ...defaultOptions, ...options };
 
-	if (!options.iconClass) {
-		options.iconClass = icon + options.type;
+	const icons = {
+		success: 'el-icon-success',
+		warning: 'el-icon-warning',
+		question: 'el-icon-question',
+	};
+
+	if (options.type) {
+		options.iconClass = icons[options.type];
 	}
 
 	const { message, title } = options;

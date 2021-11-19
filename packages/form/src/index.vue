@@ -246,7 +246,7 @@ export default {
 		return {
 			dataColumns: clone(this.columns),
 			isChange: false,
-			dataForm: clone(this.form),
+			dataForm: this.form,
 			dateType: ['datetime', 'date'],
 			dateRangeType: ['datetimerange', 'daterange'],
 			timeDefaultFormat: {

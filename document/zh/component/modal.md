@@ -5,26 +5,23 @@ lang: zh-CN
 
 ## Modal
 
-:::danger
-使用 modal 时请确保引入的 iconfont 库中有名称为 warning、error 的 icon
-
-:::
-
 ::: demo
 
 ```html
 <template>
 	<div>
-		<el-button @click="onModal">modal</el-button>
+		<el-button @click="onModal('success')">成功</el-button>
+		<el-button @click="onModal('warning')">警告</el-button>
+		<el-button @click="onModal('question')">询问</el-button>
 	</div>
 </template>
 
 <script>
 	export default {
 		methods: {
-			onModal() {
+			onModal(type) {
 				this.$modal({
-					type: 'warning',
+					type,
 					title: '我是dialog的标题',
 					message: '我是提示的内容',
 				})
@@ -91,12 +88,13 @@ lang: zh-CN
 
 ### Modal Options
 
-| 参数      | 说明                                                 | 类型              | 可选值 | 默认值 |
-| :-------- | :--------------------------------------------------- | :---------------- | :----- | :----- |
-| iconClass | 图标名称 ，若不在图标库内则忽略                      | string            | \_     | \_     |
-| title     | Modal 标题                                           | string            | \_     | \_     |
-| message   | Modal 消息正文内容                                   | string / string[] | \_     | \_     |
-| 其他参数  | 参数同 element-ui MessageBox.confirm 方法 的 options | object            | \_     | \_     |
+| 参数      | 说明                                                 | 类型              | 可选值                              | 默认值 |
+| :-------- | :--------------------------------------------------- | :---------------- | :---------------------------------- | :----- |
+| type      | 弹窗类型                                             | string            | success/warning/question/info/error | \_     |
+| iconClass | 图标名称 ，若不在图标库内则忽略                      | string            | \_                                  | \_     |
+| title     | Modal 标题                                           | string            | \_                                  | \_     |
+| message   | Modal 消息正文内容                                   | string / string[] | \_                                  | \_     |
+| 其他参数  | 参数同 element-ui MessageBox.confirm 方法 的 options | object            | \_                                  | \_     |
 
 ### Notice Options
 
