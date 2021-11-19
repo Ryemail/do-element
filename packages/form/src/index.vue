@@ -115,19 +115,31 @@
 				/>
 
 				<!-- 时间 picker -->
-				<el-time-picker
-					v-if="item.type === 'time'"
-					v-model="dataForm[item.prop]"
-					:range-separator="item | onSeparator(dataForm[item.prop])"
-					v-bind="{
-						clearable: false,
-						valueFormat: 'HH:mm',
-						format: 'HH:mm',
-						...item.attr,
-					}"
-					v-on="item.event"
-				>
-				</el-time-picker>
+				<div class="d-time-picker" v-if="item.type === 'time'">
+					<el-time-picker
+						v-model="dataForm[item.prop]"
+						:range-separator="
+							item | onSeparator(dataForm[item.prop])
+						"
+						v-bind="{
+							clearable: false,
+							...timeDefaultFormat,
+							...item.attr,
+						}"
+						v-on="item.event"
+					/>
+					<div
+						v-if="
+							item.attr &&
+							item.attr.isRange &&
+							dataForm[item.prop].length
+						"
+						class="d-time-picker--value"
+						@click="onPicker(item.prop)"
+					>
+						{{ dataForm[item.prop] | onPickerValue(item) }}
+					</div>
+				</div>
 
 				<!-- 日期时间 -->
 				<el-date-picker
@@ -136,6 +148,7 @@
 					v-model="dataForm[item.prop]"
 					:range-separator="item | onSeparator(dataForm[item.prop])"
 					:format="onFormat(item)"
+					:ref="item.prop"
 					v-bind="{
 						clearable: false,
 						valueFormat: onFormat(item),
@@ -143,6 +156,38 @@
 					}"
 					v-on="item.event"
 				/>
+
+				<!-- 日期时间范围 -->
+				<div
+					class="d-time-picker"
+					v-if="dateRangeType.includes(item.type)"
+				>
+					<el-date-picker
+						:type="item.type"
+						v-model="dataForm[item.prop]"
+						:range-separator="
+							item | onSeparator(dataForm[item.prop])
+						"
+						:format="onFormat(item)"
+						v-bind="{
+							clearable: false,
+							valueFormat: onFormat(item),
+							...item.attr,
+						}"
+						:ref="item.prop"
+						v-on="item.event"
+					/>
+					<div
+						@click="onPicker(item.prop)"
+						class="d-time-picker--value"
+						v-if="
+							Array.isArray(dataForm[item.prop]) &&
+							dataForm[item.prop].length
+						"
+					>
+						{{ dataForm[item.prop] | onPickerValue(item) }}
+					</div>
+				</div>
 
 				<slot
 					v-if="item.type === 'slot'"
@@ -201,8 +246,13 @@ export default {
 		return {
 			dataColumns: clone(this.columns),
 			isChange: false,
-			dataForm: this.form,
-			dateType: ['datetimerange', 'datetime', 'daterange', 'date'],
+			dataForm: clone(this.form),
+			dateType: ['datetime', 'date'],
+			dateRangeType: ['datetimerange', 'daterange'],
+			timeDefaultFormat: {
+				valueFormat: 'HH:mm',
+				format: 'HH:mm',
+			},
 		};
 	},
 	computed: {
@@ -250,6 +300,11 @@ export default {
 
 			return '';
 		},
+		onPickerValue(value, item) {
+			const separator = (item.attr && item.attr.rangeSeparator) || ' - ';
+
+			return value[0] + separator + value[1];
+		},
 	},
 	watch: {
 		form: {
@@ -288,6 +343,11 @@ export default {
 		},
 	},
 	methods: {
+		onPicker(name) {
+			console.log();
+			// this.$refs[name].focus();
+			this.$refs[name][0].focus();
+		},
 		onFormat(item) {
 			if (item.attr && item.attr.format) {
 				return item.attr.format;
@@ -339,6 +399,13 @@ export default {
 			if (item.prop === 'reset') {
 				this.$emit('event', item);
 
+				// 解决重置时间空数组[''] 报错问题
+				this.columns.forEach((val) => {
+					const types = ['datetimerange', 'daterange', 'time'];
+					if (types.includes(val.type)) {
+						this.dataForm[val.prop] = '';
+					}
+				});
 				this.resetFields();
 
 				return;

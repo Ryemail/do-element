@@ -487,4 +487,6 @@ lang: zh-CN
 
 ### Form Event
 
-同[element-ui 的 Form 组件](https://element.eleme.cn/#/zh-CN/component/form#form-attributes)属性
+| 事件名称 | 说明                   | 回调参数         |
+| :------- | :--------------------- | :--------------- |
+| validate | 任一表单项被校验后触发 | 返回一个 Promise |

@@ -58,21 +58,6 @@
 		&.el-range-editor {
 			width: 370px;
 		}
-		&--daterange {
-			.el-range-input {
-				width: 74px;
-			}
-		}
-		&--datetimerange {
-			.el-range-input {
-				width: 110px;
-			}
-		}
-		&--timerange {
-			.el-range-input {
-				width: 120px;
-			}
-		}
 	}
 	.d-form-footer .el-button {
 		width: 55px;
@@ -85,4 +70,19 @@
 }
 .el-form--inline.d-form .flex-1 {
 	flex: 1;
+}
+
+.d-time-picker {
+	position: relative;
+
+	&--value {
+		position: absolute;
+		top: 1px;
+		right: 30px;
+		bottom: 1px;
+		left: 10px;
+		z-index: 1;
+		line-height: 32px;
+		background: #fff;
+	}
 }

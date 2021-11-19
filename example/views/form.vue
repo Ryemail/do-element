@@ -143,6 +143,7 @@ export default {
 					prop: 'time1',
 					attr: {
 						isRange: true,
+						clearable: true,
 						startPlaceholder: '请选择时间',
 						placeholder: '请选择时间',
 					},
@@ -166,8 +167,10 @@ export default {
 				{
 					type: 'datetimerange',
 					prop: 'datetimerange',
+
 					// label: '日期时间范围',
 					attr: {
+						clearable: true,
 						startPlaceholder: '请选择日期时间范围',
 					},
 				},
@@ -222,20 +225,21 @@ export default {
 	methods: {
 		// 表单事件
 		onEvent(item) {
+			console.log(this.form);
 			if (item.prop === 'reset') {
 				//
 			}
 		},
 		// 弹窗事件
-		async onDialogEvent(item) {
+		onDialogEvent(item) {
 			console.log(item);
 			if (item.prop === 'cancel') {
 				this.$refs.form.resetFields();
 			}
 			if (item.prop === 'submit') {
-				const via = await this.$refs.form.validate();
-
-				console.log(via);
+				this.$refs.form.validate().then((val) => {
+					console.log(val);
+				});
 			}
 		},
 		onMore() {
