@@ -471,19 +471,20 @@ lang: zh-CN
 
 ### Columns Key
 
-| 参数     | 说明                                                                      | 类型                    | 可选值                                                                                                         | 默认值 |
-| :------- | :------------------------------------------------------------------------ | :---------------------- | :------------------------------------------------------------------------------------------------------------- | :----- | --- |
-| type     | 表单组件类型                                                              | string                  | `datetimerange, datetime, daterange, date, timeSelect, time, input, select, checkbox, radio, textarea, switch` |        | \_  |
-| prop     | form 数据 的 key (form[key])                                              | string                  | \_                                                                                                             | \_     |
-| label    | 标签                                                                      | string                  | \_                                                                                                             | false  |
-| options  | 列表数据 ，仅在 type=`select` \| `checkbox` \| `radio`有效                | array                   | \_                                                                                                             | \_     |
-| lazyLoad | 动态加载 options 的方法 ，仅在 type=`select` \| `checkbox` \| `radio`有效 | Function(relsove,param) | \_                                                                                                             | \_     |
-| prefix   | 输入框头部内容插槽名称，仅在 type=`input`有效                             | string                  | \_                                                                                                             | \_     |
-| suffix   | 输入框尾部内容插槽名称，仅在 type=`input`有效                             | string                  | \_                                                                                                             | \_     |
-| append   | 输入框前置内容插槽名称，仅在 type=`input`有效                             | string                  | \_                                                                                                             | false  |
-| prepend  | 输入框后置内容插槽名称，仅在 type=`input`有效                             | string                  | \_                                                                                                             | \_     |
-| attr     | 继承 Element-ui 表单组件属性                                              | obejct                  | \_                                                                                                             | \_     |
-| event    | 继承 Element-ui 表单组件事件                                              | obejct                  | \_                                                                                                             | \_     |
+| 参数     | 说明                                                                                                      | 类型                    | 可选值                                                                                                         | 默认值 |
+| :------- | :-------------------------------------------------------------------------------------------------------- | :---------------------- | :------------------------------------------------------------------------------------------------------------- | :----- | --- |
+| type     | 表单组件类型                                                                                              | string                  | `datetimerange, datetime, daterange, date, timeSelect, time, input, select, checkbox, radio, textarea, switch` |        | \_  |
+| prop     | form 数据 的 key (form[key])                                                                              | string                  | \_                                                                                                             | \_     |
+| label    | 标签                                                                                                      | string                  | \_                                                                                                             | false  |
+| options  | 列表数据 ，仅在 type=`select` \| `checkbox` \| `radio`有效                                                | array                   | \_                                                                                                             | \_     |
+| lazyLoad | 动态加载 options 的方法 ，仅在 type=`select` \| `checkbox` \| `radio`有效                                 | Function(relsove,param) | \_                                                                                                             | \_     |
+| prefix   | 输入框头部内容插槽名称，仅在 type=`input`有效                                                             | string                  | \_                                                                                                             | \_     |
+| suffix   | 输入框尾部内容插槽名称，仅在 type=`input`有效                                                             | string                  | \_                                                                                                             | \_     |
+| append   | 输入框前置内容插槽名称，仅在 type=`input`有效                                                             | string                  | \_                                                                                                             | false  |
+| prepend  | 输入框后置内容插槽名称，仅在 type=`input`有效                                                             | string                  | \_                                                                                                             | \_     |
+| attr     | 继承 Element-ui 表单组件属性                                                                              | obejct                  | \_                                                                                                             | \_     |
+| event    | 继承 Element-ui 表单组件事件                                                                              | obejct                  | \_                                                                                                             | \_     |
+| formAttr | 继承 Element-ui [FormItem](https://element.eleme.cn/#/zh-CN/component/form#form-item-attributes) 组件属性 | obejct                  | \_                                                                                                             | \_     |
 
 ### Form Event
 
