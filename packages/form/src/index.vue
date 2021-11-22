@@ -13,9 +13,10 @@
 		<div :class="['flex-1']">
 			<el-form-item
 				v-for="(item, key) in dataColumns"
+				:key="key"
 				:label="item.label"
 				:prop="item.prop"
-				:key="key"
+				v-bind="item.formAttr"
 			>
 				<!-- input -->
 				<el-input
