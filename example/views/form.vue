@@ -75,8 +75,8 @@ export default {
 				datetimerange: '',
 			},
 			rules: {
-				name: [{ required: true }],
-				sex: [{ required: true }],
+				name: [{ required: true, message: '请输入姓名' }],
+				sex: [{ required: true, message: '请选择性别' }],
 			},
 			value1: '',
 			form2: {

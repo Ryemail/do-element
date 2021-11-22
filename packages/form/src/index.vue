@@ -15,7 +15,6 @@
 				v-for="(item, key) in dataColumns"
 				:label="item.label"
 				:prop="item.prop"
-				:show-message="!!item.showMessage"
 				:key="key"
 			>
 				<!-- input -->

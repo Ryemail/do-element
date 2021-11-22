@@ -62,6 +62,13 @@ body .el-table th.gutter {
 	&::after {
 		content: '';
 	}
+	&:hover {
+		&::before,
+		&::after,
+		.d-table-more--inner {
+			background-color: #61c5c1;
+		}
+	}
 }
 .d-table-popover {
 	padding: 10px;
