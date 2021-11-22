@@ -1,43 +1,14 @@
 <template>
-	<div class="d-table">
+	<div class="d-table" v-if="tableArray.length">
+		<!-- 自定义显示列 -->
+		<d-show-column
+			v-if="showColumnFilter && type === 'table'"
+			:labels="labels"
+			v-model="showColumnChecked"
+		/>
 		<!-- 表格布局 -->
-
-		<el-popover
-			v-if="tableArray.length"
-			placement="bottom-end"
-			class="dd"
-			width="100"
-			trigger="hover"
-		>
-			<svg
-				slot="reference"
-				viewBox="0 0 1024 1024"
-				width="16"
-				height="16"
-				class="d-table-choose-icon"
-			>
-				<path
-					d="M3.42898915 64.07163449H136.26026667v126.46991644H3.42898915v-126.46991644zM3.42898915 443.48720925H136.26026667v126.46991644H3.42898915v-126.46991644zM3.42898915 822.89695858H136.26026667v126.47574187H3.42898915v-126.47574187zM256.36882205 64.07163449H1015.19997155v126.46991644H256.36882205v-126.46991644zM256.36882205 443.48720925H1015.19997155v126.46991644H256.36882205v-126.46991644zM256.36882205 822.89695858H1015.19997155v126.47574187H256.36882205v-126.47574187z"
-					fill="#000000"
-				></path>
-			</svg>
-
-			<el-checkbox-group
-				class="d-table-checkbox-group"
-				v-model="showColumnChecked"
-			>
-				<el-checkbox
-					v-for="item in labels"
-					:key="item.prop"
-					:label="item.prop"
-				>
-					{{ item.label }}
-				</el-checkbox>
-			</el-checkbox-group>
-		</el-popover>
-
 		<el-table
-			v-if="type === 'table' && tableArray.length"
+			v-if="type === 'table'"
 			:data="tableArray"
 			ref="table"
 			:header-row-class-name="headerRowClassName"
@@ -45,6 +16,7 @@
 			v-on="$listeners"
 			v-bind="$attrs"
 			@cell-click="onCellClick"
+			@row-click="onRowClick"
 		>
 			<template v-for="(item, key) in filterColumns">
 				<!-- 数据列 -->
@@ -53,6 +25,9 @@
 					:key="key"
 					:show-overflow-tooltip="onTooltip(item)"
 					v-bind="item"
+					:class-name="
+						item.type === 'operate' ? 'd-table-operate-column' : ''
+					"
 				>
 					<template slot-scope="{ $index, row, column }">
 						<template v-if="item.type === 'slot'">
@@ -61,6 +36,19 @@
 								:index="$index"
 								:row="row"
 							/>
+						</template>
+						<template v-else-if="item.type === 'operate'">
+							<cell-operate-render
+								:index="$index"
+								:row="row"
+								:moreCount="moreCount"
+							>
+								<slot
+									:name="item.prop"
+									:index="$index"
+									:row="row"
+								/>
+							</cell-operate-render>
 						</template>
 						<template v-else>
 							<cell-render
@@ -99,10 +87,6 @@
 						v-for="(value, index) in structure(item[0], item[1])"
 						:key="index"
 					>
-						<div
-							v-if="value && selection"
-							class="d-td-selection"
-						></div>
 						<slot
 							v-if="value"
 							:data="value"
@@ -140,11 +124,13 @@ import { getTable } from './ajax';
 import { parseKeys, clone } from '@/utils';
 import { onCreateDrop, on, getTarget } from './drag';
 import DTableEmpty from './empty.vue';
+import DShowColumn from './show-column.vue';
 
 export default {
 	name: 'DTable',
 	components: {
 		DTableEmpty,
+		DShowColumn,
 		cellRender: {
 			functional: true,
 			props: {
@@ -155,6 +141,56 @@ export default {
 			render(h, ctx) {
 				const { index, row, render } = ctx.props;
 				return render(h, { index, row });
+			},
+		},
+		cellOperateRender: {
+			functional: true,
+			props: {
+				index: Number,
+				row: Object,
+				moreCount: Number,
+			},
+			render(h, ctx) {
+				const { moreCount } = ctx.props;
+
+				const children = ctx.children.filter((el) => el.tag);
+
+				let moreChildren = ctx.children.slice(0);
+
+				if (children.length > moreCount) {
+					//
+					moreChildren = [
+						...children.slice(0, moreCount),
+						h(
+							'el-popover',
+							{
+								props: {
+									width: 100,
+									trigger: 'hover',
+									visibleArrow: false,
+									popperClass: 'd-table-popover',
+								},
+							},
+							[
+								h(
+									'div',
+									{
+										class: 'd-table-more',
+										slot: 'reference',
+									},
+									[
+										h('div', {
+											class: 'd-table-more--inner',
+										}),
+									]
+								),
+								ctx.children,
+							]
+						),
+					];
+				}
+
+				return h('div', { class: 'd-more-wrap' }, [...moreChildren]);
 			},
 		},
 	},
@@ -206,6 +242,16 @@ export default {
 		layout: {
 			type: String,
 			default: 'total, prev, pager, next, jumper',
+		},
+
+		showColumnFilter: {
+			type: Boolean,
+			default: true,
+		},
+
+		moreCount: {
+			type: Number,
+			default: 2,
 		},
 	},
 	data() {
@@ -282,20 +328,27 @@ export default {
 			immediate: true,
 			deep: true,
 		},
+		tableArray(value) {
+			if (value.length) {
+				this.$nextTick(() => {
+					this.drag && this.onDrag();
+				});
+			}
+		},
 	},
 	created() {
 		if (!this.queryChangeRun && this.url) {
 			this.reload();
 		}
 	},
-	mounted() {
-		this.drag && this.onDrag();
-	},
+
 	methods: {
 		parseKeys,
 
 		onTooltip(item) {
-			if (item.showOverflowTooltip) return item.showOverflowTooltip;
+			if (item.type === 'operate') return false;
+
+			if ('showOverflowTooltip' in item) return item.showOverflowTooltip;
 
 			return true;
 		},
@@ -422,6 +475,12 @@ export default {
 					});
 				}
 			});
+		},
+
+		onRowClick(row, column, cell, event) {
+			this.$emit('row-click', row, column, cell, event);
+
+			this.drag && this.onDrag();
 		},
 
 		onDrag() {

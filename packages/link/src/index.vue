@@ -1,14 +1,8 @@
 <template>
 	<a
-		:class="[
-			'd-link',
-			'd-link--' + type,
-			disabled && 'is-disabled',
-			order && 'item-order',
-		]"
+		:class="['d-link', 'd-link--' + type, disabled && 'is-disabled']"
 		@click="onClick"
 	>
-		<i v-if="icon" :class="[prefix + icon]"></i>
 		<span class="d-link--inner">
 			<slot />
 		</span>
@@ -19,15 +13,9 @@
 export default {
 	name: 'DLink',
 	props: {
-		prefix: { type: String, default: 'd-icon-' },
-
 		to: { type: [String, Object], default: '' },
 
 		type: { type: String, default: 'primary' },
-
-		icon: { type: String, default: '' },
-
-		order: { type: Boolean, default: false },
 
 		disabled: { type: Boolean, default: false },
 	},

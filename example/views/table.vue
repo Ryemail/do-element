@@ -25,6 +25,12 @@
 				<template #zip="{ row }">
 					{{ row.status }}
 				</template>
+
+				<template #operate="{ row }">
+					<d-link @click="onDelete(row)">删除</d-link>
+					<d-link @click="onDelete(row)">修改</d-link>
+					<d-link @click="onDelete(row)">审批</d-link>
+				</template>
 			</d-table>
 		</div>
 
@@ -147,6 +153,12 @@ export default {
 					width: 200,
 					fixed: 'right',
 				},
+				{
+					type: 'operate',
+					prop: 'operate',
+					label: '操作',
+					fixed: 'right',
+				},
 			],
 		};
 	},
@@ -167,7 +179,6 @@ export default {
 		async getTable() {
 			const { data } = await axios.get('/api/tableList');
 
-			console.log(data);
 			this.table1 = Object.values(data.data.data);
 		},
 		onClick() {
@@ -178,6 +189,9 @@ export default {
 		},
 		onCellEdit({ rowIndex, columnIndex, row }) {
 			console.log(rowIndex, columnIndex, row);
+		},
+		onDelete(row) {
+			console.log(row);
 		},
 	},
 };

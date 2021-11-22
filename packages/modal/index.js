@@ -20,8 +20,6 @@ export function modal(options) {
 	options = { ...defaultOptions, ...options };
 
 	const icons = {
-		success: 'el-icon-success',
-		warning: 'el-icon-warning',
 		question: 'el-icon-question',
 	};
 

@@ -35,6 +35,52 @@ body .el-table th.gutter {
 		line-height: 34px;
 	}
 }
+.d-table-operate-column .cell > .d-more-wrap {
+	display: flex;
+	align-items: center;
+}
+.d-table-more--inner,
+.d-table-more::after,
+.d-table-more::before {
+	display: block;
+	background: #999999;
+	border-radius: 50%;
+	height: 3px;
+	width: 3px;
+}
+.d-table-more--inner {
+	margin: 0 2px;
+}
+.d-table-more {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	height: 14px;
+	padding-top: 2px;
+	margin-left: 4px;
+	&::before,
+	&::after {
+		content: '';
+	}
+}
+.d-table-popover {
+	padding: 10px;
+	min-width: 100px;
+	background: #ffffff;
+	box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.15);
+	border: 1px solid #d9d9d9;
+	.d-link {
+		display: block;
+		line-height: 34px;
+		color: #333333;
+		padding: 0 10px;
+		border-radius: 4px;
+		margin: 0;
+		&:hover {
+			background-color: #f5f5f8;
+		}
+	}
+}
 
 .d-table-choose-icon {
 	position: absolute;

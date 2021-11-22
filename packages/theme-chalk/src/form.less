@@ -12,6 +12,11 @@
 			text-align: left;
 		}
 	}
+	.d-time-picker {
+		.el-date-editor {
+			width: 100%;
+		}
+	}
 
 	.el-input .el-input__inner {
 		padding: 0 10px;
@@ -51,6 +56,11 @@
 
 .el-form--inline.d-form {
 	display: flex;
+	.d-time-picker {
+		.el-date-editor {
+			width: 180px;
+		}
+	}
 	.el-input .el-input__inner {
 		width: 180px;
 	}
@@ -74,9 +84,6 @@
 
 .d-time-picker {
 	position: relative;
-	.el-date-editor.el-input {
-		width: 180px;
-	}
 	&--value {
 		position: absolute;
 		top: 1px;

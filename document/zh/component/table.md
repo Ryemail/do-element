@@ -141,6 +141,45 @@ lang: zh-CN
 
 :::
 
+### 操作栏按钮超出显示点
+
+::: demo
+
+```html
+<template>
+	<d-table :columns="columns" url="/do-element/json/data.json">
+		<template #operate="{ row }">
+			<d-link>删除</d-link>
+			<d-link>新增</d-link>
+			<d-link>编辑</d-link>
+		</template>
+	</d-table>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				columns: [
+					{ prop: 'name', label: '姓名' },
+					{ prop: 'address', label: '地址' },
+					{ prop: 'date', label: '时间' },
+					{ prop: 'zip', label: '邮编' },
+					{
+						type: 'operate',
+						prop: 'operate',
+						label: '操作',
+						width: 180,
+					}, // 插槽使用
+				],
+			};
+		},
+	};
+</script>
+```
+
+:::
+
 ### Grid table
 
 ::: demo
@@ -214,22 +253,24 @@ lang: zh-CN
 | query-change-run     | 是否在 query 变化时自动执行请求 ,false 下参数变化需要主动触发请求 | boolean  | true/false                                        | false                                      |
 | drag                 | 是否开启行拖拽                                                    | boolean  | true/false                                        | false                                      |
 | layout               | 组件布局，子组件名用逗号分隔                                      | string   | sizes, prev, pager, next, jumper, ->, total, slot | total, prev, pager, next, jumper           |
+| more-count           | 操作按钮超出 n 个显示点                                           | number   | \_                                                | 2                                          |
+| show-column-filter   | 是否显示自定义列的功能                                            | boolean  | \_                                                | true                                       |
 | 其他参数             | 同 element-ui 的 table 参数                                       | \_       | \_                                                | \_                                         |
 
 ### Columns Keys
 
-| 属性                | 说明                                                                                    | 类型                        | 可选值                 |
-| :------------------ | :-------------------------------------------------------------------------------------- | :-------------------------- | :--------------------- |
-| prop                | 对应列内容的字段名                                                                      | string                      | \_                     |
-| type                | 对应列的类型。 selection 则显示多选框；index 则显示该行的索引； expand 显示可展开的按钮 | string                      | selection/index/expand |
-| align               | 对齐方式                                                                                | string                      | left/center/right      |
-| label               | 显示的标题                                                                              | string                      | \_                     |
-| minWidth            | 对应列的最小宽度                                                                        | number                      | \_                     |
-| width               | 对应列的宽度                                                                            | number                      | \_                     |
-| fixed               | 列是否固定在左侧或者右侧，true 表示固定在左侧                                           | string, boolean             | true, left, right      |
-| render              | 单元格区域渲染使用的 Function                                                           | Function(h, { row, index }) | \_                     |
-| edit                | 当前单元格是否可编辑                                                                    | boolean                     | false/true             |
-| showOverflowTooltip | 超出单元格宽度显示省略,默认 true                                                        | boolean                     | false/true             |
+| 属性                | 说明                                                                                                                             | 类型                        | 可选值                              |
+| :------------------ | :------------------------------------------------------------------------------------------------------------------------------- | :-------------------------- | :---------------------------------- |
+| prop                | 对应列内容的字段名                                                                                                               | string                      | \_                                  |
+| type                | 对应列的类型。 selection 则显示多选框；index 则显示该行的索引； expand 显示可展开的按钮；slot 则表示插槽列；operate 则表示操作栏 | string                      | selection/index/expand/slot/operate |
+| align               | 对齐方式                                                                                                                         | string                      | left/center/right                   |
+| label               | 显示的标题                                                                                                                       | string                      | \_                                  |
+| minWidth            | 对应列的最小宽度                                                                                                                 | number                      | \_                                  |
+| width               | 对应列的宽度                                                                                                                     | number                      | \_                                  |
+| fixed               | 列是否固定在左侧或者右侧，true 表示固定在左侧                                                                                    | string, boolean             | true, left, right                   |
+| render              | 单元格区域渲染使用的 Function                                                                                                    | Function(h, { row, index }) | \_                                  |
+| edit                | 当前单元格是否可编辑                                                                                                             | boolean                     | false/true                          |
+| showOverflowTooltip | 超出单元格宽度显示省略,默认 true                                                                                                 | boolean                     | false/true                          |
 
 ### Events
 

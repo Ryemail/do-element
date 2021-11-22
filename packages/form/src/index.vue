@@ -397,13 +397,6 @@ export default {
 			if (item.prop === 'reset') {
 				this.$emit('event', item);
 
-				// 解决重置时间空数组[''] 报错问题
-				this.columns.forEach((val) => {
-					const types = ['datetimerange', 'daterange', 'time'];
-					if (types.includes(val.type)) {
-						this.dataForm[val.prop] = '';
-					}
-				});
 				this.resetFields();
 
 				return;
@@ -425,6 +418,14 @@ export default {
 			return Promise.resolve(flag);
 		},
 		resetFields() {
+			// 解决重置时间空数组[''] 报错问题
+			this.columns.forEach((val) => {
+				const types = ['datetimerange', 'daterange', 'time'];
+				if (types.includes(val.type)) {
+					this.dataForm[val.prop] = '';
+				}
+			});
+
 			this.$nextTick(() => {
 				this.eform.resetFields();
 			});
