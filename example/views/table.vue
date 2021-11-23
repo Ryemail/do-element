@@ -6,7 +6,7 @@
 				:data="table1"
 				:columns="columns"
 				:page.sync="page"
-				:total="50"
+				:total="total"
 				@cell-edit="onCellEdit"
 			>
 			</d-table>
@@ -179,7 +179,10 @@ export default {
 		async getTable() {
 			const { data } = await axios.get('/api/tableList');
 
-			this.table1 = Object.values(data.data.data);
+			console.log(data);
+
+			this.table1 = data.data.data;
+			this.total = data.data.total;
 		},
 		onClick() {
 			alert('点击事件');

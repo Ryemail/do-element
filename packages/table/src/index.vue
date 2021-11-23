@@ -335,6 +335,12 @@ export default {
 				});
 			}
 		},
+		total: {
+			immediate: true,
+			handler(value) {
+				this.tableTotal = value;
+			},
+		},
 	},
 	created() {
 		if (!this.queryChangeRun && this.url) {
