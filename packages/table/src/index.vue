@@ -251,7 +251,7 @@ export default {
 
 		moreCount: {
 			type: Number,
-			default: 2,
+			default: 3,
 		},
 	},
 	data() {

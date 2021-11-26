@@ -253,7 +253,7 @@ lang: zh-CN
 | query-change-run     | 是否在 query 变化时自动执行请求 ,false 下参数变化需要主动触发请求 | boolean  | true/false                                        | false                                      |
 | drag                 | 是否开启行拖拽                                                    | boolean  | true/false                                        | false                                      |
 | layout               | 组件布局，子组件名用逗号分隔                                      | string   | sizes, prev, pager, next, jumper, ->, total, slot | total, prev, pager, next, jumper           |
-| more-count           | 操作按钮超出 n 个显示点                                           | number   | \_                                                | 2                                          |
+| more-count           | 操作按钮超出 n 个显示点                                           | number   | \_                                                | 3                                          |
 | show-column-filter   | 是否显示自定义列的功能                                            | boolean  | \_                                                | true                                       |
 | 其他参数             | 同 element-ui 的 table 参数                                       | \_       | \_                                                | \_                                         |
 
