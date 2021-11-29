@@ -98,12 +98,6 @@
 			</table>
 		</div>
 
-		<d-table-empty v-if="tableArray.length <= 0">
-			<template v-if="$scopedSlots.empty">
-				<slot name="empty" />
-			</template>
-		</d-table-empty>
-
 		<!-- 页脚 -->
 		<div class="d-pagination" v-if="tableTotal || data.length">
 			<el-pagination
@@ -117,6 +111,11 @@
 			</el-pagination>
 		</div>
 	</div>
+	<d-table-empty v-else>
+		<template v-if="$scopedSlots.empty">
+			<slot name="empty" />
+		</template>
+	</d-table-empty>
 </template>
 
 <script>

@@ -62,6 +62,7 @@ export default {
 		return {
 			page: 1,
 			table1: [],
+			total: 0,
 			tableData: [
 				{
 					date: '2016-05-02',
@@ -181,7 +182,7 @@ export default {
 
 			console.log(data);
 
-			this.table1 = data.data.data;
+			this.table1 = [];
 			this.total = data.data.total;
 		},
 		onClick() {
