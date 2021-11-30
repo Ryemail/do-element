@@ -118,11 +118,11 @@ d-header、d-content、d-footer 只能在 d-container 中使用，否则样式�
 
 ### Content Attributes
 
-| 参数      | 说明                        | 类型     | 默认值 |
-| :-------- | :-------------------------- | :------- | :----- |
-| show-back | 是否显示返回按钮            | boolean  | fales  |
-| title     | Content 标题                | string   | \_     |
-| exclude   | 排除不需要显示 title 的页面 | string[] | \_     |
+| 参数      | 说明                                           | 类型     | 默认值 |
+| :-------- | :--------------------------------------------- | :------- | :----- |
+| show-back | 是否显示返回按钮                               | boolean  | fales  |
+| title     | Content 标题                                   | string   | \_     |
+| exclude   | 不需要显示 title 的页面的集合,值为 $route.name | string[] | \_     |
 
 ### Menu Attributes
 
