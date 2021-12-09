@@ -1,7 +1,8 @@
 const Mock = require('mockjs');
+import { parseQuery } from '../../src/utils/object';
 const Random = Mock.Random;
 
-const getMockData = function () {
+const getMockData = function (config) {
 	const message = {
 		code: 200,
 		message: '请求成功',
@@ -10,6 +11,8 @@ const getMockData = function () {
 			total: 50,
 		},
 	};
+
+	const params = parseQuery(config.url) || { limit: 10 };
 	// name: Random.cname(), // Random.cname() 随机生成一个常见的中文姓名
 	// cfirst: Random.cfirst(), //模拟姓氏
 	// natural: Random.natural(10, 30), //返回一个随机的自然数
@@ -23,7 +26,7 @@ const getMockData = function () {
 	// url: Random.url(), //生成随机URL(每次运行结果不同)
 	// ip: Random.ip(), //  "74.97.41.159" 生成随机IP(每次运行结果不同)
 
-	for (let i = 0; i < 10; i++) {
+	for (let i = 0; i < params.limit; i++) {
 		const newObject = {
 			id: i + 1,
 			name: `${Random.clast()}${Random.cname()}`,

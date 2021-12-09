@@ -101,14 +101,17 @@
 		<!-- 页脚 -->
 		<div class="d-pagination" v-if="tableTotal || data.length">
 			<el-pagination
-				:hide-on-single-page="true"
-				@size-change="onPageChange"
+				@size-change="onPageSizeChange"
 				@current-change="onPageChange"
 				:current-page="tableQuery.page"
 				:total="tableTotal || data.length"
-				:layout="layout"
-			>
-			</el-pagination>
+				:page-size="limit"
+				v-bind="{
+					pageSizes: [10, 50, 100],
+					layout: 'total, sizes, prev, pager, next, jumper',
+					...pagination,
+				}"
+			/>
 		</div>
 	</div>
 	<d-table-empty v-else>
@@ -238,9 +241,11 @@ export default {
 
 		drag: { type: Boolean, default: false },
 
-		layout: {
-			type: String,
-			default: 'total, prev, pager, next, jumper',
+		pagination: {
+			type: Object,
+			default: () => {
+				return {};
+			},
 		},
 
 		showColumnFilter: {
@@ -301,6 +306,7 @@ export default {
 		},
 		tableQuery: {
 			handler() {
+				console.log(this.tableQuery);
 				if (this.url && this.queryChangeRun) this.reload();
 			},
 			deep: true,
@@ -401,7 +407,6 @@ export default {
 
 				this.loading = false;
 			} catch (error) {
-				console.log(error);
 				this.loading = false;
 			}
 		},
@@ -426,6 +431,14 @@ export default {
 			this.onStructureData();
 
 			this.$emit('update:page', page);
+		},
+
+		onPageSizeChange(limit) {
+			this.tableQuery.limit = limit;
+
+			this.onStructureData();
+
+			this.$emit('update:limit', limit);
 		},
 
 		onStructureData() {

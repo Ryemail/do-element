@@ -25,6 +25,7 @@
 					v-bind="item.attr"
 					v-on="item.event"
 					@input="onInput(item)"
+					@keydown.enter.native="onEnter"
 				>
 					<!-- 前后插槽 -->
 					<span v-if="item.prepend" slot="prepend">
@@ -362,6 +363,17 @@ export default {
 				this.dataForm[item.prop],
 				item.number
 			);
+		},
+
+		// input回车查询
+		onEnter() {
+			if (!this.inline) return;
+
+			const item =
+				this.buttonArray &&
+				this.buttonArray.find((val) => val.prop === 'submit');
+
+			this.validate(item);
 		},
 
 		// 验证插槽元素

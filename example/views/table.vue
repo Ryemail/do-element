@@ -18,8 +18,8 @@
 				url="/api/tableList"
 				:keys="{ data: 'data.data', total: 'data.total' }"
 				:columns="columns2"
+				:limit.sync="limit"
 				ref="table"
-				drag
 			>
 				<!-- 使用插槽 -->
 				<template #zip="{ row }">
@@ -61,6 +61,7 @@ export default {
 	data() {
 		return {
 			page: 1,
+			limit: 10,
 			table1: [],
 			total: 0,
 			tableData: [
@@ -175,15 +176,22 @@ export default {
 				this.getTable();
 			},
 		},
+		limit: {
+			handler() {
+				this.getTable();
+			},
+		},
 	},
 	methods: {
 		async getTable() {
 			const { data } = await axios.get('/api/tableList');
 
-			console.log(data);
-
 			this.table1 = [];
 			this.total = data.data.total;
+		},
+		sizeChange(limit) {
+			//
+			console.log(limit);
 		},
 		onClick() {
 			alert('点击事件');
