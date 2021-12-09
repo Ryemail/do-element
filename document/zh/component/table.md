@@ -233,29 +233,30 @@ lang: zh-CN
 
 ### Table Attributes
 
-| 参数                 | 说明                                                              | 类型     | 可选值                                            | 默认值                                     |
-| :------------------- | :---------------------------------------------------------------- | :------- | ------------------------------------------------- | ------------------------------------------ |
-| type                 | 表格类型                                                          | string   | table/grid                                        | table                                      |
-| url                  | 数据请求地址                                                      | string   | \_                                                | \_                                         |
-| data                 | 表格数据                                                          | array    | \_                                                | \_                                         |
-| columns              | 定义表格列                                                        | object[] | \_                                                | \_                                         |
-| col                  | 指定一行显示的单元格数，仅在 type=grid 有效                       | number   | \_                                                | 6                                          |
-| query                | 表格查询添加，仅在 url 存在时有效                                 | string   | \_                                                | \_                                         |
-| headers              | 发起请求时的 headers, 仅在 url 存在时有效                         | object   | \_                                                | \_                                         |
-| method               | 发起请求的方法，仅在 url 存在时有效                               | string   | get/post                                          | get                                        |
-| page                 | 当前页数，支持 .sync 修饰符                                       | number   | \_                                                | 1                                          |
-| limit                | 每页显示条目个数，支持 .sync 修饰符                               | numner   | \_                                                | 10                                         |
-| total                | 数据总条数，用于计算分页，不存在时取数据长度计算                  | number   | \_                                                | 0                                          |
-| keys                 | 异步数据的 key                                                    | object   | \_                                                | {data: 'data',total: 'total',code: 'code'} |
-| cellEmpty            | 单元格数据为空时的填充                                            | string   | \_                                                | -                                          |
-| header-row-className | 表格头部类名                                                      | string   | \_                                                |                                            |
-| border               | 是否需要表格边框                                                  | boolean  | true/false                                        | true                                       |
-| query-change-run     | 是否在 query 变化时自动执行请求 ,false 下参数变化需要主动触发请求 | boolean  | true/false                                        | false                                      |
-| drag                 | 是否开启行拖拽                                                    | boolean  | true/false                                        | false                                      |
-| layout               | 组件布局，子组件名用逗号分隔                                      | string   | sizes, prev, pager, next, jumper, ->, total, slot | total, sizes, prev, pager, next, jumper    |
-| more-count           | 操作按钮超出 n 个显示点                                           | number   | \_                                                | 3                                          |
-| show-column-filter   | 是否显示自定义列的功能                                            | boolean  | \_                                                | true                                       |
-| 其他参数             | 同 element-ui 的 table 参数                                       | \_       | \_                                                | \_                                         |
+| 参数                 | 说明                                                                                                   | 类型     | 可选值                                            | 默认值                                     |
+| :------------------- | :----------------------------------------------------------------------------------------------------- | :------- | ------------------------------------------------- | ------------------------------------------ |
+| type                 | 表格类型                                                                                               | string   | table/grid                                        | table                                      |
+| url                  | 数据请求地址                                                                                           | string   | \_                                                | \_                                         |
+| data                 | 表格数据                                                                                               | array    | \_                                                | \_                                         |
+| columns              | 定义表格列                                                                                             | object[] | \_                                                | \_                                         |
+| col                  | 指定一行显示的单元格数，仅在 type=grid 有效                                                            | number   | \_                                                | 6                                          |
+| query                | 表格查询添加，仅在 url 存在时有效                                                                      | string   | \_                                                | \_                                         |
+| headers              | 发起请求时的 headers, 仅在 url 存在时有效                                                              | object   | \_                                                | \_                                         |
+| method               | 发起请求的方法，仅在 url 存在时有效                                                                    | string   | get/post                                          | get                                        |
+| page                 | 当前页数，支持 .sync 修饰符                                                                            | number   | \_                                                | 1                                          |
+| limit                | 每页显示条目个数，支持 .sync 修饰符                                                                    | numner   | \_                                                | 10                                         |
+| total                | 数据总条数，用于计算分页，不存在时取数据长度计算                                                       | number   | \_                                                | 0                                          |
+| keys                 | 异步数据的 key                                                                                         | object   | \_                                                | {data: 'data',total: 'total',code: 'code'} |
+| cellEmpty            | 单元格数据为空时的填充                                                                                 | string   | \_                                                | -                                          |
+| header-row-className | 表格头部类名                                                                                           | string   | \_                                                |                                            |
+| border               | 是否需要表格边框                                                                                       | boolean  | true/false                                        | true                                       |
+| query-change-run     | 是否在 query 变化时自动执行请求 ,false 下参数变化需要主动触发请求                                      | boolean  | true/false                                        | false                                      |
+| drag                 | 是否开启行拖拽                                                                                         | boolean  | true/false                                        | false                                      |
+| layout               | 组件布局，子组件名用逗号分隔                                                                           | string   | sizes, prev, pager, next, jumper, ->, total, slot | total, sizes, prev, pager, next, jumper    |
+| more-count           | 操作按钮超出 n 个显示点                                                                                | number   | \_                                                | 3                                          |
+| show-column-filter   | 是否显示自定义列的功能                                                                                 | boolean  | \_                                                | true                                       |
+| pagination           | [element-ui pagination](https://element.eleme.cn/#/zh-CN/component/pagination#attributes) 分页组件属性 | Object   | \_                                                | {}                                         |
+| 其他参数             | 同 element-ui 的 table 参数                                                                            | \_       | \_                                                | \_                                         |
 
 ### Columns Keys
 
