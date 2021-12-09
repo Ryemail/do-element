@@ -372,9 +372,9 @@ export default {
 		async reload(page) {
 			this.loading = true;
 
-			// page 存在,则重置当到指定页面,负责重置到当前页
+			// page 存在,则重置当到指定页面,否则重置到当前页
 			if (page) {
-				this.onPageChange(page);
+				return this.onPageChange(page);
 			}
 
 			try {

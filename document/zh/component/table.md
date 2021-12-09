@@ -279,3 +279,9 @@ lang: zh-CN
 | on-response | 在接口调用后执行，返回接口数据，仅在 url 存在有效 | response                  |
 | on-darg     | 当某行拖拽时触发                                  | dragIndex, dropIndex, row |
 | 其他事件    | 同 element-ui 的 table 组件 事件                  | \_                        |
+
+### Methods
+
+| 方法名称 | 说明     | 参数(page)                              |
+| :------- | :------- | :-------------------------------------- |
+| reload   | 重置表格 | 存在则重置到指定 page，否则重置到当前页 |

@@ -197,7 +197,7 @@ export default {
 			alert('点击事件');
 		},
 		onReload() {
-			this.$refs.table.reload();
+			this.$refs.table.reload(4);
 		},
 		onCellEdit({ rowIndex, columnIndex, row }) {
 			console.log(rowIndex, columnIndex, row);
