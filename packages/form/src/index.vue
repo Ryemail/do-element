@@ -407,9 +407,9 @@ export default {
 			if (item.prop === 'submit') return this.validate(item);
 
 			if (item.prop === 'reset') {
-				this.$emit('event', item);
-
 				this.resetFields();
+
+				this.$emit('event', item);
 
 				return;
 			}
@@ -438,9 +438,7 @@ export default {
 				}
 			});
 
-			this.$nextTick(() => {
-				this.eform.resetFields();
-			});
+			this.eform && this.eform.resetFields();
 		},
 		clearValidate(props) {
 			this.$nextTick(() => {

@@ -94,12 +94,30 @@ module.exports = {
 					],
 				},
 			],
-			'/zh/utils/': [
-				{ title: 'Object', path: '/zh/utils/object' },
-				{ title: 'Array', path: '/zh/utils/array' },
-				{ title: 'Number', path: '/zh/utils/number' },
-				{ title: 'Date', path: '/zh/utils/date' },
-				{ title: '千分位', path: '/zh/utils/thousandth' },
+			'/zh/utils': [
+				{
+					title: '引用',
+					sidebarDepth: 0, // 可选的, 默认值是 1
+					collapsable: false,
+					children: [
+						{
+							title: '介绍',
+							path: '/zh/utils/quote',
+						},
+					],
+				},
+				{
+					title: '方法',
+					sidebarDepth: 0, // 可选的, 默认值是 1
+					collapsable: false,
+					children: [
+						{ title: 'Object', path: '/zh/utils/object' },
+						{ title: 'Array', path: '/zh/utils/array' },
+						{ title: 'Number', path: '/zh/utils/number' },
+						{ title: 'Date', path: '/zh/utils/date' },
+						{ title: '千分位', path: '/zh/utils/thousandth' },
+					],
+				},
 			],
 		},
 		repo: 'Ryemail/do-element',

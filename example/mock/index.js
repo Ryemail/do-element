@@ -30,7 +30,7 @@ const getMockData = function (config) {
 		const newObject = {
 			id: i + 1,
 			name: `${Random.clast()}${Random.cname()}`,
-			date: Random.now('yyyy-MM-dd HH:mm'),
+			date: Random.date('yyyy-MM-dd HH:mm'),
 			status: Random.d4(),
 			address: Mock.mock('@county(true)'),
 		};

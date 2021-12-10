@@ -22,9 +22,9 @@
 				ref="table"
 			>
 				<!-- 使用插槽 -->
-				<template #zip="{ row }">
+				<!-- <template #zip="{ row }">
 					{{ row.status }}
-				</template>
+				</template> -->
 
 				<template #operate="{ row }">
 					<d-link @click="onDelete(row)">删除</d-link>
@@ -60,6 +60,28 @@ import axios from 'axios';
 export default {
 	data() {
 		return {
+			tableData2: [
+				{
+					date: '2016-05-02',
+					name: '王小虎',
+					address: '上海市普陀区金沙江路 1518 弄',
+				},
+				{
+					date: '2016-05-04',
+					name: '王小虎',
+					address: '上海市普陀区金沙江路 1517 弄',
+				},
+				{
+					date: '2016-05-01',
+					name: '王小虎',
+					address: '上海市普陀区金沙江路 1519 弄',
+				},
+				{
+					date: '2016-05-03',
+					name: '王小虎',
+					address: '上海市普陀区金沙江路 1516 弄',
+				},
+			],
 			page: 1,
 			limit: 10,
 			table1: [],
@@ -126,7 +148,7 @@ export default {
 				},
 			],
 			columns: [
-				{ prop: 'name', label: '姓名', edit: true },
+				{ prop: 'name', label: '姓名', edit: true, sortable: false },
 				{ prop: 'address', label: '地址' },
 				{ prop: 'date', label: '时间' },
 				{ prop: 'zip', label: '邮编', fixed: 'right' },
@@ -137,27 +159,28 @@ export default {
 				{
 					prop: 'date',
 					label: '时间(render渲染)',
-					render(h, { row }) {
-						return h('div', {
-							style: {
-								color: 'red',
-							},
-							domProps: {
-								innerHTML: row.date,
-							},
-						});
-					},
+					// render(h, { row }) {
+					// 	return h('div', {
+					// 		style: {
+					// 			color: 'red',
+					// 		},
+					// 		domProps: {
+					// 			innerHTML: row.date,
+					// 		},
+					// 	});
+					// },
 				},
 				{
-					type: 'slot',
-					prop: 'zip',
-					label: '邮编',
+					// type: 'slot',
+					prop: 'status',
+					label: '状态',
 					width: 200,
 					fixed: 'right',
 				},
 				{
 					type: 'operate',
 					prop: 'operate',
+					width: 160,
 					label: '操作',
 					fixed: 'right',
 				},

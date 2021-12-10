@@ -225,9 +225,9 @@ export default {
 	methods: {
 		// 表单事件
 		onEvent(item) {
-			console.log(this.form);
 			if (item.prop === 'reset') {
 				//
+				console.log({ ...this.form }, this.form);
 			}
 		},
 		// 弹窗事件

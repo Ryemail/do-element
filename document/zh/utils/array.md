@@ -5,9 +5,16 @@ lang: zh-CN
 
 ## Array
 
-### 获取数据
+### arrayToTree
 
-根据指定属性将一维数组转为树形结构
+根据指定属性将一维数组转为树形结构 ，第一个参数为 json 数组，第二个参数为关联数据匹配的 key 集合，默认为：
+
+```js
+// list 为如下示例中list数据格式
+arrayToTree(list, { id: 'id', pid: 'pid', children: 'children' });
+```
+
+### 示例
 
 ```js
 const list = [

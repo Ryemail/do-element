@@ -18,7 +18,7 @@ export default ({ Vue, router }) => {
 		} else if (to.path === '/zh/component/') {
 			next('/zh/component/container');
 		} else if (to.path === '/zh/utils/') {
-			next('/zh/utils/object');
+			next('/zh/utils/quote');
 		} else {
 			next();
 		}

@@ -42,10 +42,15 @@ const components = [
 	PageTitle,
 ];
 
-function install(Vue) {
+function install(Vue, opts) {
 	components.forEach((component) => {
 		Vue.component(component.name, component);
 	});
+
+	if (opts) {
+		Vue.prototype.$HEADERS = opts.headers || {};
+		Vue.prototype.$MORECOUNT = opts.moreCount || 0;
+	}
 
 	Vue.prototype.$modal = modal;
 

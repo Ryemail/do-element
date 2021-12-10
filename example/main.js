@@ -17,7 +17,7 @@ import './mock';
 
 Vue.use(ElementUI);
 
-Vue.use(DoElement);
+Vue.use(DoElement, { headers: { TOKEN: 'ssssss' } });
 
 Vue.config.productionTip = false;
 

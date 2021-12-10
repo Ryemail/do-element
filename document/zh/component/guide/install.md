@@ -54,5 +54,17 @@ import {
 	Divider,
 	modal,
 	notice,
+	PageTitle,
 } from 'do-element';
+```
+
+### 全局配置
+
+在引入 DoElement 时，可以传入一个全局配置对象。该对象目前支持 headers 与 moreCount 字段。headers 用于 table 组件 ajax 请求时携带的 headers，moreCount 用于 table 组件操作栏按钮显示的个数配置
+
+```js
+import Vue from 'vue';
+import DoElement from 'do-element';
+
+Vue.use(DoElement, { headers: { token: 'TOKEN' }, moreCount: 3 });
 ```

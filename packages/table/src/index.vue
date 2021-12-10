@@ -23,8 +23,11 @@
 				<el-table-column
 					v-if="!columnType.includes(item.type)"
 					:key="key"
-					:show-overflow-tooltip="onTooltip(item)"
-					v-bind="item"
+					v-bind="{
+						sortable: item.type !== 'operate',
+						showOverflowTooltip: onTooltip(item),
+						...item,
+					}"
 					:class-name="
 						item.type === 'operate' ? 'd-table-operate-column' : ''
 					"
@@ -41,7 +44,7 @@
 							<cell-operate-render
 								:index="$index"
 								:row="row"
-								:moreCount="moreCount"
+								:moreCount="moreNumber"
 							>
 								<slot
 									:name="item.prop"
@@ -255,7 +258,7 @@ export default {
 
 		moreCount: {
 			type: Number,
-			default: 3,
+			default: 0,
 		},
 	},
 	data() {
@@ -295,6 +298,9 @@ export default {
 				prop: val.prop,
 			}));
 		},
+		moreNumber() {
+			return this.moreCount || this.$MORECOUNT || 3;
+		},
 	},
 	watch: {
 		query: {
@@ -306,7 +312,6 @@ export default {
 		},
 		tableQuery: {
 			handler() {
-				console.log(this.tableQuery);
 				if (this.url && this.queryChangeRun) this.reload();
 			},
 			deep: true,
@@ -351,6 +356,8 @@ export default {
 		if (!this.queryChangeRun && this.url) {
 			this.reload();
 		}
+
+		// console.log();
 	},
 
 	methods: {
@@ -378,7 +385,9 @@ export default {
 			}
 
 			try {
-				const { url, headers, method, tableQuery } = this;
+				const { url, method, tableQuery } = this;
+
+				const headers = { ...this.$HEADERS, ...this.headers };
 
 				const response = await getTable({
 					url,

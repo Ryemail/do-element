@@ -10,6 +10,8 @@ import { clone } from './clone';
 
 import { parseEqual, parseKeys, parseObject, parseQuery } from './object';
 
+import { thousandth } from './thousandth';
+
 export {
 	arrayToTree,
 	dateFormat,
@@ -21,4 +23,5 @@ export {
 	parseObject,
 	parseQuery,
 	clone,
+	thousandth,
 };
