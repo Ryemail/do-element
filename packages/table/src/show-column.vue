@@ -13,14 +13,25 @@
 			></path>
 		</svg>
 
-		<el-checkbox-group class="d-table-checkbox-group" v-model="checked">
-			<el-checkbox
-				v-for="item in labels"
-				:key="item.prop"
-				:label="item.prop"
-			>
-				{{ item.label }}
-			</el-checkbox>
+		<el-checkbox-group
+			class="d-table-checkbox-group"
+			v-model="checked"
+			@change="onChange"
+		>
+			<!-- 	@dragstart.native="onDragstart(item)"
+					@dragenter.native="onDragenter(item)"
+					@dragend.native="onDragend"
+                    :draggable="true" -->
+			<transition-group name="d-drag-transition">
+				<el-checkbox
+					v-for="item in items"
+					:key="item.prop"
+					:label="item.prop"
+					:disabled="disabledColumn.includes(item.prop)"
+				>
+					{{ item.label }}
+				</el-checkbox>
+			</transition-group>
 		</el-checkbox-group>
 	</el-popover>
 </template>
@@ -40,15 +51,64 @@ export default {
 			type: Array,
 			default: () => [],
 		},
+		disabledColumn: {
+			type: Array,
+			default: () => [],
+		},
 	},
-	computed: {
-		checked: {
-			get() {
-				return this.value;
+	watch: {
+		value: {
+			handler(value) {
+				this.checked = value.filter((val) => val);
 			},
-			set(value) {
-				this.$emit('change', value);
-			},
+			deep: true,
+			immediate: true,
+		},
+	},
+	data() {
+		return {
+			oldNum: 0,
+			newNum: 0,
+			items: this.labels,
+			checked: this.value,
+		};
+	},
+	methods: {
+		onChange(value) {
+			this.$emit('change', value);
+		},
+		// 记录初始信息
+		onDragstart: function (value) {
+			this.oldNum = value.prop;
+		},
+		// 做最终操作
+		onDragend: function () {
+			if (this.oldNum != this.newNum) {
+				const propsArray = this.items.map((val) => val.prop);
+				let oldIndex = propsArray.indexOf(this.oldNum);
+				let newIndex = propsArray.indexOf(this.newNum);
+				let newItems = [...this.items];
+				// 删除老的节点
+				newItems.splice(oldIndex, 1);
+				// 在列表中目标位置增加新的节点
+
+				const currValue = this.items.find(
+					(val) => val.prop === this.oldNum
+				);
+				newItems.splice(newIndex, 0, currValue);
+				// this.items一改变，transition-group就起了作用
+				this.items = [...newItems];
+
+				const propArray = this.items.map((val) => val.prop);
+
+				this.onChange(
+					propArray.filter((val) => this.checked.includes(val))
+				);
+			}
+		},
+		// 记录移动过程中信息
+		onDragenter: function (value) {
+			this.newNum = value.prop;
 		},
 	},
 };

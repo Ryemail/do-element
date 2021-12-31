@@ -2,14 +2,14 @@
 	<div>
 		<div class="module">
 			<h3 class="module-title">基础表格</h3>
-			<d-table
+			<!-- <d-table
 				:data="table1"
 				:columns="columns"
 				:page.sync="page"
 				:total="total"
 				@cell-edit="onCellEdit"
 			>
-			</d-table>
+			</d-table> -->
 		</div>
 
 		<div class="module">
@@ -20,6 +20,7 @@
 				:columns="columns2"
 				:limit.sync="limit"
 				ref="table"
+				:disabled-column="['name', 'address']"
 			>
 				<!-- 使用插槽 -->
 				<!-- <template #zip="{ row }">
@@ -38,7 +39,7 @@
 		<div class="module">
 			<h3 class="module-title">Grid 列表</h3>
 
-			<d-table
+			<!-- <d-table
 				type="grid"
 				:col="3"
 				url="/api/tableList"
@@ -48,7 +49,7 @@
 				<template #default="{ data }">
 					{{ data }}
 				</template>
-			</d-table>
+			</d-table> -->
 		</div>
 	</div>
 </template>
@@ -154,21 +155,22 @@ export default {
 				{ prop: 'zip', label: '邮编', fixed: 'right' },
 			],
 			columns2: [
+				{ type: 'selection' },
 				{ prop: 'name', label: '姓名', edit: true },
 				{ prop: 'address', label: '地址' },
 				{
 					prop: 'date',
 					label: '时间(render渲染)',
-					// render(h, { row }) {
-					// 	return h('div', {
-					// 		style: {
-					// 			color: 'red',
-					// 		},
-					// 		domProps: {
-					// 			innerHTML: row.date,
-					// 		},
-					// 	});
-					// },
+					render(h, { row }) {
+						return h('div', {
+							style: {
+								color: 'red',
+							},
+							domProps: {
+								innerHTML: row.date,
+							},
+						});
+					},
 				},
 				{
 					// type: 'slot',
@@ -180,8 +182,8 @@ export default {
 				{
 					type: 'operate',
 					prop: 'operate',
-					width: 160,
 					label: '操作',
+					width: 160,
 					fixed: 'right',
 				},
 			],

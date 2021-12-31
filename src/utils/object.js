@@ -27,6 +27,29 @@ export function parseKeys(data, keys) {
 	return data;
 }
 
+/**
+ * Parse simple path.
+ * 把一个形如'data.a.b.c'的字符串路径所表示的值，从真实的data对象中取出来
+ * 例如：
+ * data = {a:{b:{c:2}}}
+ * parsePath('a.b.c')(data)  // 2
+ */
+export function parsePath(path) {
+	const bailRE = /[^\w.$]/;
+
+	if (bailRE.test(path)) {
+		return;
+	}
+	const segments = path.split('.');
+	return function (obj) {
+		for (let i = 0; i < segments.length; i++) {
+			if (!obj) return;
+			obj = obj[segments[i]];
+		}
+		return obj;
+	};
+}
+
 // 解析连个对象值是否相等
 export function parseEqual(first, last) {
 	const o1keys = Object.keys(first);

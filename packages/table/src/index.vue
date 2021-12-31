@@ -3,8 +3,9 @@
 		<!-- 自定义显示列 -->
 		<d-show-column
 			v-if="showColumnFilter && type === 'table'"
-			:labels="labels"
+			:labels.sync="labels"
 			v-model="showColumnChecked"
+			:disabled-column="disabledColumn"
 		/>
 		<!-- 表格布局 -->
 		<el-table
@@ -256,6 +257,11 @@ export default {
 			default: true,
 		},
 
+		disabledColumn: {
+			type: Array,
+			default: () => [],
+		},
+
 		moreCount: {
 			type: Number,
 			default: 0,
@@ -268,9 +274,10 @@ export default {
 			tableTotal: this.total,
 			loading: false,
 			filterColumns: [],
-			showColumnChecked: this.columns.map((val) => val.prop),
+			showColumnChecked: [],
 			columnType: ['selection', 'index', 'expand'],
 			responseData: null,
+			labels: [],
 			point: {
 				x: -1,
 				y: -1,
@@ -292,12 +299,7 @@ export default {
 
 			return numbers;
 		},
-		labels() {
-			return this.columns.map((val) => ({
-				label: val.label,
-				prop: val.prop,
-			}));
-		},
+
 		moreNumber() {
 			return this.moreCount || this.$MORECOUNT || 3;
 		},
@@ -329,10 +331,53 @@ export default {
 				this.tableArray = data;
 			},
 		},
+		columns: {
+			handler(columns) {
+				const types = [...this.columnType, 'operate'];
+				this.labels = columns
+					.filter((val) => !types.includes(val.type))
+					.map((val) => ({
+						label: val.label,
+						prop: val.prop,
+					}));
+				this.showColumnChecked = this.labels.map((val) => val.prop);
+			},
+			immediate: true,
+			deep: true,
+		},
 		showColumnChecked: {
 			handler(labels) {
-				this.filterColumns = this.columns.filter((val) => {
-					return labels.find((item) => item === val.prop);
+				const sortItem = [];
+
+				const types = [...this.columnType, 'operate'];
+
+				const result = {};
+
+				this.columns.forEach((val) => {
+					result[val.prop] = val;
+				});
+
+				this.columns.forEach((val) => {
+					const index = labels.findIndex((name) => name === val.prop);
+
+					if (types.includes(val.type)) {
+						sortItem.push(val);
+					} else if (index > -1) {
+						sortItem.push(val);
+						// const sortKey = sortItem.map((sortVal) => sortVal.prop);
+
+						// if (sortKey.indexOf(val.prop) < 0) {
+						// 	labels.forEach((key) => {
+						// 		sortItem.push(result[key]);
+						// 	});
+						// }
+					}
+				});
+
+				console.log(sortItem);
+
+				this.$nextTick(() => {
+					this.filterColumns = sortItem;
 				});
 			},
 			immediate: true,
@@ -356,8 +401,6 @@ export default {
 		if (!this.queryChangeRun && this.url) {
 			this.reload();
 		}
-
-		// console.log();
 	},
 
 	methods: {
