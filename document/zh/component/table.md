@@ -11,13 +11,62 @@ lang: zh-CN
 
 ```html
 <template>
-	<d-table :data="table" :columns="columns"></d-table>
+	<d-table
+		:data="table"
+		:columns="columns"
+		:column-filter-click="onFilterClick"
+	/>
+	<d-filter-column
+		:data="filterColumn"
+		:visible.sync="visible"
+		@confirm="onConfirm"
+		@cancel="onCancel"
+	/>
 </template>
 
 <script>
 	export default {
 		data() {
 			return {
+				visible: false,
+				filterColumn: [
+					{
+						label: '姓名',
+						prop: 'name',
+						checked: true,
+						disabled: true,
+						sort: false,
+					},
+
+					{
+						label: '时间',
+						prop: 'date',
+						checked: true,
+						disabled: false,
+						sort: true,
+					},
+					{
+						label: '地址',
+						prop: 'name',
+						checked: true,
+						disabled: true,
+						sort: false,
+					},
+					{
+						label: '部门',
+						prop: 'deparment',
+						checked: true,
+						disabled: false,
+						sort: true,
+					},
+					{
+						label: '性别',
+						prop: 'sex',
+						checked: true,
+						disabled: false,
+						sort: true,
+					},
+				],
 				table: [
 					{
 						date: '2016-05-03',
@@ -83,6 +132,18 @@ lang: zh-CN
 					{ prop: 'zip', label: '邮编' },
 				],
 			};
+		},
+		methods: {
+			onFilterClick() {
+				//
+				this.visible = true;
+			},
+			onConfirm(value) {
+				console.log(value);
+			},
+			onCancel() {
+				console.log('点击了取消');
+			},
 		},
 	};
 </script>
