@@ -8,7 +8,7 @@ const getMockData = function (config) {
 		message: '请求成功',
 		data: {
 			data: {},
-			total: 50,
+			total: 30,
 		},
 	};
 

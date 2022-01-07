@@ -20,7 +20,7 @@
 				:columns="columns2"
 				:limit.sync="limit"
 				ref="table"
-				:disabled-column="['name', 'address']"
+				:column-filter-click="onFilterClick"
 			>
 				<!-- 使用插槽 -->
 				<!-- <template #zip="{ row }">
@@ -33,12 +33,18 @@
 					<d-link @click="onDelete(row)">审批</d-link>
 				</template>
 			</d-table>
+
+			<!-- 自定义列 -->
+			<d-filter-column
+				:data="filterColumn"
+				:visible.sync="visible"
+				@confirm="onFilterEvent"
+			/>
 		</div>
 
 		<el-button @click="onReload">Reload</el-button>
 		<div class="module">
 			<h3 class="module-title">Grid 列表</h3>
-
 			<!-- <d-table
 				type="grid"
 				:col="3"
@@ -61,6 +67,45 @@ import axios from 'axios';
 export default {
 	data() {
 		return {
+			visible: false,
+			filterColumn: [
+				{
+					label: '姓名',
+					prop: 'name',
+					checked: true,
+					disabled: true,
+					sort: false,
+				},
+
+				{
+					label: '时间',
+					prop: 'date',
+					checked: true,
+					disabled: false,
+					sort: true,
+				},
+				{
+					label: '地址',
+					prop: 'name',
+					checked: true,
+					disabled: true,
+					sort: false,
+				},
+				{
+					label: '部门',
+					prop: 'deparment',
+					checked: true,
+					disabled: false,
+					sort: true,
+				},
+				{
+					label: '性别',
+					prop: 'sex',
+					checked: true,
+					disabled: false,
+					sort: true,
+				},
+			],
 			tableData2: [
 				{
 					date: '2016-05-02',
@@ -182,7 +227,9 @@ export default {
 				{
 					type: 'operate',
 					prop: 'operate',
-					label: '操作',
+					renderHeader: (h) => {
+						return h('span', '操作');
+					}, // 自定义表头
 					width: 160,
 					fixed: 'right',
 				},
@@ -229,6 +276,13 @@ export default {
 		},
 		onDelete(row) {
 			console.log(row);
+		},
+		onFilterClick(cmd) {
+			console.log(cmd);
+			this.visible = true;
+		},
+		onFilterEvent(list) {
+			console.log(list, 'dd');
 		},
 	},
 };

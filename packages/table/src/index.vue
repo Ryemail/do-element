@@ -1,12 +1,36 @@
 <template>
 	<div class="d-table" v-if="tableArray.length">
 		<!-- 自定义显示列 -->
-		<d-show-column
-			v-if="showColumnFilter && type === 'table'"
-			:labels.sync="labels"
-			v-model="showColumnChecked"
-			:disabled-column="disabledColumn"
-		/>
+		<el-popover
+			v-if="columnFilterClick && type === 'table'"
+			placement="bottom-end"
+			popper-class="d-table-column-popover"
+			:width="90"
+			:visible-arrow="false"
+			trigger="hover"
+		>
+			<svg
+				slot="reference"
+				viewBox="0 0 1024 1024"
+				width="14"
+				height="14"
+				class="d-column-popover-icon"
+			>
+				<path
+					d="M3.42898915 64.07163449H136.26026667v126.46991644H3.42898915v-126.46991644zM3.42898915 443.48720925H136.26026667v126.46991644H3.42898915v-126.46991644zM3.42898915 822.89695858H136.26026667v126.47574187H3.42898915v-126.47574187zM256.36882205 64.07163449H1015.19997155v126.46991644H256.36882205v-126.46991644zM256.36882205 443.48720925H1015.19997155v126.46991644H256.36882205v-126.46991644zM256.36882205 822.89695858H1015.19997155v126.47574187H256.36882205v-126.47574187z"
+					fill="#000000"
+				/>
+			</svg>
+			<ul class="d-table-column-ul">
+				<li
+					class="d-table-column-li"
+					@click="columnFilterClick('show')"
+				>
+					自定义显示列
+				</li>
+			</ul>
+		</el-popover>
+
 		<!-- 表格布局 -->
 		<el-table
 			v-if="type === 'table'"
@@ -19,7 +43,7 @@
 			@cell-click="onCellClick"
 			@row-click="onRowClick"
 		>
-			<template v-for="(item, key) in filterColumns">
+			<template v-for="(item, key) in columns">
 				<!-- 数据列 -->
 				<el-table-column
 					v-if="!columnType.includes(item.type)"
@@ -103,18 +127,20 @@
 		</div>
 
 		<!-- 页脚 -->
-		<div class="d-pagination" v-if="tableTotal || data.length">
+		<div
+			class="d-pagination"
+			v-if="
+				tableTotal > paginationAttr.pageSizes[0] ||
+				data.length > paginationAttr.pageSizes[0]
+			"
+		>
 			<el-pagination
 				@size-change="onPageSizeChange"
 				@current-change="onPageChange"
 				:current-page="tableQuery.page"
-				:total="tableTotal || data.length"
 				:page-size="limit"
-				v-bind="{
-					pageSizes: [10, 50, 100],
-					layout: 'total, sizes, prev, pager, next, jumper',
-					...pagination,
-				}"
+				:total="tableTotal || data.length"
+				v-bind="paginationAttr"
 			/>
 		</div>
 	</div>
@@ -130,13 +156,11 @@ import { getTable } from './ajax';
 import { parseKeys, clone } from '@/utils';
 import { onCreateDrop, on, getTarget } from './drag';
 import DTableEmpty from './empty.vue';
-import DShowColumn from './show-column.vue';
 
 export default {
 	name: 'DTable',
 	components: {
 		DTableEmpty,
-		DShowColumn,
 		cellRender: {
 			functional: true,
 			props: {
@@ -174,7 +198,7 @@ export default {
 									width: 100,
 									trigger: 'hover',
 									visibleArrow: false,
-									popperClass: 'd-table-popover',
+									popperClass: 'd-table-more-popover',
 								},
 							},
 							[
@@ -252,20 +276,12 @@ export default {
 			},
 		},
 
-		showColumnFilter: {
-			type: Boolean,
-			default: true,
-		},
-
-		disabledColumn: {
-			type: Array,
-			default: () => [],
-		},
-
 		moreCount: {
 			type: Number,
 			default: 0,
 		},
+
+		columnFilterClick: Function,
 	},
 	data() {
 		return {
@@ -273,11 +289,8 @@ export default {
 			tableArray: [],
 			tableTotal: this.total,
 			loading: false,
-			filterColumns: [],
-			showColumnChecked: [],
 			columnType: ['selection', 'index', 'expand'],
 			responseData: null,
-			labels: [],
 			point: {
 				x: -1,
 				y: -1,
@@ -298,6 +311,14 @@ export default {
 			}
 
 			return numbers;
+		},
+
+		paginationAttr() {
+			return {
+				pageSizes: [10, 50, 100],
+				layout: 'total, sizes, prev, pager, next, jumper',
+				...this.pagination,
+			};
 		},
 
 		moreNumber() {
@@ -330,58 +351,6 @@ export default {
 			handler(data) {
 				this.tableArray = data;
 			},
-		},
-		columns: {
-			handler(columns) {
-				const types = [...this.columnType, 'operate'];
-				this.labels = columns
-					.filter((val) => !types.includes(val.type))
-					.map((val) => ({
-						label: val.label,
-						prop: val.prop,
-					}));
-				this.showColumnChecked = this.labels.map((val) => val.prop);
-			},
-			immediate: true,
-			deep: true,
-		},
-		showColumnChecked: {
-			handler(labels) {
-				const sortItem = [];
-
-				const types = [...this.columnType, 'operate'];
-
-				const result = {};
-
-				this.columns.forEach((val) => {
-					result[val.prop] = val;
-				});
-
-				this.columns.forEach((val) => {
-					const index = labels.findIndex((name) => name === val.prop);
-
-					if (types.includes(val.type)) {
-						sortItem.push(val);
-					} else if (index > -1) {
-						sortItem.push(val);
-						// const sortKey = sortItem.map((sortVal) => sortVal.prop);
-
-						// if (sortKey.indexOf(val.prop) < 0) {
-						// 	labels.forEach((key) => {
-						// 		sortItem.push(result[key]);
-						// 	});
-						// }
-					}
-				});
-
-				console.log(sortItem);
-
-				this.$nextTick(() => {
-					this.filterColumns = sortItem;
-				});
-			},
-			immediate: true,
-			deep: true,
 		},
 		tableArray(value) {
 			if (value.length) {

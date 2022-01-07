@@ -2775,14 +2775,6 @@ dns-txt@^2.0.2:
   dependencies:
     buffer-indexof "^1.0.0"
 
-do-element@1.0.46:
-  version "1.0.46"
-  resolved "https://registry.yarnpkg.com/do-element/-/do-element-1.0.46.tgz#9a7579abfd56fd209b05df503144756451b1c7cf"
-  integrity sha512-i65lyR8IWBUS82d1ZctLXR/hXQR/V7+3M3HMm8sAXmuJw9ZI2on1G7pcYPAK7aOe2ttARzpWaUDu1PK4aafxGA==
-  dependencies:
-    core-js "3"
-    element-theme-chalk "^2.15.6"
-
 do-tool@^0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/do-tool/-/do-tool-0.0.5.tgz#1a5c926fe0f82c93b383a5a4d35aafee5a366cac"

@@ -52,7 +52,6 @@ export default {
 	methods: {
 		onEvent(item) {
 			this.$emit('event', item);
-			this.$emit(item.prop);
 
 			if (item.prop === 'cancel') {
 				this.$emit('update:visible', false);

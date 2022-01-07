@@ -16,9 +16,10 @@ import Step from './step';
 import Statistic from './statistic';
 import StatisticItem from './statistic-item';
 import Divider from './divider';
+import FilterColumn from './filter-column';
+import PageTitle from './page-title';
 
 import { modal, notice } from './modal';
-import PageTitle from './page-title';
 
 const components = [
 	Link,
@@ -40,6 +41,7 @@ const components = [
 	StatisticItem,
 	Divider,
 	PageTitle,
+	FilterColumn,
 ];
 
 function install(Vue, opts) {
@@ -82,6 +84,7 @@ export default {
 	Statistic,
 	StatisticItem,
 	Divider,
+	FilterColumn,
 	modal,
 	notice,
 };
