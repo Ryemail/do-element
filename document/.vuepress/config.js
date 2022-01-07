@@ -59,6 +59,11 @@ module.exports = {
 						{ title: 'Form 表单', path: '/zh/component/form' },
 						{ title: 'Table 表格', path: '/zh/component/table' },
 						{
+							title: 'FilterColumn 过滤数据',
+							path: '/zh/component/filter-column',
+						},
+
+						{
 							title: 'Dialog 对话框',
 							path: '/zh/component/dialog',
 						},

@@ -254,7 +254,7 @@ lang: zh-CN
 | drag                 | 是否开启行拖拽                                                                                         | boolean  | true/false                                        | false                                      |
 | layout               | 组件布局，子组件名用逗号分隔                                                                           | string   | sizes, prev, pager, next, jumper, ->, total, slot | total, sizes, prev, pager, next, jumper    |
 | more-count           | 操作按钮超出 n 个显示点                                                                                | number   | \_                                                | 3                                          |
-| show-column-filter   | 是否显示自定义列的功能                                                                                 | boolean  | \_                                                | true                                       |
+| column-filter-click  | 自定义显示列的回调函数，决定了是否显示自定义 列 icon                                                   | function | \_                                                | \_                                         |
 | pagination           | [element-ui pagination](https://element.eleme.cn/#/zh-CN/component/pagination#attributes) 分页组件属性 | Object   | \_                                                | {}                                         |
 | 其他参数             | 同 element-ui 的 table 参数                                                                            | \_       | \_                                                | \_                                         |
 
