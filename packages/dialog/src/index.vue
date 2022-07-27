@@ -12,7 +12,7 @@
 			<slot name="title" />
 		</span>
 
-		<div slot="footer" class="d-dialog-footer">
+		<div v-if="button" slot="footer" class="d-dialog-footer">
 			<slot v-if="$scopedSlots.footer" name="footer"></slot>
 			<template v-else>
 				<el-button

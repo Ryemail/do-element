@@ -3,6 +3,9 @@
 		<div class="module">
 			<h3 class="module-title">基本表单</h3>
 
+			<button @click="onDisabled(true)">是否警用输入</button>
+			<button @click="onDisabled(false)">是否警用输入</button>
+
 			<d-form
 				:form="form"
 				:columns="columns"
@@ -69,7 +72,7 @@ export default {
 				radio: '3',
 				check: ['2'],
 				date: '',
-				daterange: '',
+				daterange: ['2022-06-07', '2022-07-12'],
 				datetime: '',
 				time1: '',
 				datetimerange: '',
@@ -113,41 +116,42 @@ export default {
 					prop: 'name',
 					attr: {
 						placeholder: '请输入姓名',
+						disabled: false,
 					},
 				},
-				{
-					type: 'select',
-					prop: 'sex',
-					// label: '性别',
-					attr: {
-						placeholder: '请选择性别',
-					},
-					lazyLoad(resolve) {
-						setTimeout(() => {
-							resolve([
-								{ value: '1', label: '男' },
-								{ value: '2', label: '女' },
-							]);
-						}, 1000);
-					},
-				},
-				{
-					type: 'date',
-					prop: 'date',
-					attr: {
-						placeholder: '请选择时间',
-					},
-				},
-				{
-					type: 'time',
-					prop: 'time1',
-					attr: {
-						// isRange: true,
-						clearable: true,
-						startPlaceholder: '请选择时间',
-						placeholder: '请选择时间',
-					},
-				},
+				// {
+				// 	type: 'select',
+				// 	prop: 'sex',
+				// 	// label: '性别',
+				// 	attr: {
+				// 		placeholder: '请选择性别',
+				// 	},
+				// 	lazyLoad(resolve) {
+				// 		setTimeout(() => {
+				// 			resolve([
+				// 				{ value: '1', label: '男' },
+				// 				{ value: '2', label: '女' },
+				// 			]);
+				// 		}, 1000);
+				// 	},
+				// },
+				// {
+				// 	type: 'date',
+				// 	prop: 'date',
+				// 	attr: {
+				// 		placeholder: '请选择时间',
+				// 	},
+				// },
+				// {
+				// 	type: 'time',
+				// 	prop: 'time1',
+				// 	attr: {
+				// 		// isRange: true,
+				// 		clearable: true,
+				// 		startPlaceholder: '请选择时间',
+				// 		placeholder: '请选择时间',
+				// 	},
+				// },
 				{
 					type: 'daterange',
 					prop: 'daterange',
@@ -156,24 +160,25 @@ export default {
 						startPlaceholder: '请选择日期',
 					},
 				},
-				{
-					type: 'datetime',
-					prop: 'datetime',
-					// label: '日期时间',
-					attr: {
-						placeholder: '请选择日期',
-					},
-				},
-				{
-					type: 'datetimerange',
-					prop: 'datetimerange',
+				// {
+				// 	type: 'datetime',
+				// 	prop: 'datetime',
+				// 	// label: '日期时间',
+				// 	attr: {
+				// 		placeholder: '请选择日期',
+				// 	},
+				// },
+				// {
+				// 	type: 'datetimerange',
+				// 	prop: 'datetimerange',
 
-					// label: '日期时间范围',
-					attr: {
-						clearable: true,
-						startPlaceholder: '请选择日期时间范围',
-					},
-				},
+				// 	// label: '日期时间范围',
+				// 	attr: {
+				// 		clearable: true,
+				// 		startPlaceholder: '请选择日期时间范围',
+				// 	},
+				// },
+
 				// {
 				// 	type: 'textarea',
 				// 	prop: 'mark',
@@ -223,12 +228,26 @@ export default {
 		};
 	},
 	methods: {
+		onDisabled(disabled) {
+			const item = {
+				type: 'input',
+				prop: 'name',
+				attr: {
+					placeholder: '请输入姓名',
+					disabled,
+				},
+			};
+
+			this.columns.splice(0, 1, item);
+		},
 		// 表单事件
 		onEvent(item) {
 			if (item.prop === 'reset') {
 				//
 				console.log({ ...this.form }, this.form);
 			}
+
+			console.log(item);
 		},
 		// 弹窗事件
 		onDialogEvent(item) {

@@ -10,7 +10,7 @@ import '../theme/index.css';
 
 // import 'element-ui/lib/theme-chalk/index.css';
 
-import DoElement from '../packages/index.js';
+import DoElement from '../lib/index.js';
 import '../packages/theme-chalk/src/index.less';
 
 import './mock';

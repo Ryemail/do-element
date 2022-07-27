@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h3 class="module-title">pageTabs</h3>
-		<d-page-tabs :default-active="$route.name" router :tabs="tabs" />
+		<d-page-tabs :default-active.sync="active" :tabs="tabs" />
 
 		<router-view />
 	</div>

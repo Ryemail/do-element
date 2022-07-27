@@ -9,6 +9,7 @@
 		:show-message="showMessage"
 		:label-width="labelWidth + 'px'"
 		v-bind="$attrs"
+		@submit.native.prevent
 	>
 		<div :class="['flex-1']">
 			<el-form-item
@@ -19,6 +20,7 @@
 				v-bind="item.formAttr"
 			>
 				<!-- input -->
+				{{ item.attr }}
 				<el-input
 					v-if="item.type === 'input'"
 					v-model="dataForm[item.prop]"
@@ -400,6 +402,8 @@ export default {
 					} else {
 						this.$set(this.dataColumns, index, item);
 					}
+				} else {
+					this.$set(this.dataColumns, index, item);
 				}
 			});
 		},
