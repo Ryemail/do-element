@@ -20,7 +20,6 @@
 				v-bind="item.formAttr"
 			>
 				<!-- input -->
-				{{ item.attr }}
 				<el-input
 					v-if="item.type === 'input'"
 					v-model="dataForm[item.prop]"
