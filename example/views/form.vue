@@ -72,7 +72,7 @@ export default {
 				radio: '3',
 				check: ['2'],
 				date: '',
-				daterange: ['2022-06-07', '2022-07-12'],
+				daterange: '',
 				datetime: '',
 				time1: '',
 				datetimerange: '',
@@ -119,39 +119,39 @@ export default {
 						disabled: false,
 					},
 				},
-				// {
-				// 	type: 'select',
-				// 	prop: 'sex',
-				// 	// label: '性别',
-				// 	attr: {
-				// 		placeholder: '请选择性别',
-				// 	},
-				// 	lazyLoad(resolve) {
-				// 		setTimeout(() => {
-				// 			resolve([
-				// 				{ value: '1', label: '男' },
-				// 				{ value: '2', label: '女' },
-				// 			]);
-				// 		}, 1000);
-				// 	},
-				// },
-				// {
-				// 	type: 'date',
-				// 	prop: 'date',
-				// 	attr: {
-				// 		placeholder: '请选择时间',
-				// 	},
-				// },
-				// {
-				// 	type: 'time',
-				// 	prop: 'time1',
-				// 	attr: {
-				// 		// isRange: true,
-				// 		clearable: true,
-				// 		startPlaceholder: '请选择时间',
-				// 		placeholder: '请选择时间',
-				// 	},
-				// },
+				{
+					type: 'select',
+					prop: 'sex',
+					// label: '性别',
+					attr: {
+						placeholder: '请选择性别',
+					},
+					lazyLoad(resolve) {
+						setTimeout(() => {
+							resolve([
+								{ value: '1', label: '男' },
+								{ value: '2', label: '女' },
+							]);
+						}, 1000);
+					},
+				},
+				{
+					type: 'date',
+					prop: 'date',
+					attr: {
+						placeholder: '请选择时间',
+					},
+				},
+				{
+					type: 'time',
+					prop: 'time1',
+					attr: {
+						isRange: true,
+						clearable: true,
+						startPlaceholder: '请选择时间',
+						placeholder: '请选择时间',
+					},
+				},
 				{
 					type: 'daterange',
 					prop: 'daterange',

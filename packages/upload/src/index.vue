@@ -47,6 +47,13 @@ export default {
 			type: Boolean,
 			default: false,
 		},
+		imageHandler: {
+			type: Function,
+		},
+		codeKey: {
+			type: String,
+			default: 'code',
+		},
 	},
 	data() {
 		return {
@@ -96,28 +103,41 @@ export default {
 		},
 	},
 	methods: {
-		onSuccess(response, file) {
+		onSuccess(response) {
 			const { accept, $attrs } = this;
 
+			const { data } = response;
+
 			if (accept === 'image') {
-				const imageUrl = URL.createObjectURL(file.raw);
-				const imageItem = imageUrl;
+				if (response[this.codeKey] === 200) {
+					let imageItem = data;
 
-				if ($attrs['list-type'] !== 'picture-card') {
-					this.imageUrl = imageItem;
+					if (typeof this.imageHandler === 'function') {
+						imageItem = this.imageHandler(response);
+					}
 
-					this.$emit('input', this.imageUrl);
-				} else {
-					this.$emit('input', [
-						...this.imageList.map((val) => val.url),
-						imageItem,
-					]);
+					if ($attrs['list-type'] !== 'picture-card') {
+						this.imageUrl = imageItem;
+
+						this.$emit('input', this.imageUrl);
+					} else {
+						this.$emit('input', [
+							...this.imageList.map((val) => val.url),
+							imageItem,
+						]);
+					}
+
+					return false;
 				}
 
-				return;
+				return this.$notice({
+					type: 'warning',
+					title: '上传失败',
+					message: response.msg || response.message,
+				});
 			}
 			// 其他格式文件传递
-			this.$emit('input', response);
+			this.$emit('change', response);
 		},
 		onError() {
 			this.$notice({
