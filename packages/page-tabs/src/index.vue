@@ -3,6 +3,7 @@ export default {
 	name: 'DPageTabs',
 	render(h) {
 		const children = this.tabs.map((val, index) => {
+			console.log(this.defaultActive, this.onGetIndex(index));
 			return h('a', {
 				class: [
 					'd-page-tabs-item',
@@ -48,9 +49,9 @@ export default {
 
 			const index = event.target.attributes['index'].nodeValue * 1;
 
-			if (!this.router) {
-				this.$emit('update:default-active', this.onGetIndex(index));
-			}
+			// if (!this.router) {
+			this.$emit('update:default-active', this.onGetIndex(index));
+			// }
 
 			if (this.router) {
 				if (this.onGetIndex(index) === this.defaultActive) return;

@@ -13,7 +13,7 @@
 	>
 		<div :class="['flex-1']">
 			<el-form-item
-				v-for="(item, key) in dataColumns"
+				v-for="(item, key) in columns"
 				:key="key"
 				:label="item.label"
 				:prop="item.prop"
@@ -68,7 +68,7 @@
 					v-on="item.event"
 				>
 					<el-option
-						v-for="(option, index) in item.options"
+						v-for="(option, index) in options[item.prop]"
 						:key="index"
 						:label="option.label"
 						:value="option.value"
@@ -83,7 +83,7 @@
 					v-on="item.event"
 				>
 					<el-checkbox
-						v-for="(option, index) in item.options"
+						v-for="(option, index) in options[item.prop]"
 						:key="index"
 						:label="option.value"
 						:name="item.prop"
@@ -100,7 +100,7 @@
 					v-on="item.event"
 				>
 					<el-radio
-						v-for="(option, index) in item.options"
+						v-for="(option, index) in options[item.prop]"
 						:key="index"
 						:label="option.value"
 					>
@@ -223,7 +223,9 @@
 </template>
 
 <script>
-import { parseEqual, formatNumber, clone } from '@/utils';
+import { formatNumber } from '@/utils';
+
+const watchConfig = { deep: true, immediate: true };
 
 export default {
 	name: 'DForm',
@@ -246,8 +248,6 @@ export default {
 	},
 	data() {
 		return {
-			dataColumns: clone(this.columns),
-			isChange: false,
 			dataForm: this.form,
 			dateType: ['datetime', 'date'],
 			dateRangeType: ['datetimerange', 'daterange'],
@@ -255,6 +255,7 @@ export default {
 				valueFormat: 'HH:mm',
 				format: 'HH:mm',
 			},
+			options: {}, // 存储下拉选择项
 		};
 	},
 	computed: {
@@ -289,8 +290,10 @@ export default {
 				{ type: 'default', prop: 'reset', label: '取消' },
 			];
 		},
-		parentVisible() {
-			return this.parent ? this.parent.$attrs.visible : false;
+		dialogVisible() {
+			return this.parent && this.parent.$attrs
+				? this.parent.$attrs.visible
+				: null;
 		},
 	},
 	filters: {
@@ -313,35 +316,28 @@ export default {
 			handler(value) {
 				this.dataForm = value;
 			},
-			deep: true,
+			...watchConfig,
 		},
 		dataForm: {
-			handler(value, oldValue) {
-				this.isChange = parseEqual(value, oldValue || {});
-
+			handler() {
 				this.onValidate();
 
-				this.$emit('update:form', value);
+				// this.$emit('update:form', value);
 			},
-			deep: true,
-			immediate: true,
+			...watchConfig,
 		},
 		columns: {
-			handler() {
-				!this.parent && this.onLazyLoad();
-			},
-			deep: true,
-			immediate: true,
-		},
-		parentVisible: {
 			handler(value) {
-				if (value && !this.isChange) {
-					this.onLazyLoad();
-				}
+				if (!value.length) return false;
 
-				this.clearValidate();
+				this.onLazyLoad();
 			},
-			immediate: true,
+			...watchConfig,
+		},
+		dialogVisible(value) {
+			if (value === false) {
+				this.resetFields();
+			}
 		},
 	},
 	methods: {
@@ -360,28 +356,52 @@ export default {
 		onInput(item) {
 			if (!item.number) return;
 
-			this.dataForm[item.prop] = formatNumber(
-				this.dataForm[item.prop],
-				item.number
-			);
+			//  number 类型可为 digit-zero digit number
+			if (item.prop) {
+				if (item.number === 'digit-zero') {
+					if (`${this.dataForm[item.prop]}`[0] === '0')
+						return (this.dataForm[item.prop] = '0');
+
+					this.dataForm[item.prop] = `${
+						this.dataForm[item.prop]
+					}`.replace(/[^0-9]+/g, '');
+				}
+				if (item.number !== 'digit-zero') {
+					this.dataForm[item.prop] = formatNumber(
+						this.dataForm[item.prop],
+						item.number
+					);
+				}
+			}
 		},
 
 		// input回车查询
 		onEnter() {
 			if (!this.inline) return;
 
-			const item =
-				this.buttonArray &&
-				this.buttonArray.find((val) => val.prop === 'submit');
+			if (this.buttonArray) {
+				const item = this.buttonArray.find(
+					(val) => val.prop === 'submit'
+				);
 
-			this.validate(item);
+				if (item) {
+					this.validate(item);
+				}
+			}
 		},
 
 		// 验证插槽元素
 		onValidate() {
 			this.columns.forEach((val) => {
-				if (val.slot) {
-					if (this.dataForm[val.prop].length) {
+				if (val.slot && val.prop && this.dataForm) {
+					const value = this.dataForm[val.prop];
+
+					if (
+						(typeof value !== 'number' &&
+							typeof value !== 'undefined' &&
+							!value.length) ||
+						!value
+					) {
 						this.clearValidate(val.prop);
 					}
 				}
@@ -391,18 +411,18 @@ export default {
 		onLazyLoad() {
 			const type = ['select', 'checkbox', 'radio'];
 
-			this.columns.forEach((item, index) => {
+			this.columns.forEach((item) => {
 				if (type.includes(item.type)) {
 					if (item.lazyLoad) {
-						item.lazyLoad((options) => {
-							item.options = options;
-							this.$set(this.dataColumns, index, item);
-						}, this.dataForm);
-					} else {
-						this.$set(this.dataColumns, index, item);
+						item.lazyLoad((data) => {
+							item.prop &&
+								this.$set(this.options, item.prop, data);
+						});
 					}
-				} else {
-					this.$set(this.dataColumns, index, item);
+
+					if (item.options) {
+						this.$set(this.options, item.prop, [...item.options]);
+					}
 				}
 			});
 		},

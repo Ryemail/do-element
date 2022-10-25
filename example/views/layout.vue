@@ -1,6 +1,10 @@
 <template>
 	<d-container>
-		<d-header title="DOELEMENT" />
+		<d-header title="DOELEMENT">
+			<template #content>
+				<div>dsdsds</div>
+			</template>
+		</d-header>
 
 		<main class="d-main">
 			<d-menu :default-active="defaultActive" :menus="menus" />

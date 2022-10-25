@@ -11,6 +11,3 @@ export function formatNumber(value, type) {
 
 	return value;
 }
-
-// // 匹配字符串url
-// /^https?:\/\/[^/]+/
